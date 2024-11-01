@@ -433,7 +433,7 @@ html {
 	width: 2.3rem;
 	height: 24rem;
 	position: absolute;
-	top: 15%;
+	top: 55%;
 	left: 113%;
 	z-index: 13;
 	rotate: -10deg;
@@ -450,7 +450,7 @@ html {
 	height: 22rem;
 	position: absolute;
 	top: -5%;
-	left: 152%;
+	left: 114%;
 	z-index: 12;
 	background-image: url('/images/desktop-coffee-cup-2.png');
 	background-repeat: no-repeat;
@@ -465,7 +465,7 @@ html {
 	height: 13rem;
 	position: absolute;
 	top: 11%;
-	left: 136%;
+	left: 107%;
 	z-index: 11;
 	opacity: 0.15;
 	background-image: url('/images/desktop-stain-ring.png');
