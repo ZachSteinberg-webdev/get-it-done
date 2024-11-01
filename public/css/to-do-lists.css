@@ -1,0 +1,1573 @@
+ /* #     #                                                    */
+ /* #     #   ##   #####  #   ##   #####  #      ######  ####  */
+ /* #     #  #  #  #    # #  #  #  #    # #      #      #      */
+ /* #     # #    # #    # # #    # #####  #      #####   ####  */
+	/* #   #  ###### #####  # ###### #    # #      #           # */
+	 /* # #   #    # #   #  # #    # #    # #      #      #    # */
+		/* #    #    # #    # # #    # #####  ###### ######  ####  */
+
+:root {
+	--border: 1px solid black;
+	--border-radius: 0.5rem;
+	--button-border-color: #C0BFBF;
+	--button-background-color: #F5F5F5;
+	--button-border: 1px dashed black;
+	--box-sizing: border-box;
+	--background-color-lighter: white;
+	--background-color-darker: #E7E1E1;
+	--background-color-background: #93CCFB;
+	--background-color-darker-1: #C6C5C5;
+	--background-color-darker-2: #AFAFAF;
+	--text-color: black;
+	--placeholder-text-color: grey;
+	--font-main: 'Courier New', monospace;
+	--edit-modal-field-container-height: 3.5rem;
+	--edit-modal-field-font-size: 1.5rem;
+	--edit-modal-button-container-height: 3.5rem;
+	--edit-modal-button-font-size: 1.5rem;
+	--user-settings-field-container-height: min-content;
+	--user-settings-field-font-size: 1.5rem;
+	--user-settings-button-container-height: min-content;
+	--user-settings-button-font-size: 1.5rem;
+}
+
+/* #     # */
+/* ##   ##   ##   # #    #    #####    ##    ####  ###### */
+/* # # # #  #  #  # ##   #    #    #  #  #  #    # #      */
+/* #  #  # #    # # # #  #    #    # #    # #      #####  */
+/* #     # ###### # #  # #    #####  ###### #  ### #      */
+/* #     # #    # # #   ##    #      #    # #    # #      */
+/* #     # #    # # #    #    #      #    #  ####  ###### */
+
+/* Main page */
+body {
+	width: 100vw;
+	height: 100vh;
+	margin: auto;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	box-sizing: var(--box-sizing);
+	background-color: var(--background-color-darker);
+	background-image: url('../images/oak-12894-in-architextures(1).jpg');
+	background-repeat: repeat;
+	background-size: 100rem;
+	background-position: center;
+	overflow: hidden;
+	transition: backdrop-filter 0.3s linear, -webkit-backdrop-filter 0.3s linear;
+}
+.to-do-lists-container {
+	max-width: 90vw;
+	height: calc(99vh - 0.5rem);
+	aspect-ratio: 3/4;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	border: var(--border-none);
+	border-radius: var(--border-radius);
+	box-sizing: var(--box-sizing);
+	position: relative;
+	background-color: var(--background-color-darker);
+	background-image: url('../images/oak-12894-in-architextures(1).jpg');
+	background-repeat: repeat;
+	background-size: cover;
+}
+
+/* #######                  ######                */
+	/* #     ####  #####     #     #   ##   #####   */
+	/* #    #    # #    #    #     #  #  #  #    #  */
+	/* #    #    # #    #    ######  #    # #    #  */
+	/* #    #    # #####     #     # ###### #####   */
+	/* #    #    # #         #     # #    # #   #   */
+	/* #     ####  #         ######  #    # #    #  */
+
+.to-do-lists-burger-menu-blocker-dummy-container {
+	height: 5.5rem;
+	width: 102%;
+	display: flex;
+	padding: 0;
+	justify-content: center;
+	align-items: flex-end;
+	background-color: var(--background-color-darker);
+	background-image: url('../images/oak-12894-in-architextures(1).jpg');
+	background-repeat: repeat;
+	background-size: 50rem;
+	background-position: center;
+	z-index: 4;
+}
+.to-do-lists-top-bar-container {
+	height: 70px;
+	width: 100%;
+	padding: 0.5rem;
+	margin: 0.25rem auto 0 auto;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border: var(--border);
+	border-radius: var(--border-radius);
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+	box-sizing: var(--box-sizing);
+	box-shadow: 0 0.9rem 0.25rem -0.3rem #363636, 0 -0.1rem 0.2rem 0.15rem #232323;
+	z-index: 2;
+	background-color: white;
+	background-image: url('../images/leather-1969-in-architextures.jpg');
+	background-position: center;
+	background-repeat: repeat;
+	background-size: auto;
+}
+.to-do-lists-top-bar-dummy-container {
+	height: 75%;
+	width: 5%;
+	visibility: hidden;
+	display: none;
+	justify-content: center;
+	align-items: center;
+	border: var(--border);
+	border-radius: 1rem;
+	overflow: hidden;
+}
+.to-do-lists-list-owner-container {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-shrink: 0;
+	flex-grow: 1;
+	justify-content: center;
+	align-items: center;
+	box-sizing: var(--box-sizing);
+}
+.to-do-lists-list-owner-update-form {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.to-do-lists-list-owner-input {
+	font-family: var(--font-main);
+	font-size: 1.75rem;
+	color: #bebebe;
+	height: 90%;
+	width: 100%;
+	padding: 0 4rem;
+	line-height: 2.5rem;
+	text-align: center;
+	border: 0.1875rem solid #bebebe;
+	border-radius: var(--border-radius);
+	box-shadow: var(--box-shadow-small);
+	background-color: transparent;
+	transition: border-color 500ms, background-color 500ms;
+}
+.to-do-lists-list-owner-input:hover {
+	border-color: rgba(25, 126, 250, 0.5);
+}
+.to-do-lists-list-owner-input:focus {
+	border-color: rgba(25, 126, 250, 0.5);
+}
+.to-do-lists-list-owner-input::placeholder {
+	color: #bebebe;
+	opacity: 1;
+}
+.grey-placeholder::placeholder {
+	color: #E4E4E4;
+	opacity: 1;
+}
+.to-do-lists-top-bar-user-name-change-input-tooltip {
+	visibility: hidden;
+	height: min-content;
+	width: max-content;
+	background-color: #555;
+	color: #fff;
+	text-align: center;
+	border-radius: 6px;
+	padding: 5px 5px;
+	position: absolute;
+	z-index: 1;
+	bottom: 125%;
+	top: 7%;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	opacity: 0;
+	transition: opacity 0.3s;
+}
+.to-do-lists-top-bar-user-name-change-input-tooltip::after {
+	content: "";
+	position: absolute;
+	bottom: 100%;
+	left: 50%;
+	margin-left: -5px;
+	border-width: 5px;
+	border-style: solid;
+	border-color: transparent transparent #555 transparent;
+}
+.to-do-lists-list-owner-input:hover + .to-do-lists-top-bar-user-name-change-input-tooltip {
+	visibility: visible;
+	opacity: 1;
+}
+.to-do-lists-list-owner-input:focus + .to-do-lists-top-bar-user-name-change-input-tooltip {
+	visibility: hidden;
+	opacity: 0;
+}
+.to-do-lists-heading-container-under-600-px-width {
+	display: none;
+}
+
+ /* #                                 #####                                                    */
+ /* #       #  ####  #####  ####     #     #  ####  #    # #####   ##   # #    # ###### #####  */
+ /* #       # #        #   #         #       #    # ##   #   #    #  #  # ##   # #      #    # */
+ /* #       #  ####    #    ####     #       #    # # #  #   #   #    # # # #  # #####  #    # */
+ /* #       #      #   #        #    #       #    # #  # #   #   ###### # #  # # #      #####  */
+ /* #       # #    #   #   #    #    #     # #    # #   ##   #   #    # # #   ## #      #   #  */
+ /* ####### #  ####    #    ####      #####   ####  #    #   #   #    # # #    # ###### #    # */
+
+.to-do-lists-list-container {
+	height: 75%;
+	min-height: 125px;
+	width: 100%;
+	padding: 0 0.5rem 0.5rem 0.5rem;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	justify-content: flex-start;
+	align-items: center;
+	border: var(--border);
+	border-radius: var(--border-radius);
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+	box-sizing: var(--box-sizing);
+	box-shadow: 0 -0.1rem 0.2rem 0.15rem #232323;
+	overflow-x: hidden;
+	overflow-y: auto;
+	scrollbar-width: auto;
+	scrollbar-color: transparent transparent;
+	background-color: white;
+}
+.to-do-lists-list-container::-webkit-scrollbar{
+	width: 0.5rem;
+}
+.to-do-lists-list-container::-webkit-scrollbar-thumb{
+	background: transparent;
+	border-radius: 2rem;
+}
+.to-do-lists-list-container::-webkit-scrollbar-track{
+	background: transparent;
+}
+.to-do-lists-list {
+	height: 35px;
+	width: 100%;
+	padding: 0.25rem;
+	margin: 0;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	flex-shrink: 0;
+	flex-grow: 0;
+	border: none;
+	border-radius: var(--border-radius);
+	box-sizing: var(--box-sizing);
+	box-shadow: var(--box-shadow-small);
+	position: relative;
+	bottom: -5rem;
+	z-index: 1;
+}
+.to-do-lists-list-under-400-px-width {
+	display: none;
+}
+.to-do-lists-vertical-hr-spacer {
+	width: 3.5rem;
+}
+.to-do-lists-vertical-hr{
+	width: 0px;
+	height: 700%;
+	color: #5162F9;
+	background-color: #5162F9;
+	border-color: #5162F9;
+	position: relative;
+	bottom: 0rem;
+}
+.to-do-lists-vertical-hr:last-of-type {
+	height: 600%;
+}
+.to-do-lists-vertical-hr-spacer-under-400-px-width {
+	width: 2rem;
+}
+.to-do-lists-vertical-hr-under-400-px-width{
+	width: 0px;
+	height: 300%;
+	margin-right: 0.5rem;
+	color: #5162F9;
+	background-color: #5162F9;
+	border-color: #5162F9;
+	position: relative;
+	bottom: 0rem;
+}
+.to-do-lists-list-name-inline-edit-form {
+	height: 90%;
+	margin: 0 0.5rem 0 0;
+	display: flex;
+	flex-shrink: 1;
+	flex-grow: 1;
+	justify-content: center;
+	align-items: center;
+}
+.to-do-lists-list-name-inline-edit-form-input {
+	font-family: 'The Penchill';
+	font-size: 1.25rem;
+	color: var(--text-color);
+	width: 95%;
+	padding: 0.2rem 0.5rem 0 0.5rem;
+	border: 2px solid transparent;
+	border-bottom: none;
+	border-radius: 1rem;
+	background-color: transparent;
+	overflow: hidden;
+	text-overflow: ellipsis ellipsis;
+	position: relative;
+	bottom: 0.2rem;
+	left: 0rem;
+}
+.to-do-lists-list-name-inline-edit-form-input:hover {
+	border: 2px solid rgb(25,126,250);
+	border-bottom: none;
+}
+.to-do-lists-list-name-inline-edit-form-input:focus {
+	border: 2px solid rgb(25,126,250);
+	border-bottom: none;
+}
+.to-do-lists-list-name-inline-edit-form-input:focus-visible {
+	border: 2px solid rgb(25,126,250);
+	border-bottom: none;
+	outline: none;
+}
+.to-do-lists-list-name-inline-edit-form-input-under-400-px {
+	font-family: 'The Penchill';
+	font-size: 1rem;
+	color: var(--text-color);
+	width: 100%;
+	padding: 0.1rem 0.5rem;
+	border: 2px solid transparent;
+	border-bottom: none;
+	border-radius: 1rem;
+	overflow: hidden;
+	text-overflow: ellipsis ellipsis;
+	position: relative;
+	bottom: 0rem;
+	box-sizing: border-box;
+}
+.to-do-lists-list-name-inline-edit-form-input-under-400-px:hover {
+	border: 2px solid rgb(25,126,250);
+	border-bottom: none;
+}
+.to-do-lists-list-name-inline-edit-form-input-under-400-px:focus {
+	border: 2px solid rgb(25,126,250);
+	border-bottom: none;
+}
+.to-do-lists-list-details-container {
+	height: 100%;
+	width: min-content;
+	display: flex;
+	flex-direction: row;
+	flex-shrink: 0;
+	flex-grow: 0;
+	justify-content: space-between;
+	align-items: center;
+	position: relative;
+	bottom: 0.15rem;
+}
+.to-do-lists-list-details-container-under-400-px-width {
+	height: 90%;
+	width: min-content;
+	display: none;
+	flex-direction: row;
+	flex-shrink: 0;
+	flex-grow: 0;
+	justify-content: flex-end;
+	align-items: center;
+}
+.to-do-lists-list-details-category-container-under-400-px-width {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.to-do-lists-list-butons-container-under-400-px-width {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.to-do-lists-list-category-inline-edit-form {
+	height: 100%;
+	width: min-content;
+	display: flex;
+	flex-shrink: 1;
+	flex-grow: 0;
+	justify-content: center;
+	align-items: center;
+}
+.to-do-lists-list-category-inline-edit-form-input {
+	font-family: 'The Penchill';
+	font-size: 0.95rem;
+	text-align: center;
+	color: var(--text-color);
+	height: 100%;
+	width: min-content;
+	padding: 0.25rem 0.5rem 0.05rem 0.5rem;
+	margin: 0 0.25rem 0 0;
+	cursor: default;
+	appearance: none;
+	border: var(--button-border);
+	border-bottom: none;
+	border-radius: 1rem;
+	box-sizing: var(--box-sizing);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	background-color: transparent;
+	transition: font-size 250ms, transform 250ms;
+}
+.to-do-lists-list-category-inline-edit-form-input:hover {
+	font-size: 1.05rem;
+}
+.to-do-lists-list-category-inline-edit-form-input:focus {
+	font-size: 1.05rem;
+}
+.to-do-lists-list-anchor {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-decoration: none;
+	color: inherit;
+	cursor: default;
+	border-radius: var(--border-radius);
+}
+.to-do-lists-list-anchor:visited {
+	color: inherit;
+}
+.to-do-lists-list-view-button-container {
+	height: 100%;
+	width: 50px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	box-sizing: var(--box-sizing);
+}
+.to-do-lists-list-view-button {
+	font-family: var(--font-main);
+	color: var(--text-color);
+	height: 100%;
+	width: 100%;
+	white-space: nowrap;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: var(--button-border);
+	border-radius: 1rem;
+	box-sizing: var(--box-sizing);
+	overflow: hidden;
+	background-color: transparent;
+	transition: transform 250ms;
+}
+.to-do-lists-list-view-button:hover img {
+	height: 1.5rem;
+}
+.to-do-lists-list-view-button:focus img {
+	height: 1.5rem;
+}
+.to-do-lists-list-view-button-icon {
+	height: 1.3125rem;
+	transition: height 250ms;
+}
+.to-do-lists-list-edit-button-container {
+	height: 100%;
+	width: 57px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	box-sizing: var(--box-sizing);
+}
+.to-do-lists-list-edit-button {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: var(--text-color);
+	margin: 0 0.25rem;
+	background-color: transparent;
+	border: var(--button-border);
+	border-bottom: none;
+	border-radius: 1rem;
+	transition: transform 250ms;
+}
+.to-do-lists-list-edit-button:hover img {
+	height: 1.1875rem;
+}
+.to-do-lists-list-edit-button:focus img {
+	height: 1.1875rem;
+}
+.to-do-lists-list-edit-button-icon {
+	height: 1rem;
+	transition: height 250ms;
+}
+.to-do-lists-list-delete-button-container {
+	height: 100%;
+	width: 50px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	box-sizing: var(--box-sizing);
+}
+.to-do-lists-list-delete-button {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: var(--font-main);
+	color: var(--text-color);
+	background-color: transparent;
+	border: var(--button-border);
+	border-bottom: none;
+	border-radius: 1rem;
+	transition: transform 250ms;
+}
+.to-do-lists-list-delete-button:hover img {
+	height: 1rem;
+}
+.to-do-lists-list-delete-button:focus img {
+	height: 1rem;
+}
+.to-do-lists-list-delete-button-under-400-px-width {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: var(--font-main);
+	color: var(--text-color);
+	background-color: var(--button-background-color);
+	border: var(--button-border);
+	border-radius: 1rem;
+	transition: transform 250ms;
+}
+.to-do-lists-list-delete-button-under-400-px-width:hover img {
+	height: 1rem;
+}
+.to-do-lists-list-delete-button-under-400-px-width:focus img {
+	height: 1rem;
+}
+.to-do-lists-list-delete-button-icon {
+	height: 0.8125rem;
+	transition: height 250ms;
+}
+.to-do-lists-list-separator{
+	width: 100%;
+	height: 0rem;
+	color: #FF9191;
+	background-color: #FF9191;
+	border-color: #FF9191;
+	z-index: 2;
+	position: relative;
+	bottom: -4rem;
+}
+.to-do-lists-list-separator-lifted{
+	display: none;
+}
+.to-do-lists-delete-confirmation-container-backdrop {
+	display: none;
+	height: 100vh;
+	width: 100vw;
+	position: fixed;
+	top: 0%;
+	right: 0%;
+	bottom: 0%;
+	left: 0%;
+	backdrop-filter: blur(0px);
+	background-color: transparent;
+	z-index: 4;
+	transition: background-color 0.3s linear, backdrop-filter 0.3s linear, -webkit-backdrop-filter 0.3s linear;
+}
+.to-do-lists-delete-confirmation-container-backdrop-in-use{
+	backdrop-filter: blur(2px);
+	background-color: #00000080;
+}
+.to-do-lists-delete-confirmation-container-backdrop-under-400-px-width {
+	display: none;
+	height: 100vh;
+	width: 100vw;
+	position: fixed;
+	top: 0%;
+	right: 0%;
+	bottom: 0%;
+	left: 0%;
+	backdrop-filter: blur(0px);
+	background-color: transparent;
+	z-index: 4;
+	transition: background-color 0.3s linear, backdrop-filter 0.3s linear, -webkit-backdrop-filter 0.3s linear;
+}
+.to-do-lists-delete-confirmation-container-backdrop-under-400-px-width-in-use{
+	backdrop-filter: blur(2px);
+	background-color: #00000080;
+}
+.to-do-lists-delete-confirmation-container-backdrop-hr {
+	width: 100%;
+	height: 0px;
+	margin: 1rem auto;
+	color: #FF9191;
+	background-color: #FF9191;
+	border-color: #FF9191;
+	position: relative;
+	top: 1.3rem;
+}
+.to-do-lists-delete-confirmation-container-backdrop-hr:first-of-type {
+	margin-top: 1rem;
+}
+.to-do-lists-delete-confirmation-container {
+	height: 18.5rem;
+	width: 14rem;
+	padding: 0 0.5rem 0.5rem 0.5rem;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: #ffffca;
+	border: var(--border);
+	border-radius: var(--border-radius);
+	box-shadow: 0 -0.1rem 0.7rem 0.05rem #232323;
+	z-index: 5;
+	visibility: collapse;
+	overflow: hidden;
+	opacity: 0;
+	transition: opacity 500ms, visibility 500ms;
+}
+.to-do-lists-delete-confirmation-form-header {
+	width: 101%;
+	height: 3rem;
+	padding: 0.5rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	font-family: 'Courier New', monospace;
+	font-size: 1.25rem;
+	color: white;
+	background-image: url('../images/leather-1969-in-architextures.jpg');
+	background-size: 30rem;
+	border-top-left-radius: var(--border-radius);
+	border-top-right-radius: var(--border-radius);
+	border: var(--border);
+	box-shadow: 0 0.5rem 0.25rem -0.2rem #363636, 0 -0.1rem 0.7rem 0.05rem #232323;
+	z-index: 2;
+	background-image: url('../images/leather-1969-in-architextures.jpg');
+}
+.to-do-lists-delete-confirmation-form {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.to-do-lists-delete-confirmation-container-under-400-px-width {
+	width: 14rem;
+	aspect-ratio: 3/4;
+	padding: 0 0.5rem 0.5rem 0.5rem;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: #ffffca;
+	border: var(--border);
+	border-radius: var(--border-radius);
+	box-shadow: 0 0.9rem 0.25rem -0.5rem #585858, 0 -0.1rem 0.2rem 0.15rem #585858;
+	z-index: 2;
+	background-image: url('../images/leather-1969-in-architextures.jpg');
+	z-index: 4;
+	visibility: collapse;
+	overflow: hidden;
+	opacity: 0;
+	transition: opacity 500ms, visibility 500ms;
+}
+.to-do-lists-delete-confirmation-form-under-400-px-width {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.to-do-lists-delete-confirmation-container-show {
+	visibility: visible;
+	opacity: 1;
+}
+@keyframes fadeInFromNone {
+		0% {
+				display: none;
+				opacity: 0;
+		}
+		1% {
+				display: flex;
+				opacity: 0;
+		}
+		100% {
+				display: flex;
+				opacity: 1;
+		}
+}
+@keyframes fadeOutFromFlex {
+		0% {
+				display: flex;
+				opacity: 1;
+		}
+		99% {
+				display: flex;
+				opacity: 0;
+		}
+		100% {
+				display: none;
+				opacity: 0;
+		}
+}
+.to-do-lists-delete-confirmation-text {
+	width: 80%;
+	margin: 2.6rem 0.5rem 0.5rem 0.5rem;
+	line-height: 1.7;
+	text-align: center;
+	color: black;
+	font-family: 'The Penchill';
+	font-size: 1.25rem;
+	position: absolute;
+	top: 0.8rem;
+	line-height: 1.7;
+}
+.to-do-lists-list-delete-confirmation-button-container {
+	height: 1.7rem;
+	width: 80%;
+	margin: 0.5rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	position: relative;
+	bottom: 6.3rem;
+}
+.to-do-lists-list-delete-confirmation-button {
+	height: 100%;
+	width: 45%;
+	border: var(--border);
+	border-radius: var(--border-radius);
+	background-color: var(--background-color-lighter);
+	font-size: 1.25rem;
+	font-family: var(--font-main);
+}
+.to-do-lists-list-delete-confirmation-cancel-button {
+	height: 100%;
+	width: 45%;
+	border: var(--border);
+	border-radius: var(--border-radius);
+	background-color: var(--background-color-lighter);
+	font-size: 1.25rem;
+	font-family: var(--font-main);
+}
+.to-do-lists-list-delete-confirmation-cancel-button-under-400-px {
+	height: var(--edit-modal-button-container-height);
+	width: 45%;
+	border: var(--border);
+	border-radius: var(--border-radius);
+	background-color: var(--background-color-lighter);
+	font-size: 1.25rem;
+	font-family: var(--font-main);
+}
+
+ /* #                                                                                         */
+ /* #       #  ####  #####    ###### #    # ##### #####  #   #    ######  ####  #####  #    # */
+ /* #       # #        #      #      ##   #   #   #    #  # #     #      #    # #    # ##  ## */
+ /* #       #  ####    #      #####  # #  #   #   #    #   #      #####  #    # #    # # ## # */
+ /* #       #      #   #      #      #  # #   #   #####    #      #      #    # #####  #    # */
+ /* #       # #    #   #      #      #   ##   #   #   #    #      #      #    # #   #  #    # */
+ /* ####### #  ####    #      ###### #    #   #   #    #   #      #       ####  #    # #    # */
+
+/* List entry form // ---------------------------------------------------------------- */
+.entry-form-show-button-container {
+	height: 4rem;
+	width: 4rem;
+	display: none;
+	z-index: 3;
+	position: absolute;
+	bottom: -0.75rem;
+	right: -0.75rem;
+	transition: right 500ms, transform 250ms;
+}
+.entry-form-show-button-container-after-clicked {
+	right: -100px;
+	transition: right 500ms;
+}
+.entry-form-show-button {
+	height: 100%;
+	width: 100%;
+	border: 1.5px solid black;
+	border-radius: 50%;
+	background-color: var(--background-color-lighter);
+	background-image: url('../images/leather-1969-in-architextures.jpg');
+	outline: 2px dashed silver;
+	outline-offset: -0.4rem;
+	transition: right 500ms, transform 250ms;
+}
+.entry-form-show-button:hover {
+	transform: scale(1.1);
+}
+.entry-form-show-button:focus {
+	transform: scale(1.1);
+}
+.entry-form-show-button-icon {
+	height: 55%;
+	width: auto;
+	position: relative;
+	left: 0.2rem;
+}
+.to-do-lists-list-entry-form-container {
+	height: 70px;
+	width: 101%;
+	margin: 0.25rem 0;
+	padding: 0.5rem 0.5rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	border: var(--border);
+	border-radius: var(--border-radius);
+	box-sizing: var(--box-sizing);
+	box-shadow: 0 0.6rem 0.25rem -0.3rem #363636, 0 -0.1rem 0.2rem 0.15rem #232323;
+	background-color: var(--background-color-darker-1);
+	background-image: url('../images/leather-1969-in-architextures.jpg');
+	outline: 2px dashed silver;
+	outline-offset: -0.5rem;
+}
+.to-do-lists-list-entry-form {
+	height: 90%;
+	width: 99%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	box-sizing: var(--box-sizing);
+}
+.to-do-lists-list-entry-form-under-400-px-width {
+	display: none;
+}
+.to-do-lists-list-entry-form-list-name-container {
+	height: 90%;
+	margin-right: 0.5rem;
+	display: flex;
+	flex-shrink: 1;
+	flex-grow: 1;
+	flex-basis: 55%;
+	justify-content: center;
+	align-items: center;
+	box-sizing: var(--box-sizing);
+}
+.to-do-lists-list-entry-form-list-name-input {
+	height: 100%;
+	width: 100%;
+	font-size: 1.75rem;
+	font-family: 'The Penchill';
+	color: var(--text-color);
+	text-align: center;
+	background-color: #ffffff9e;
+	border: var(--border);
+	border-radius: var(--border-radius);
+	box-shadow: var(--box-shadow-small);
+}
+.to-do-lists-list-entry-form-list-category-container {
+	height: 100%;
+	margin-right: 0.5rem;
+	display: flex;
+	flex-shrink: 0;
+	flex-grow: 0;
+	flex-basis: 60px;
+	justify-content: center;
+	align-items: center;
+	box-sizing: var(--box-sizing);
+}
+.to-do-lists-list-entry-form-list-category-input {
+	height: 60px;
+	width: 65px;
+	font-size: 1.75rem;
+	font-family: var(--font-main);
+	color: var(--text-color);
+	text-align: center;
+	background-color: var(--background-color-lighter);
+	border: none;
+	border-radius: 1rem;
+	box-shadow: var(--box-shadow-small);
+	opacity: 0%;
+	z-index: 5;
+	position: absolute;
+	transition: transform 250ms;
+}
+.to-do-lists-list-entry-form-list-category-input:hover {
+	transform: scale(1.1);
+}
+.to-do-lists-list-entry-form-list-category-input:focus {
+	transform: scale(1.1);
+}
+.to-do-lists-list-entry-form-list-category-input:hover + .to-do-lists-list-entry-form-list-category-show-button {
+	transform: scale(1.1);
+}
+.to-do-lists-list-entry-form-list-category-input:focus + .to-do-lists-list-entry-form-list-category-show-button {
+	transform: scale(1.1);
+}
+.to-do-lists-list-entry-form-list-category-show-button {
+	/* If outline, height or width values are changed, the corresponding styling values in the JS file must be modified */
+	/* Search "newListEntryFormCategoryInput.addEventListener" in the JS file to pull up those .style values */
+	height: 100%;
+	width: 95%;
+	font-family: var(--font-main);
+	color: var(--text-color);
+	text-align: center;
+	background-color: #ffffff9e;
+	border: var(--border);
+	border-radius: var(--border-radius);
+	box-shadow: var(--box-shadow-small);
+	outline-offset: -3px;
+	z-index: 3;
+	transition: transform 250ms;
+}
+.to-do-lists-list-entry-form-list-category-input-icon {
+	/* If height value is changed, the corresponding styling value in the JS file must be modified */
+	/* Search "newListEntryFormCategoryInput.addEventListener" in the JS file to pull up that .style value */
+	height: 80%;
+	padding: 0 0.25rem;
+	text-align: center;
+	vertical-align: middle;
+}
+.to-do-lists-list-entry-form-list-owner-container {
+	display: none;
+}
+.to-do-lists-list-entry-form-list-submit-button-container {
+	height: 100%;
+	display: flex;
+	flex-shrink: 0;
+	flex-grow: 0;
+	flex-basis: 55px;
+	justify-content: center;
+	align-items: center;
+	border-radius: var(--border-radius);
+	box-sizing: var(--box-sizing);
+}
+.to-do-lists-list-entry-form-list-submit-button-input {
+	height: 100%;
+	width: 95%;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: center;
+	font-size: 1.75rem;
+	font-family: var(--font-main);
+	color: var(--text-color);
+	text-align: center;
+	background-color: #ffffff9e;
+	border: var(--border);
+	border-radius: var(--border-radius);
+	box-shadow: var(--box-shadow-small);
+	transition: transform 250ms;
+}
+.to-do-lists-list-entry-form-list-submit-button-input:hover {
+	transform: scale(1.1);
+}
+.to-do-lists-list-entry-form-list-submit-button-input:focus {
+	transform: scale(1.1);
+}
+.to-do-lists-list-submit-button-icon {
+	height: 80%;
+	padding: 0.25rem 0;
+	text-align: center;
+	vertical-align: middle;
+}
+
+ /* #     #                                #                         #######                */
+ /* ##   ##  ####  #####    ##   #         #       #  ####  #####    #       #####  # ##### */
+ /* # # # # #    # #    #  #  #  #         #       # #        #      #       #    # #   #   */
+ /* #  #  # #    # #    # #    # #         #       #  ####    #      #####   #    # #   #   */
+ /* #     # #    # #    # ###### #         #       #      #   #      #       #    # #   #   */
+ /* #     # #    # #    # #    # #         #       # #    #   #      #       #    # #   #   */
+ /* #     #  ####  #####  #    # ######    ####### #  ####    #      ####### #####  #   #   */
+
+/* Modal list edit window // ---------------------------------------------------------------- */
+.list-edit-modal-backdrop {
+	display: none;
+	height: 100vh;
+	width: 100vw;
+	position: absolute;
+	top: 0%;
+	right: 0%;
+	bottom: 0%;
+	left: 0%;
+	backdrop-filter: blur(0px);
+	background-color: transparent;
+	z-index: 4;
+	transition: background-color 0.3s linear, backdrop-filter 0.3s linear, -webkit-backdrop-filter 0.3s linear;
+}
+.list-edit-modal-backdrop-in-use{
+	backdrop-filter: blur(2px);
+	background-color: #00000080;
+}
+.popup-wrapper {
+	height: 100%;
+	width: 100%;
+	margin: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+.popup-container {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+}
+.list-edit-modal-header-and-form-container {
+	width: 14rem;
+	aspect-ratio: 3/4;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+}
+.list-edit-modal-form-header {
+	width: 102%;
+	height: 2.5rem;
+	padding: 0.5rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	background-image: url('../images/leather-1969-in-architextures.jpg');
+	background-size: 30rem;
+	border-top-left-radius: var(--border-radius);
+	border-top-right-radius: var(--border-radius);
+	border: var(--border);
+	box-shadow: 0 0.5rem 0.25rem -0.2rem #363636, 0 -0.1rem 0.7rem 0.05rem #232323;
+	z-index: 2;
+	background-image: url('../images/leather-1969-in-architextures.jpg');
+	opacity: 0;
+	visibility: collapse;
+	transition: opacity 500ms, visibility 500ms;
+}
+.list-edit-modal-form-header-in-use {
+	opacity: 1;
+	visibility: visible;
+}
+.list-edit-modal-instructions-text {
+	margin: auto;
+	font-size: 1.25rem;
+	font-family: 'Courier New', monospace;
+	color: white;
+	text-align: center;
+}
+.to-do-list-edit-form {
+	width: 99%;
+	padding: 0.5rem 0.5rem 1rem 0.5rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: center;
+	flex-grow: 1;
+	flex-shrink: 1;
+	border: var(--border);
+	border-radius: var(--border-radius);
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+	background-color: #ffffca;
+	box-shadow: 0 -0.1rem 0.7rem 0.05rem #232323;
+	opacity: 0;
+	visibility: collapse;
+	transition: opacity 500ms, visibility 500ms;
+}
+.list-edit-form-in-use {
+	opacity: 1;
+	visibility: visible;
+}
+.to-do-list-edit-modal-title {
+	text-align: center;
+	font-size: 1.5rem;
+	font-family: var(--font-main);
+	margin: 0;
+	padding: 0.5rem;
+}
+.to-do-lists-list-edit-form-list-name-container {
+	height: min-content;
+	width: 100%;
+	margin: 0.25rem auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-sizing: var(--box-sizing);
+}
+.to-do-lists-list-edit-form-list-name-input {
+	height: 100%;
+	width: 100%;
+	font-size: 1.5rem;
+	font-family: 'The Penchill';
+	text-align: center;
+	background-color: transparent;
+	border: 1px solid transparent;
+	border-radius: var(--border-radius);
+	box-shadow: var(--box-shadow-small);
+	position: relative;
+	bottom: -0.4rem;
+}
+.to-do-lists-list-edit-form-list-name-input:hover {
+	border: 1px solid rgb(25,126,250);
+}
+.to-do-lists-list-edit-form-list-name-input:focus {
+	border: 1px solid rgb(25,126,250);
+}
+.to-do-lists-list-edit-form-list-name-input:focus-visible {
+	border: 1px solid rgb(25,126,250);
+	outline: none;
+}
+.list-edit-modal-hr {
+	width: 100%;
+	color: #FF9191;
+	height: 0px;
+	position: relative;
+	bottom: 0.3rem;
+}
+.to-do-lists-list-edit-form-list-category-container {
+	height: min-content;
+	width: 100%;
+	margin: 0.25rem auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-sizing: var(--box-sizing);
+}
+.to-do-lists-list-edit-form-list-category-input {
+	height: 100%;
+	width: 100%;
+	font-size: var(--edit-modal-field-font-size);
+	font-family: 'The Penchill';
+	text-align: center;
+	background-color: transparent;
+	border: 1px solid transparent;
+	border-radius: var(--border-radius);
+	box-shadow: var(--box-shadow-small);
+	position: relative;
+	bottom: -0.5rem;
+}
+.to-do-lists-list-edit-form-list-category-input:hover {
+	border: 1px solid rgb(25,126,250);
+}
+.to-do-lists-list-edit-form-list-category-input:focus {
+	border: 1px solid rgb(25,126,250);
+}
+.to-do-lists-list-edit-form-list-category-input:focus-visible {
+	border: 1px solid rgb(25,126,250);
+	outline: none;
+}
+.to-do-lists-list-edit-form-list-submit-button-container {
+	height: min-content;
+	width: 100%;
+	margin: 0.25rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-sizing: var(--box-sizing);
+}
+.to-do-lists-list-edit-form-list-submit-button-input {
+	height: 100%;
+	width: 100%;
+	font-size: var(--edit-modal-button-font-size);
+	font-family: var(--font-main);
+	text-align: center;
+	background-color: var(--background-color-lighter);
+	border: var(--border);
+	border-radius: var(--border-radius);
+	box-shadow: var(--box-shadow-small);
+	position: relative;
+	bottom: -0.5rem;
+}
+.to-do-lists-list-edit-form-list-submit-button-input:hover {
+	border: 1px solid rgb(25,126,250);
+}
+.to-do-lists-list-edit-form-list-submit-button-input:focus {
+	border: 1px solid rgb(25,126,250);
+}
+.to-do-lists-list-edit-form-list-submit-button-input:focus-visible {
+	border: 1px solid rgb(25,126,250);
+	outline: none;
+}
+.to-do-lists-list-edit-form-list-cancel-button-container {
+	height: min-content;
+	width: 100%;
+	margin: 0.25rem auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-sizing: var(--box-sizing);
+}
+.to-do-lists-list-edit-form-list-cancel-button-input {
+	height: 100%;
+	width: 100%;
+	font-size: var(--edit-modal-button-font-size);
+	font-family: var(--font-main);
+	text-align: center;
+	background-color: var(--background-color-lighter);
+	border: var(--border);
+	border-radius: var(--border-radius);
+	box-shadow: var(--box-shadow-small);
+	position: relative;
+	bottom: -0.5rem;
+}
+.to-do-lists-list-edit-form-list-cancel-button-input:hover {
+	border: 1px solid rgb(25,126,250);
+}
+.to-do-lists-list-edit-form-list-cancel-button-input:focus {
+	border: 1px solid rgb(25,126,250);
+}
+.to-do-lists-list-edit-form-list-cancel-button-input:focus-visible {
+	border: 1px solid rgb(25,126,250);
+	outline: none;
+}
+
+/* Shake animation for modals */
+@keyframes shake {
+	0% { transform: translate(1px, 1px) rotate(0deg); }
+	10% { transform: translate(-1px, -2px) rotate(-1deg); }
+	20% { transform: translate(-3px, 0px) rotate(1deg); }
+	30% { transform: translate(3px, 2px) rotate(0deg); }
+	40% { transform: translate(1px, -1px) rotate(1deg); }
+	50% { transform: translate(-1px, 2px) rotate(-1deg); }
+	60% { transform: translate(-3px, 1px) rotate(0deg); }
+	70% { transform: translate(3px, 1px) rotate(-1deg); }
+	80% { transform: translate(-1px, -1px) rotate(1deg); }
+	90% { transform: translate(1px, 2px) rotate(0deg); }
+	100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+ /* #     #                            #####                                       */
+ /* ##   ## ###### #####  #   ##      #     # #    # ###### #####  # ######  ####  */
+ /* # # # # #      #    # #  #  #     #     # #    # #      #    # # #      #      */
+ /* #  #  # #####  #    # # #    #    #     # #    # #####  #    # # #####   ####  */
+ /* #     # #      #    # # ######    #   # # #    # #      #####  # #           # */
+ /* #     # #      #    # # #    #    #    #  #    # #      #   #  # #      #    # */
+ /* #     # ###### #####  # #    #     #### #  ####  ###### #    # # ######  ####  */
+
+/* Portrait */
+@media (orientation: portrait) and (max-width: 700px) {
+	.to-do-lists-list-owner-input {
+		font-size: 1.5rem;
+	}
+	.to-do-lists-list-container {
+		height: 90%;
+	}
+	.to-do-lists-list {
+		height: 70px;
+		width: 90%;
+		padding: 0.5rem;
+		flex-direction: column;
+		justify-content: center;
+		align-items: flex-end;
+		position: relative;
+		left: 2rem;
+	}
+	.to-do-lists-vertical-hr-spacer{
+		display: none;
+	}
+	.to-do-lists-vertical-hr{
+		position: absolute;
+		bottom: -2rem;
+		left: 0rem;
+	}
+	.to-do-lists-list-name-inline-edit-form {
+		height: 45%;
+		width: 100%;
+		margin: 0 0 0.5rem 0;
+	}
+	.to-do-lists-list-name-inline-edit-form-input {
+		width: 100%;
+		bottom: -0.6rem;
+	}
+	.to-do-lists-list-details-container {
+		height: 45%;
+		width: 100%;
+		margin: 1.5rem 0 0 0;
+		bottom: -0.4rem;
+	}
+	.to-do-lists-list-category-inline-edit-form {
+		flex-grow: 1;
+		margin: 0 0.25rem 0 0;
+	}
+	.to-do-lists-list-category-inline-edit-form-input {
+		height: 100%;
+		width: 100%;
+	}
+	.to-do-lists-list-view-button-container {
+		width: 15%;
+	}
+	.to-do-lists-list-edit-button-container {
+		width: 16%;
+	}
+	.to-do-lists-list-delete-button-container {
+		width: 14%;
+	}
+	.to-do-lists-list-separator{
+		position: relative;
+		bottom: -5.2rem;
+	}
+	.to-do-lists-list-separator-lifted{
+		width: 100%;
+		height: 0rem;
+		display: block;
+		color: #FF9191;
+		background-color: #FF9191;
+		border-color: #FF9191;
+		z-index: 2;
+		position: relative;
+		bottom: -0.8rem;
+	}
+	.entry-form-show-button-container {
+		display: block;
+		transition: right 500ms, transform 250ms;
+	}
+	.to-do-lists-list-entry-form-container {
+		width: 100%;
+		height: 70px;
+		justify-content: space-between;
+		position: absolute;
+		bottom: -7rem;
+		visibility: collapse;
+		z-index: 2;
+		transition: bottom 500ms linear 100ms, visibility 500ms linear 100ms, width 500ms;
+	}
+	.entry-form-container-in-use {
+		width: 102%;
+		box-shadow: 0px -1px 5px black;
+		visibility: visible;
+		bottom: -0.3rem;
+		transition: bottom 500ms, visibility 500ms, width 500ms ease-out 250ms;
+	}
+	.to-do-lists-vertical-hr:last-of-type {
+		bottom: -4.5rem;
+	}
+}
+
+@media (orientation: portrait) and (max-width: 400px) {
+	.to-do-lists-list-container {
+		padding: 0 0.7rem 0.5rem 0.5rem;
+	}
+}
+
+@media (orientation: portrait) and (max-width: 400px) {
+	.to-do-lists-list-container {
+		padding: 0 0.9rem 0.5rem 0.5rem;
+	}
+}
+
+/* Landscape */
+@media (orientation: landscape) and (max-width: 600px) {
+	.to-do-lists-list-name-inline-edit-form-input{
+		width: 84%;
+	}
+	.to-do-lists-list-details-container{
+		width: 88%;
+		left: 2.3rem;
+	}
+}
+
+@media(orientation: landscape) and (max-width: 550px) {
+	.to-do-lists-list-name-inline-edit-form-input{
+		width: 81%;
+		left: 0.5rem;
+	}
+	.to-do-lists-list-details-container{
+		width: 85%;
+	}
+}
+
+@media (orientation: landscape) and (max-height: 900px) {
+	.to-do-lists-list-container {
+		height: 90%;
+	}
+	.to-do-lists-list-owner-input {
+		font-size: 1.5rem;
+	}
+	.to-do-lists-list {
+		height: 70px;
+		width: 100%;
+		padding: 0.5rem;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	.to-do-lists-vertical-hr-spacer{
+		display: none;
+	}
+	.to-do-lists-vertical-hr{
+		width: 0px;
+		height: 200%;
+		color: #5162F9;
+		background-color: #5162F9;
+		border-color: #5162F9;
+		position: absolute;
+		bottom: -1rem;
+		left: 4rem;
+	}
+	.to-do-lists-vertical-hr:last-of-type {
+		bottom: -4.5rem;
+	}
+	.to-do-lists-list-name-inline-edit-form {
+		height: 45%;
+		width: 88%;
+		margin: 0 0 0.5rem 4rem;
+		justify-content: flex-end;
+
+	}
+	.to-do-lists-list-name-inline-edit-form-input{
+		width: 100%;
+		bottom: 1.5rem;
+		left: 0.2rem;
+	}
+	.to-do-lists-list-name-inline-edit-form-input-under-400-px {
+		height: 70%;
+		width: 100%;
+	}
+	.to-do-lists-list-details-container {
+		height: 45%;
+		width: 85%;
+		justify-content: flex-end;
+		bottom: -0.1rem;
+		left: 2rem;
+	}
+	.to-do-lists-list-category-inline-edit-form {
+		flex-grow: 1;
+		margin: 0 0.25rem 0 0;
+	}
+	.to-do-lists-list-category-inline-edit-form-input {
+		height: 100%;
+		width: 100%;
+	}
+	.to-do-lists-list-view-button-container {
+		width: 15%;
+	}
+	.to-do-lists-list-edit-button-container {
+		width: 16%;
+	}
+	.to-do-lists-list-delete-button-container {
+		width: 14%;
+	}
+	.to-do-lists-list-separator{
+		position: relative;
+		bottom: -4.1rem;
+	}
+	.to-do-lists-list-separator-lifted{
+		width: 100%;
+		height: 0rem;
+		display: block;
+		color: #FF9191;
+		z-index: 2;
+		position: relative;
+		bottom: 0.5rem;
+	}
+	.entry-form-show-button-container {
+		display: block;
+	}
+	.entry-form-show-button-container-after-clicked {
+		right: -110%;
+		transition: right 500ms;
+	}
+	.entry-form-show-button {
+		height: 100%;
+		width: 100%;
+		border: 1.5px solid black;
+		border-radius: 50%;
+		background-color: var(--background-color-lighter);
+	}
+	.entry-form-show-button-icon {
+		height: 55%;
+		width: auto;
+		position: relative;
+		left: 0.25rem;
+	}
+	.to-do-lists-list-entry-form-container {
+		width: 100%;
+		height: 70px;
+		position: absolute;
+		bottom: -7rem;
+		transition: bottom 500ms, visibility 500ms;
+		visibility: collapse;
+		z-index: 2;
+	}
+	.entry-form-container-in-use {
+		width: 102%;
+		box-shadow: 0px -1px 5px black;
+		visibility: visible;
+		bottom: -0.3rem;
+		transition: bottom 500ms, visibility 500ms, width 500ms ease-out 250ms;
+	}
+}
+
+@media (orientation: landscape) and (max-height: 700px) {
+	.to-do-lists-list-name-inline-edit-form {
+		width: 86%;
+	}
+}
+
+@media (orientation: landscape) and (max-height: 600px) {
+	.to-do-lists-list-details-container {
+		width: 75%;
+		margin-left: 4rem;
+		left: 0rem;
+	}
+}
+
+@media (orientation: landscape) and (max-height: 550px) {
+	.to-do-lists-list-name-inline-edit-form {
+		width: 83%;
+	}
+}
+
+@media (orientation: landscape) and (max-height: 450px) {
+	.to-do-lists-list-name-inline-edit-form {
+		width: 80%;
+	}
+}
+
+@media (orientation: landscape) and (max-height: 400px) {
+	.to-do-lists-list-name-inline-edit-form {
+		width: 76%;
+	}
+}
+
+@media (orientation: landscape) and (max-height: 350px) {
+	.to-do-lists-list-name-inline-edit-form {
+		width: 74%;
+	}
+}

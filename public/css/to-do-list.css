@@ -1,0 +1,1819 @@
+ /* #     #                                                    */
+ /* #     #   ##   #####  #   ##   #####  #      ######  ####  */
+ /* #     #  #  #  #    # #  #  #  #    # #      #      #      */
+ /* #     # #    # #    # # #    # #####  #      #####   ####  */
+	/* #   #  ###### #####  # ###### #    # #      #           # */
+	 /* # #   #    # #   #  # #    # #    # #      #      #    # */
+		/* #    #    # #    # # #    # #####  ###### ######  ####  */
+
+:root {
+	--border: 1px solid black;
+	--border-input: 2px dashed var(--button-border-color);
+	--border-none: none;
+	--border-radius: 0.5rem;
+	--button-border: 1px dashed black;
+	--button-border-color: #C0BFBF;
+	--button-background-color: #F5F5F5;
+	--box-sizing: border-box;
+	--background-color-lighter: white;
+	--background-color-darker: #E7E1E1;
+	--background-color-background: #93CCFB;
+	--background-color-darker-1: #C6C5C5;
+	--background-color-darker-2: #AFAFAF;
+	--background-color-background: #93CCFB;
+	--text-color: black;
+	--placeholder-text-color: grey;
+	--font-main: 'Courier New', monospace;
+	--edit-modal-field-container-height: 3.5rem;
+	--edit-modal-field-font-size: 1.5rem;
+	--edit-modal-button-container-height: 3.5rem;
+	--edit-modal-button-font-size: 1.5rem;
+	--user-settings-field-container-height: min-content;
+	--user-settings-field-font-size: 1.5rem;
+	--user-settings-button-container-height: min-content;
+	--user-settings-button-font-size: 1.5rem;
+	--input-field-letter-spacing: -0.1rem;
+	--input-field-word-spacing: -0.6rem;
+}
+
+/* #     # */
+/* ##   ##   ##   # #    #    #####    ##    ####  ###### */
+/* # # # #  #  #  # ##   #    #    #  #  #  #    # #      */
+/* #  #  # #    # # # #  #    #    # #    # #      #####  */
+/* #     # ###### # #  # #    #####  ###### #  ### #      */
+/* #     # #    # # #   ##    #      #    # #    # #      */
+/* #     # #    # # #    #    #      #    #  ####  ###### */
+
+/* Main page // ---------------------------------------------------------------- */
+body {
+	width: 100vw;
+	height: 100vh;
+	margin: auto;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	box-sizing: var(--box-sizing);
+	background-color: var(--background-color-darker);
+	background-image: url('../images/oak-12894-in-architextures(1).jpg');
+	background-repeat: repeat;
+	background-size: 100rem;
+	background-position: center;
+	overflow: hidden;
+	transition: backdrop-filter 0.3s linear, -webkit-backdrop-filter 0.3s linear;
+}
+.to-do-list-container {
+	max-width: 90vw;
+	height: calc(99vh - 0.5rem);
+	aspect-ratio: 3/4;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	border: var(--border-none);
+	border-radius: var(--border-radius);
+	box-sizing: var(--box-sizing);
+	position: relative;
+	background-color: var(--background-color-darker);
+	background-image: url('../images/oak-12894-in-architextures(1).jpg');
+	background-repeat: repeat;
+	background-size: cover;
+}
+
+/* #######                  ######                */
+	/* #     ####  #####     #     #   ##   #####   */
+	/* #    #    # #    #    #     #  #  #  #    #  */
+	/* #    #    # #    #    ######  #    # #    #  */
+	/* #    #    # #####     #     # ###### #####   */
+	/* #    #    # #         #     # #    # #   #   */
+	/* #     ####  #         ######  #    # #    #  */
+
+.to-do-list-burger-menu-blocker-dummy-container {
+	height: 5.5rem;
+	width: 102%;
+	display: flex;
+	padding: 0;
+	justify-content: center;
+	align-items: flex-end;
+	background-color: var(--background-color-darker);
+	background-image: url('../images/oak-12894-in-architextures(1).jpg');
+	background-repeat: repeat;
+	background-size: 50rem;
+	background-position: center;
+	z-index: 4;
+}
+.to-do-list-top-bar-container {
+	height: 70px;
+	width: 100%;
+	padding: 0.5rem;
+	margin: 0.25rem auto 0 auto;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border: var(--border);
+	border-radius: var(--border-radius);
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+	box-sizing: var(--box-sizing);
+	box-shadow: 0 0.9rem 0.25rem -0.3rem #363636, 0 -0.1rem 0.2rem 0.15rem #232323;
+	z-index: 2;
+	background-color: white;
+	background-image: url('../images/leather-1969-in-architextures.jpg');
+	background-position: center;
+	background-repeat: repeat;
+	background-size: auto;
+}
+.to-do-list-back-button-container {
+	height: 2.6rem;
+	aspect-ratio: 1/1;
+	display: flex;
+	flex-shrink: 0;
+	flex-grow: 0;
+	flex-basis: 50px;
+	justify-content: center;
+	align-items: center;
+	border: var(--border-none);
+	border-radius: 0.5rem;
+	position: absolute;
+	left: 0.8rem;
+}
+.to-do-list-back-button {
+	height: 100%;
+	width: 100%;
+	padding: 0.5rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 2px solid #bebebe;
+	border-radius: var(--border-radius);
+	box-sizing: var(--box-sizing);
+	background-color: #bebebe59;
+	box-shadow: var(--box-shadow-small);
+	transition: transform 250ms, border-color 500ms, background-color 500ms;
+}
+.to-do-list-back-button:hover {
+	border-color: rgba(25, 126, 250, 0.5);
+	transition: background-color 100ms;
+}
+.to-do-list-back-button:focus {
+	border-color: rgba(25, 126, 250, 0.5);
+	background-color: rgba(25, 126, 250, 0.5);
+}
+.to-do-list-back-button-icon {
+	height: 85%;
+	margin: auto;
+}
+.to-do-list-back-button-symbol {
+	font-size: 1.75rem;
+	letter-spacing: var(--input-field-letter-spacing);
+}
+.to-do-list-back-button-text {
+	font-size: 1.75rem;
+	font-family: var(--font-main);
+	letter-spacing: var(--input-field-letter-spacing);
+}
+.to-do-list-name-container {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	display: flex;
+	flex-shrink: 0;
+	flex-grow: 1;
+	justify-content: center;
+	align-items: center;
+	border-radius: var(--border-radius);
+	box-sizing: var(--box-sizing);
+}
+.to-do-list-name-inline-edit-form {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.to-do-list-name-inline-edit-form-input {
+	font-family: var(--font-main);
+	font-size: 1.75rem;
+	height: 92%;
+	width: 100%;
+	padding: 0 4rem;
+	line-height: 2.5rem;
+	text-align: center;
+	border: 0.1875rem solid #bebebe;
+	border-radius: var(--border-radius);
+	box-shadow: var(--box-shadow-small);
+	color: #bebebe;
+	background-color: transparent;
+	transition: border-color 500ms, background-color 500ms;
+}
+.to-do-list-name-inline-edit-form-input:hover {
+	border-color: rgba(25, 126, 250, 0.5);
+}
+.to-do-list-name-inline-edit-form-input:focus {
+	border-color: rgba(25, 126, 250, 0.5);
+}
+
+ /* #                                 #####                                                    */
+ /* #       #  ####  #####  ####     #     #  ####  #    # #####   ##   # #    # ###### #####  */
+ /* #       # #        #   #         #       #    # ##   #   #    #  #  # ##   # #      #    # */
+ /* #       #  ####    #    ####     #       #    # # #  #   #   #    # # # #  # #####  #    # */
+ /* #       #      #   #        #    #       #    # #  # #   #   ###### # #  # # #      #####  */
+ /* #       # #    #   #   #    #    #     # #    # #   ##   #   #    # # #   ## #      #   #  */
+ /* ####### #  ####    #    ####      #####   ####  #    #   #   #    # # #    # ###### #    # */
+
+.to-do-list-items-container {
+	height: 75%;
+	min-height: 125px;
+	width: 100%;
+	padding: 0 0.5rem 0.5rem 0.5rem;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	justify-content: flex-start;
+	align-items: center;
+	border: var(--border);
+	border-radius: var(--border-radius);
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+	box-sizing: var(--box-sizing);
+	box-shadow: 0 0 0.1rem 0.05rem #585858;
+	overflow-x: hidden;
+	overflow-y: auto;
+	scrollbar-width: auto;
+	scrollbar-color: transparent transparent;
+	background-color: white;
+}
+.to-do-list-items-container::-webkit-scrollbar{
+	width: 0.5rem;
+}
+.to-do-list-items-container::-webkit-scrollbar-thumb{
+	background: transparent;
+	border-radius: 2rem;
+}
+.to-do-list-items-container::-webkit-scrollbar-track{
+	background: transparent;
+}
+.to-do-list-item-container {
+	height: 35px;
+	width: 100%;
+	padding: 0.25rem;
+	margin: 0;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	flex-shrink: 0;
+	border: none;
+	border-radius: var(--border-radius);
+	box-shadow: var(--box-shadow-small);
+	box-sizing: var(--box-sizing);
+	position: relative;
+	bottom: -4.8rem;
+	z-index: 1;
+}
+.to-do-list-vertical-hr-spacer {
+	width: 6rem;
+	display: none;
+}
+.to-do-list-vertical-hr {
+	width: 0px;
+	height: 1000%;
+	margin: 0 0.5rem 0 0;
+	color: #5162F9;
+	background-color: #5162F9;
+	border-color: #5162F9;
+	position: relative;
+	bottom: 0rem;
+}
+.to-do-list-vertical-hr:last-of-type {
+	height: 500%;
+}
+.to-do-list-item-completed-form-and-item-text-container {
+	height: 100%;
+	width: 60%;
+	margin: 0 0.5rem;
+	display: flex;
+	flex-shrink: 1;
+	flex-grow: 1;
+	justify-content: center;
+	align-items: center;
+}
+.to-do-list-item-completed-form {
+	height: 100%;
+	width: 1rem;
+	padding: 0 1rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	flex-shrink: 0;
+	flex-grow: 0;
+}
+.to-do-list-item-completed-inline-edit-form-input {
+	width: 1.5rem;
+	height: 1.5rem;
+	flex-shrink: 0;
+	flex-grow: 0;
+	position: relative;
+	bottom: 0.1rem;
+}
+.to-do-list-item-text-inline-edit-form {
+	display: flex;
+	flex-shrink: 1;
+	flex-grow: 1;
+	justify-content: flex-start;
+	align-items: center;
+}
+.to-do-list-item-text-inline-edit-form-input {
+	font-family: 'The Penchill';
+	font-size: 1.25rem;
+	width: 100%;
+	padding: 0.25% 1.5%;
+	overflow: hidden;
+	text-overflow: ellipsis ellipsis;
+	border: 2px solid transparent;
+	border-bottom: none;
+	border-radius: 1rem;
+	background-color: var(--background-color-lighter);
+}
+.to-do-list-item-text-inline-edit-form-input:hover {
+	border: 2px solid rgb(25,126,250);
+	border-bottom: none;
+}
+.to-do-list-item-text-inline-edit-form-input:focus {
+	border: 2px solid rgb(25,126,250);
+	border-bottom: none;
+}
+.to-do-list-item-text-inline-edit-form-input:focus-visible {
+	border: 2px solid rgb(25,126,250);
+	border-bottom: none;
+	outline: none;
+}
+.to-do-list-item-text-inline-edit-form-input-completed {
+	text-decoration-line: line-through;
+	color: #cdcdcd;
+}
+.to-do-list-details-container {
+	height: 100%;
+	width: min-content;
+	display: flex;
+	flex-direction: row;
+	flex-shrink: 0;
+	flex-grow: 0;
+	justify-content: space-between;
+	align-items: center;
+}
+.to-do-list-item-due-date-inline-edit-form {
+	height: 100%;
+	width: min-content;
+	margin: 0 0.125rem;
+	display: flex;
+	flex-shrink: 1;
+	flex-grow: 0;
+	justify-content: center;
+	align-items: center;
+}
+.to-do-list-item-due-date-inline-edit-form-input {
+	width: 0rem;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	font-family: 'The Penchill';
+	font-size: 0.95rem;
+	text-align: center;
+	letter-spacing: var(--input-field-letter-spacing);
+	color: var(--text-color);
+	white-space: nowrap;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	border: var(--button-border);
+	border-radius: 1rem;
+	box-sizing: var(--box-sizing);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	background-color: var(--background-color-lighter);
+	appearance: none;
+	visibility: collapse;
+	cursor: default;
+}
+.to-do-list-item-due-date-inline-edit-form-input-picker-show-button {
+	width: min-content;
+	height: 100%;
+	margin: 0 0.25rem;
+	display: flex;
+	flex-grow: 0;
+	flex-shrink: 0;
+	flex-basis: 80px;
+	justify-content: space-evenly;
+	align-items: baseline;
+	border: var(--button-border);
+	border-radius: 1rem;
+	box-sizing: var(--box-sizing);
+	background-color: var(--background-color-lighter);
+	visibility: visible;
+	transition: visibility 250ms, transform 250ms;
+}
+.to-do-list-item-due-date-inline-edit-form-input-picker-show-button:hover>div {
+	transform: scale(1.05);
+}
+.to-do-list-item-due-date-inline-edit-form-input-picker-show-button:focus>div {
+	transform: scale(1.05);
+}
+.to-do-list-item-due-date-inline-edit-form-input-picker-show-button-show {
+	visibility: collapse;
+}
+.to-do-list-item-due-date-inline-edit-form-input-picker-show-button-month-day-display-container {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	transition: transform 250ms;
+}
+.to-do-list-item-due-date-inline-edit-form-input-picker-show-button-month-container {
+	margin: 0 0.25rem;
+}
+.to-do-list-item-due-date-inline-edit-form-input-picker-show-button-month {
+	font-family: 'The Penchill';
+	font-size: 1.25rem;
+}
+.to-do-list-item-due-date-inline-edit-form-input-picker-show-button-day-container {
+	margin: 0 0.25rem;
+}
+.to-do-list-item-due-date-inline-edit-form-input-picker-show-button-day {
+	font-family: 'The Penchill';
+	font-size: 1.25rem;
+}
+.to-do-list-item-priority-inline-edit-form {
+	height: 100%;
+	width: 40px;
+	margin: 0 0.125rem;
+	display: flex;
+	flex-shrink: 0;
+	flex-grow: 0;
+	justify-content: center;
+	align-items: center;
+	transition: width 250ms;
+}
+.to-do-list-item-priority-inline-edit-form-show {
+	width: 128px;
+}
+.to-do-list-item-priority-inline-edit-container {
+	height: 100%;
+	width: 0%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-shrink: 0;
+	flex-grow: 0;
+	border: var(--button-border);
+	border-radius: 1rem;
+	box-sizing: var(--box-sizing);
+	direction: rtl;
+	background-color: var(--background-color-lighter);
+	visibility: collapse;
+	overflow: hidden;
+	transition: width 250ms;
+}
+.to-do-list-item-priority-inline-edit-container-show {
+	visibility: visible;
+	width: 100%;
+}
+.to-do-list-item-priority-inline-edit-container:focus {
+	outline: 2px solid rgb(25,126,250);
+	outline-offset: -2.5px;
+}
+.to-do-list-item-priority-inline-edit-container:focus-within {
+	outline: 2px solid rgb(25,126,250);
+	outline-offset: -2.5px;
+}
+.to-do-list-item-priority-inline-edit-label {
+	display: inline;
+	padding: 0;
+	margin: 0;
+	position: relative;
+	width: 0.01rem;
+	font-size: 1.75rem;
+	line-height: 0rem;
+	color: #000;
+	position: relative;
+	left: 20%;
+}
+.to-do-list-item-priority-inline-edit-input {
+	opacity: 0;
+}
+.to-do-list-item-priority-inline-edit-label:hover:before,
+.to-do-list-item-priority-inline-edit-label:hover ~ label:before,
+.to-do-list-item-priority-inline-edit-input:checked ~ label:before,
+.to-do-list-item-priority-inline-edit-input:checked ~ label:before {
+	display: flex;
+	justify-content: center;
+	padding: 0;
+	margin: 0;
+	position: relative;
+	right: 0.65rem;
+	width: 0.2rem;
+	font-size: 0.75rem;
+	content: "\2605";
+	color: #FFD700;
+}
+
+.to-do-list-item-priority-inline-edit-show-button {
+	height: 100%;
+	width: 100%;
+	margin: 0 0.125rem;
+	display: flex;
+	flex-grow: 0;
+	flex-shrink: 0;
+	justify-content: space-evenly;
+	align-items: baseline;
+	border: var(--button-border);
+	border-radius: 1rem;
+	box-sizing: var(--box-sizing);
+	background-color: var(--background-color-lighter);
+	transition: transform 250ms;
+}
+.to-do-list-item-priority-inline-edit-show-button:hover>div {
+	transform: scale(1.1);
+}
+.to-do-list-item-priority-inline-edit-show-button:focus>div {
+	transform: scale(1.1);
+}
+.to-do-list-item-priority-inline-edit-show-button-show {
+	width: 0rem;
+	margin: 0;
+	display: none;
+	visibility: collapse;
+}
+.to-do-list-item-priority-inline-edit-show-button-priority-display-container {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	transition: transform 250ms;
+}
+.to-do-list-item-priority-inline-edit-show-button-number {
+	font-family: 'The Penchill';
+	font-size: 1.25rem;
+}
+.to-do-list-item-edit-button-container {
+	height: 100%;
+	width: 57px;
+	margin: 0 0.125rem;
+	display: flex;
+	flex-direction: row;
+	flex-shrink: 0;
+	flex-grow: 0;
+	justify-content: center;
+	align-items: center;
+	box-sizing: var(--box-sizing);
+}
+.to-do-list-item-edit-button {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	letter-spacing: var(--input-field-letter-spacing);
+	font-family: 'The Penchill';
+	color: var(--text-color);
+	background-color: var(--button-background-color);
+	border: var(--button-border);
+	border-radius: 1rem;
+	transition: transform 250ms;
+}
+.to-do-list-item-edit-button:hover>img {
+	height: 1.125rem;
+}
+.to-do-list-item-edit-button:focus>img {
+	height: 1.125rem;
+}
+.to-do-list-item-edit-button-icon {
+	height: 1.0625rem;
+	transition: height 250ms, transform 250ms;
+}
+.to-do-list-item-delete-button-container {
+	height: 100%;
+	width: 50px;
+	margin: 0 0.125rem;
+	display: flex;
+	flex-direction: row;
+	flex-shrink: 0;
+	flex-grow: 0;
+	justify-content: center;
+	align-items: center;
+	box-sizing: border-box;
+}
+.to-do-list-item-delete-button {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: var(--text-color);
+	background-color: var(--button-background-color);
+	border: var(--button-border);
+	border-radius: 1rem;
+	transition: transform 250ms;
+}
+.to-do-list-item-delete-button:hover>img {
+	height: 0.9375rem;
+}
+.to-do-list-item-delete-button:focus>img {
+	height: 0.9375rem;
+}
+.to-do-list-item-delete-button-icon {
+	height: 0.8125rem;
+	transition: height 250ms, transform 1250ms;
+}
+.to-do-list-list-separator{
+	width: 100%;
+	height: 0rem;
+	color: #FF9191;
+	background-color: #FF9191;
+	border-color: #FF9191;
+	z-index: 2;
+	position: relative;
+	bottom: -4rem;
+}
+.to-do-list-list-separator-lifted{
+	width: 100%;
+	height: 0rem;
+	color: #FF9191;
+	background-color: #FF9191;
+	border-color: #FF9191;
+	z-index: 2;
+	position: relative;
+	bottom: -0.6rem;
+	display: none;
+}
+.to-do-list-item-delete-confirmation-container-backdrop-hr {
+	width: 100%;
+	height: 0px;
+	margin: 1rem auto;
+	color: #FF9191;
+	background-color: #FF9191;
+	border-color: #FF9191;
+	position: relative;
+	top: 1.3rem;
+}
+.to-do-list-item-delete-confirmation-container-backdrop-hr:first-of-type {
+	margin-top: 1rem;
+}
+.to-do-list-item-delete-confirmation-container-backdrop {
+	display: none;
+	height: 100vh;
+	width: 100vw;
+	position: fixed;
+	top: 0%;
+	right: 0%;
+	bottom: 0%;
+	left: 0%;
+	backdrop-filter: blur(0px);
+	background-color: transparent;
+	z-index: 4;
+	transition: background-color 0.3s linear, backdrop-filter 0.3s linear, -webkit-backdrop-filter 0.3s linear;
+}
+.to-do-list-item-delete-confirmation-container-backdrop-in-use{
+	backdrop-filter: blur(2px);
+	background-color: #00000080;
+}
+.to-do-list-item-delete-button-confirmation-form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+.to-do-list-item-delete-confirmation-form-header {
+	width: 101%;
+	height: 3rem;
+	padding: 0.5rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	font-family: 'Courier New', monospace;
+	font-size: 1.25rem;
+	color: white;
+	background-image: url('../images/leather-1969-in-architextures.jpg');
+	background-size: 30rem;
+	border-top-left-radius: var(--border-radius);
+	border-top-right-radius: var(--border-radius);
+	border: var(--border);
+	box-shadow: 0 0.5rem 0.25rem -0.2rem #363636, 0 -0.1rem 0.7rem 0.05rem #232323;
+	z-index: 2;
+	background-image: url('../images/leather-1969-in-architextures.jpg');
+}
+.to-do-list-item-delete-confirmation-container-backdrop-under-400-px-width {
+	display: none;
+	height: 100vh;
+	width: 100vw;
+	position: fixed;
+	top: 0%;
+	right: 0%;
+	bottom: 0%;
+	left: 0%;
+	backdrop-filter: blur(0px);
+	background-color: transparent;
+	z-index: 4;
+	transition: background-color 0.3s linear, backdrop-filter 0.3s linear, -webkit-backdrop-filter 0.3s linear;
+}
+.to-do-list-item-delete-confirmation-container-backdrop-under-400-px-width-in-use{
+	backdrop-filter: blur(2px);
+	background-color: #00000080;
+}
+.to-do-list-item-delete-confirmation-container {
+	width: 14rem;
+	height: 18.5rem;
+	padding: 0 0.5rem 0.5rem 0.5rem;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: #ffffca;
+	border: var(--border);
+	border-radius: var(--border-radius);
+	box-shadow: 0 -0.1rem 0.7rem 0.05rem #232323;
+	z-index: 5;
+	visibility: collapse;
+	opacity: 0;
+	overflow: hidden;
+	transition: opacity 500ms, visibility 500ms;
+}
+.to-do-list-item-delete-confirmation-container-under-400-px-width {
+	height: min-content;
+	width: 80%;
+	padding: 0.5rem;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: var(--background-color-darker-2);
+	border: var(--border);
+	border-radius: var(--border-radius);
+	z-index: 4;
+	visibility: collapse;
+	opacity: 0;
+	transition: opacity 500ms, visibility 500ms;
+}
+.to-do-list-item-delete-confirmation-container-show {
+	visibility: visible;
+	opacity: 1;
+}
+@keyframes fadeInFromNone {
+		0% {
+				display: none;
+				opacity: 0;
+		}
+		1% {
+				display: flex;
+				opacity: 0;
+		}
+		100% {
+				display: flex;
+				opacity: 1;
+		}
+}
+@keyframes fadeOutFromFlex {
+		0% {
+				display: flex;
+				opacity: 1;
+		}
+		99% {
+				display: flex;
+				opacity: 0;
+		}
+		100% {
+				display: none;
+				opacity: 0;
+		}
+}
+.to-do-list-item-delete-confirmation-text {
+	width: 80%;
+	margin: 2.6rem 0.5rem 0.5rem 0.5rem;
+	text-align: center;
+	color: black;
+	font-family: 'The Penchill';
+	font-size: 1.25rem;
+	position: absolute;
+	top: 0.8rem;
+	line-height: 1.7;
+}
+.to-do-list-item-delete-confirmation-button-container {
+	height: 1.7rem;
+	width: 80%;
+	margin: 0.5rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	position: absolute;
+	top: 15.4rem;
+}
+.to-do-list-item-delete-confirmation-button {
+	height: 100%;
+	width: 45%;
+	border: var(--border);
+	border-radius: var(--border-radius);
+	background-color: var(--background-color-lighter);
+	font-size: 1.25rem;
+	font-family: var(--font-main);
+}
+.to-do-list-item-delete-confirmation-cancel-button {
+	height: 100%;
+	width: 45%;
+	border: var(--border);
+	border-radius: var(--border-radius);
+	background-color: var(--background-color-lighter);
+	font-size: 1.25rem;
+	font-family: var(--font-main);
+}
+
+ /* #                                                                                         */
+ /* #       #  ####  #####    ###### #    # ##### #####  #   #    ######  ####  #####  #    # */
+ /* #       # #        #      #      ##   #   #   #    #  # #     #      #    # #    # ##  ## */
+ /* #       #  ####    #      #####  # #  #   #   #    #   #      #####  #    # #    # # ## # */
+ /* #       #      #   #      #      #  # #   #   #####    #      #      #    # #####  #    # */
+ /* #       # #    #   #      #      #   ##   #   #   #    #      #      #    # #   #  #    # */
+ /* ####### #  ####    #      ###### #    #   #   #    #   #      #       ####  #    # #    # */
+
+/* List item entry form // ---------------------------------------------------------------- */
+.entry-form-show-button-container {
+	display: none;
+	height: 4rem;
+	width: 4rem;
+	z-index: 3;
+	position: absolute;
+	bottom: -0.75rem;
+	right: -0.75rem;
+	transition: right 500ms;
+}
+.entry-form-show-button-container-after-clicked {
+	right: -110%;
+	transition: right 500ms;
+}
+.entry-form-show-button {
+	height: 100%;
+	width: 100%;
+	border: 1.5px solid black;
+	border-radius: 50%;
+	background-color: white;
+	background-image: url('../images/leather-1969-in-architextures.jpg');
+	outline: 2px dashed silver;
+	outline-offset: -0.4rem;
+	transition: transform 250ms;
+}
+.entry-form-show-button:hover {
+	transform: scale(1.1);
+}
+.entry-form-show-button:focus {
+	transform: scale(1.1);
+}
+.entry-form-show-button-icon {
+	height: 55%;
+	width: auto;
+	position: relative;
+	left: 0.25rem;
+}
+.to-do-list-entry-form-container {
+	height: 70px;
+	width: 101%;
+	margin: 0.25rem 0;
+	padding: 0.5rem 0.5rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	border: var(--border);
+	border-radius: var(--border-radius);
+	box-sizing: var(--box-sizing);
+	box-shadow: 0 0.6rem 0.25rem -0.3rem #363636, 0 -0.1rem 0.2rem 0.15rem #232323;
+	background-color: var(--background-color-darker-1);
+	background-image: url('../images/leather-1969-in-architextures.jpg');
+	outline: 2px dashed silver;
+	outline-offset: -0.5rem;
+}
+.to-do-list-entry-form {
+	height: 90%;
+	width: 99%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	box-sizing: var(--box-sizing);
+}
+.to-do-list-entry-form-under-700-px-width {
+	display: none;
+}
+.to-do-list-entry-form-item-text-container {
+	height: 90%;
+	margin-right: 0.5rem;
+	display: flex;
+	flex-shrink: 1;
+	flex-grow: 1;
+	flex-basis: 55%;
+	justify-content: center;
+	align-items: center;
+	box-sizing: var(--box-sizing);
+}
+.to-do-list-entry-form-item-text-input {
+	height: 100%;
+	width: 100%;
+	font-size: 1.75rem;
+	font-family: 'The Penchill';
+	color: var(--text-color);
+	text-align: center;
+	background-color: #ffffff9e;
+	border: var(--border);
+	border-radius: var(--border-radius);
+	box-shadow: var(--box-shadow-small);
+}
+.to-do-list-entry-form-item-text-input-under-700-px-width {
+	height: 95%;
+	width: 100%;
+	font-size: 1.75rem;
+	font-family: 'The Penchill';
+	color: var(--text-color);
+	text-align: center;
+	background-color: var(--background-color-lighter);
+	border: var(--border);
+	border-radius: var(--border-radius);
+	box-shadow: var(--box-shadow-small);
+}
+.to-do-list-entry-form-item-due-date-container {
+	height: 100%;
+	margin: 0;
+	flex-shrink: 1;
+	flex-grow: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: var(--border);
+	border-radius: var(--border-radius);
+	box-sizing: var(--box-sizing);
+	visibility: collapse;
+}
+.to-do-list-entry-form-item-due-date-input {
+	height: 100%;
+	width: 0rem;
+	font-size: 1.5rem;
+	letter-spacing: var(--input-field-letter-spacing);
+	font-family: var(--font-main);
+	color: var(--text-color);
+	text-align: center;
+	background-color: var(--background-color-lighter);
+	border: none;
+	border-radius: 1rem;
+	box-shadow: var(--box-shadow-small);
+	letter-spacing: -3px;
+	visibility: collapse;
+}
+.to-do-list-entry-form-item-due-date-picker-show-button-container {
+	height: 100%;
+	margin-right: 0.5rem;
+	width: min-content;
+	display: flex;
+	flex-grow: 0;
+	flex-shrink: 0;
+	flex-basis: 55px;
+	justify-content: center;
+	align-items: center;
+	box-sizing: var(--box-sizing);
+}
+.to-do-list-entry-form-item-due-date-picker-show-button {
+	height: 100%;
+	width: 100%;
+	color: var(--text-color);
+	background-color: #ffffff9e;
+	border: var(--border);
+	border-radius: var(--border-radius);
+	box-shadow: var(--box-shadow-small);
+	transition: transform 250ms;
+}
+.to-do-list-entry-form-item-due-date-picker-show-button:hover {
+	transform: scale(1.1);
+}
+.to-do-list-entry-form-item-due-date-picker-show-button:focus {
+	transform: scale(1.1);
+}
+.to-do-list-entry-form-item-due-date-picker-show-button-icon {
+	height: 100%;
+	padding: 0;
+	text-align: center;
+	vertical-align: middle;
+}
+.to-do-list-entry-form-item-due-date-picker-show-button-month-day-display-container {
+	height: 100%;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	position: relative;
+	top: -2.65rem;
+	margin: 0 auto;
+	left: 0;
+	right: 0;
+	opacity: 0;
+	transition: opacity 250ms;
+}
+.to-do-list-entry-form-item-due-date-picker-show-button-month-day-display-container-show {
+
+}
+.to-do-list-entry-form-item-due-date-picker-show-button-month-container {
+	height: 40%;
+}
+.to-do-list-entry-form-item-due-date-picker-show-button-month {
+	font-family: 'Courier New';
+	font-weight: bold;
+	font-size: 0.75rem;
+	color: white;
+}
+.to-do-list-entry-form-item-due-date-picker-show-button-day-container {
+	height: 60%;
+}
+.to-do-list-entry-form-item-due-date-picker-show-button-day {
+	font-family: 'Courier New';
+	font-weight: bold;
+	font-size: 1rem;
+	color: #B52B14;
+}
+.to-do-list-entry-form-item-priority-container {
+	height: 100%;
+	margin-right: 0.5rem;
+	padding: 0 0.35rem 0 0;
+	display: flex;
+	flex-shrink: 0;
+	flex-grow: 0;
+	flex-basis: 120px;
+	justify-content: center;
+	align-items: center;
+	border: var(--border);
+	border-radius: var(--border-radius);
+	box-sizing: var(--box-sizing);
+	background-color: #ffffff9e;
+	box-shadow: var(--box-shadow-small);
+	direction: rtl;
+	transition: transform 250ms;
+}
+.to-do-list-entry-form-item-priority-container:hover {
+	transform: scale(1.1);
+}
+.to-do-list-entry-form-item-priority-container:focus-within {
+	outline: 2px solid rgb(25,126,250);
+	outline-offset: -2.5px;
+	transform: scale(1.1);
+}
+.to-do-list-entry-form-item-priority-label {
+	float: right;
+	display: inline;
+	padding: 0;
+	margin: 0 -1.75rem 0 0;
+	position: relative;
+	font-size: 2rem;
+	line-height: 0rem;
+	color: #000;
+}
+.to-do-list-entry-form-item-priority-label:hover {
+
+}
+.to-do-list-entry-form-item-priority-label:checked {
+
+}
+.to-do-list-entry-form-item-priority-input {
+	opacity: 0;
+}
+.to-do-list-entry-form-item-priority-input:focus {
+
+}
+.to-do-list-entry-form-item-priority-label:hover,
+.to-do-list-entry-form-item-priority-label:hover ~ label,
+.to-do-list-entry-form-item-priority-input:checked ~ label {
+
+}
+.to-do-list-entry-form-item-priority-label:hover:before,
+.to-do-list-entry-form-item-priority-label:hover ~ label:before,
+.to-do-list-entry-form-item-priority-input:checked ~ label:before,
+.to-do-list-entry-form-item-priority-input:checked ~ label:before {
+	display: flex;
+	justify-content: center;
+	padding: 0;
+	margin: 0;
+	position: relative;
+	font-size: 1rem;
+	content: "\2605";
+	color: #FFD700;
+}
+.to-do-lists-list-entry-form-item-owner-container {
+	display: none;
+}
+.to-do-list-entry-form-item-submit-button-container {
+	height: 100%;
+	display: flex;
+	flex-grow: 0;
+	flex-shrink: 0;
+	flex-basis: 50px;
+	justify-content: center;
+	align-items: center;
+	box-sizing: var(--box-sizing);
+	box-shadow: var(--box-shadow-small);
+}
+.to-do-list-entry-form-item-submit-button-input {
+	height: 100%;
+	width: 100%;
+	color: var(--text-color);
+	background-color: #ffffff9e;
+	border: var(--border);
+	border-radius: var(--border-radius);
+	box-shadow: var(--box-shadow-small);
+	transition: transform 250ms;
+}
+.to-do-list-entry-form-item-submit-button-input:hover {
+	transform: scale(1.1);
+}
+.to-do-list-entry-form-item-submit-button-input:focus {
+	transform: scale(1.1);
+}
+.to-do-list-item-submit-button-icon {
+	height: 80%;
+	padding: 0.25rem 0;
+	text-align: center;
+	vertical-align: middle;
+}
+
+ /* #     #                                #                         #######                */
+ /* ##   ##  ####  #####    ##   #         #       #  ####  #####    #       #####  # ##### */
+ /* # # # # #    # #    #  #  #  #         #       # #        #      #       #    # #   #   */
+ /* #  #  # #    # #    # #    # #         #       #  ####    #      #####   #    # #   #   */
+ /* #     # #    # #    # ###### #         #       #      #   #      #       #    # #   #   */
+ /* #     # #    # #    # #    # #         #       # #    #   #      #       #    # #   #   */
+ /* #     #  ####  #####  #    # ######    ####### #  ####    #      ####### #####  #   #   */
+
+/* Modal list item edit window // ---------------------------------------------------------------- */
+.popup-backdrop {
+	display: none;
+	height: 100vh;
+	width: 100vw;
+	position: absolute;
+	top: 0%;
+	right: 0%;
+	bottom: 0%;
+	left: 0%;
+	backdrop-filter: blur(0px);
+	-webkit-backdrop-filter: blur(0px);
+	background-color: transparent;
+	z-index: 4;
+	transition: background-color 0.3s linear, backdrop-filter 0.3s linear, -webkit-backdrop-filter 0.3s linear;
+}
+.popup-backdrop-in-use{
+	backdrop-filter: blur(2px);
+	-webkit-backdrop-filter: blur(2px);
+	background-color: #00000080;
+}
+.popup-wrapper {
+	border: var(--border);
+	border-radius: var(--border-radius);
+	background-color: var(--background-color-lighter);
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	box-shadow: var(--box-shadow-large);
+	visibility: hidden;
+}
+.popup-container {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	visibility: hidden;
+}
+.list-item-edit-modal-header-and-form-container {
+	width: 16rem;
+	aspect-ratio: 3/4;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	opacity: 0;
+	visibility: collapse;
+}
+.list-item-edit-modal-header-and-form-container-show {
+	opacity: 1;
+	visibility: visible;
+	transition: visibility 500ms;
+}
+.list-item-edit-modal-form-header {
+	width: 101%;
+	height: 2.5rem;
+	padding: 0.5rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	background-image: url('../images/leather-1969-in-architextures.jpg');
+	background-size: 30rem;
+	border-top-left-radius: var(--border-radius);
+	border-top-right-radius: var(--border-radius);
+	border: var(--border);
+	box-shadow: 0 0.5rem 0.25rem -0.2rem #363636, 0 -0.1rem 0.7rem 0.05rem #232323;
+	z-index: 2;
+	background-image: url('../images/leather-1969-in-architextures.jpg');
+}
+.list-item-edit-modal-instructions-text {
+	margin: auto;
+	font-size: 1.25rem;
+	font-family: 'Courier New', monospace;
+	color: white;
+	text-align: center;
+}
+.to-do-list-edit-form {
+	height: min-content;
+	width: 99%;
+	padding: 1.5rem 0.5rem 1rem 0.5rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: center;
+	flex-grow: 1;
+	flex-shrink: 1;
+	border: var(--border);
+	border-radius: var(--border-radius);
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+	background-color: #ffffca;
+	box-shadow: 0 -0.1rem 0.7rem 0.05rem #232323;
+}
+.to-do-list-edit-modal-title {
+	text-align: center;
+	font-size: 1.5rem;
+	letter-spacing: var(--input-field-letter-spacing);
+	font-family: var(--font-main);
+	margin: 0;
+	padding: 0.5rem;
+}
+.to-do-list-edit-form-item-text-container {
+	height: min-content;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-sizing: var(--box-sizing);
+}
+.to-do-list-edit-form-item-text-input {
+	height: 100%;
+	width: 100%;
+	font-size: 1.5rem;
+	font-family: 'The Penchill';
+	text-align: center;
+	background-color: transparent;
+	border: 1px solid transparent;
+	border-radius: var(--border-radius);
+	box-shadow: var(--box-shadow-small);
+	position: relative;
+	bottom: -0.2rem;
+}
+.to-do-list-edit-form-item-text-input:hover {
+	border: 1px solid rgb(25,126,250);
+}
+.to-do-list-edit-form-item-text-input:focus {
+	border: 1px solid rgb(25,126,250);
+}
+.to-do-list-edit-form-item-text-input:focus-visible {
+	border: 1px solid rgb(25,126,250);
+	outline: none;
+}
+.list-item-edit-modal-hr {
+	width: 100%;
+	color: #FF9191;
+	background-color: #FF9191;
+	border-color: #FF9191;
+	height: 0px;
+	position: relative;
+	bottom: 0.3rem;
+}
+.to-do-list-edit-form-item-due-date-container {
+	height: min-content;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-sizing: var(--box-sizing);
+}
+.to-do-list-edit-form-item-due-date-input {
+	height: 100%;
+	width: 100%;
+	font-size: 1.5rem;
+	font-family: 'The Penchill';
+	text-align: center;
+	background-color: transparent;
+	border: 1px solid transparent;
+	border-radius: var(--border-radius);
+	box-shadow: var(--box-shadow-small);
+	position: relative;
+	bottom: -0.2rem;
+}
+.to-do-list-edit-form-item-due-date-input:hover {
+	border: 1px solid rgb(25,126,250);
+}
+.to-do-list-edit-form-item-due-date-input:focus {
+	border: 1px solid rgb(25,126,250);
+}
+.to-do-list-edit-form-item-due-date-input:focus-visible {
+	border: 1px solid rgb(25,126,250);
+	outline: none;
+}
+.to-do-list-edit-form-item-priority-container {
+	height: min-content;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid transparent;
+	border-radius: var(--border-radius);
+	box-sizing: var(--box-sizing);
+	direction: rtl;
+	background-color: transparent;
+	box-shadow: var(--box-shadow-small);
+	position: relative;
+	bottom: -0.3rem;
+}
+.to-do-list-edit-form-item-priority-container:hover {
+	border: 1px solid rgb(25,126,250);
+}
+.to-do-list-edit-form-item-priority-container:focus {
+	border: 1px solid rgb(25,126,250);
+}
+.to-do-list-edit-form-item-priority-container:focus-visible {
+	border: 1px solid rgb(25,126,250);
+	outline: none;
+}
+.to-do-list-edit-form-item-priority-container:focus-within {
+	border: 1px solid rgb(25,126,250);
+	outline: none;
+}
+.to-do-list-edit-form-item-priority-label {
+	display: inline;
+	padding: 0;
+	margin: 0 -1rem 0 0;
+	position: relative;
+	font-size: 2.25rem;
+	line-height: 1rem;
+	color: #000;
+}
+.to-do-list-edit-form-item-priority-label:hover {
+
+}
+.to-do-list-edit-form-item-priority-label:checked {
+
+}
+.to-do-list-edit-form-item-priority-input {
+	opacity: 0;
+}
+.to-do-list-edit-form-item-priority-label:hover,
+.to-do-list-edit-form-item-priority-label:hover ~ label,
+.to-do-list-edit-form-item-priority-input:checked ~ label {
+	display: inline;
+	padding: 0;
+	margin: 0 -1rem 0 0;
+	position: relative;
+	font-size: 2.25rem;
+	line-height: 1rem;
+	cursor: pointer;
+	color: #000;
+	bottom: 0.5rem;
+}
+.to-do-list-edit-form-item-priority-label:hover:before,
+.to-do-list-edit-form-item-priority-label:hover ~ label:before,
+.to-do-list-edit-form-item-priority-input:checked ~ label:before,
+.to-do-list-edit-form-item-priority-input:checked ~ label:before {
+	display: flex;
+	justify-content: center;
+	padding: 0;
+	margin: 0;
+	position: relative;
+	top: 1rem;
+	font-size: 1rem;
+	content: "\2605";
+	color: #FFD700;
+}
+.to-do-lists-list-edit-form-item-owner-container {
+	display: none;
+}
+.to-do-list-edit-form-item-submit-button-container {
+	height: min-content;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-sizing: var(--box-sizing);
+	transition: transform 250ms;
+}
+.to-do-list-edit-form-item-submit-button-container:hover {
+	transform: scale(1.05);
+}
+.to-do-list-edit-form-item-submit-button-container:active {
+	transform: scale(1.05);
+}
+.to-do-list-edit-form-item-submit-button-container:focus-visible {
+	outline: none;
+}
+.to-do-list-edit-form-item-submit-button-input {
+	height: 100%;
+	width: 100%;
+	font-size: 1.5rem;
+	font-family: var(--font-main);
+	text-align: center;
+	background-color: var(--background-color-lighter);
+	border: var(--border);
+	border-radius: var(--border-radius);
+	box-shadow: var(--box-shadow-small);
+	position: relative;
+	bottom: -0.3rem;
+}
+.to-do-list-edit-form-item-cancel-button-container {
+	height: min-content;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-sizing: var(--box-sizing);
+}
+.to-do-list-edit-form-item-cancel-button-container:hover {
+	transform: scale(1.05);
+}
+.to-do-list-edit-form-item-cancel-button-container:active {
+	transform: scale(1.05);
+}
+.to-do-list-edit-form-item-cancel-button-container:focus-visible {
+	outline: none;
+}
+.to-do-list-edit-form-item-cancel-button-input {
+	height: 100%;
+	width: 100%;
+	font-size: 1.5rem;
+	font-family: var(--font-main);
+	text-align: center;
+	background-color: var(--background-color-lighter);
+	border: var(--border);
+	border-radius: var(--border-radius);
+	box-shadow: var(--box-shadow-small);
+	position: relative;
+	bottom: -0.3rem;
+}
+
+/* Shake animation for modals */
+@keyframes shake {
+	0% { transform: translate(1px, 1px) rotate(0deg); }
+	10% { transform: translate(-1px, -2px) rotate(-1deg); }
+	20% { transform: translate(-3px, 0px) rotate(1deg); }
+	30% { transform: translate(3px, 2px) rotate(0deg); }
+	40% { transform: translate(1px, -1px) rotate(1deg); }
+	50% { transform: translate(-1px, 2px) rotate(-1deg); }
+	60% { transform: translate(-3px, 1px) rotate(0deg); }
+	70% { transform: translate(3px, 1px) rotate(-1deg); }
+	80% { transform: translate(-1px, -1px) rotate(1deg); }
+	90% { transform: translate(1px, 2px) rotate(0deg); }
+	100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+ /* #     #                            #####                                       */
+ /* ##   ## ###### #####  #   ##      #     # #    # ###### #####  # ######  ####  */
+ /* # # # # #      #    # #  #  #     #     # #    # #      #    # # #      #      */
+ /* #  #  # #####  #    # # #    #    #     # #    # #####  #    # # #####   ####  */
+ /* #     # #      #    # # ######    #   # # #    # #      #####  # #           # */
+ /* #     # #      #    # # #    #    #    #  #    # #      #   #  # #      #    # */
+ /* #     # ###### #####  # #    #     #### #  ####  ###### #    # # ######  ####  */
+
+/* Media queries */
+	/* Max width */
+@media (max-width: 700px) {
+	.to-do-list-name-inline-edit-form-input {
+		font-size: 1.5rem;
+	}
+	.to-do-list-items-container {
+		height: 90%;
+	}
+	.to-do-list-item-container {
+		height: 70px;
+		width: 100%;
+		padding: 0.5rem;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	.to-do-list-item-completed-form-and-item-text-container {
+		height: 45%;
+		width: 100%;
+		margin: 0 0 0.5rem 0;
+		position: relative;
+		bottom: 0.1rem;
+	}
+	.to-do-list-item-text-inline-edit-form {
+		height: 90%;
+		width: 100%;
+	}
+	.to-do-list-item-text-inline-edit-form-input {
+		width: 100%;
+	}
+	.to-do-list-details-container {
+		height: 45%;
+		width: 100%;
+		justify-content: flex-end;
+		position: relative;
+		bottom: -1.2rem;
+	}
+	.to-do-list-item-delete-button {
+		margin: 0 0 0 0.125rem;
+	}
+	.to-do-list-list-separator {
+		bottom: -5rem;
+	}
+	.to-do-list-list-separator-lifted{
+		display: block;
+	}
+	.entry-form-show-button-container {
+		display: block;
+	}
+	.to-do-list-entry-form-container {
+		width: 100%;
+		height: 100px;
+		justify-content: center;
+		align-items: center;
+		position: absolute;
+		bottom: -7rem;
+		visibility: collapse;
+		z-index: 2;
+		transition: bottom 500ms linear 100ms, visibility 500ms linear 100ms, width 500ms;
+	}
+	.entry-form-container-in-use {
+		width: 102%;
+		box-shadow: 0px -1px 5px black;
+		visibility: visible;
+		bottom: -0.3rem;
+		transition: bottom 500ms, visibility 500ms, width 500ms ease-out 250ms;
+	}
+	.to-do-list-entry-form {
+		display: none;
+	}
+	.to-do-list-entry-form-under-700-px-width {
+		height: 90%;
+		width: 99%;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
+	}
+	.to-do-list-entry-form-item-text-container {
+		height: min-content;
+		width: 100%;
+		margin: 0 0 0.3rem 0;
+		flex-grow: 0;
+	}
+	.to-do-list-entry-form-item-text-input {
+		height: 100%;
+	}
+	.to-do-list-entry-form-second-line-container-under-700-px-width {
+		height: 45%;
+		width: 100%;
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+	}
+	.to-do-list-entry-form-item-due-date-picker-show-button-month-day-display-container {
+		top: -2rem;
+	}
+	.to-do-list-item-delete-button-container {
+		margin: 0 0.125rem 0 0;
+	}
+	.to-do-list-vertical-hr:last-of-type {
+		height: 1000%;
+	}
+}
+
+/* 600px */
+@media (max-width: 600px) {
+	.to-do-list-name-inline-edit-form-input {
+		font-size: 1.25rem;
+	}
+	.to-do-list-entry-form-item-text-input {
+		font-size: 1.25rem;
+	}
+}
+
+/* 400px */
+@media (max-width: 400px) {
+	.navigation-small {
+		right: unset;
+		width: 88%;
+	}
+	.to-do-list-details-container {
+		width: 85%;
+		right: -2rem;
+	}
+	.to-do-list-item-due-date-inline-edit-form {
+		margin: 0;
+	}
+	.to-do-list-item-due-date-inline-edit-form-input-picker-show-button-month {
+		font-size: 0.85rem;
+	}
+	.to-do-list-item-due-date-inline-edit-form-input-picker-show-button-day {
+		font-size: 0.85rem;
+	}
+	.to-do-list-item-priority-inline-edit-form {
+		margin: 0;
+	}
+	.to-do-list-item-priority-inline-edit-show-button-number {
+		font-size: 0.85rem;
+	}
+	.to-do-list-item-edit-button-container {
+		width: 42px;
+		margin: 0;
+	}
+	.to-do-list-item-edit-button-icon {
+		height: 13px;
+	}
+	.to-do-list-item-due-date-inline-edit-form-input-picker-show-button {
+		width: 4rem;
+	}
+	.to-do-list-item-priority-inline-edit-show-button {
+		width: 65%;
+	}
+	.to-do-list-item-edit-button {
+		width: 65%;
+	}
+	.to-do-list-item-delete-button-container {
+		width: 42px;
+		margin: 0;
+	}
+	.to-do-list-item-delete-button-icon {
+		height: 9px;
+	}
+	.to-do-list-item-delete-button {
+		width: 65%;
+	}
+}
+
+	/* Max height and orientation: landscape */
+@media (orientation: landscape) and (max-height: 900px) {
+	.to-do-list-container {
+		height: calc(99vh - 0.75rem);
+	}
+	.to-do-list-name-inline-edit-form-input {
+		font-size: 1.5rem;
+	}
+	.to-do-list-items-container {
+		height: 90%;
+	}
+	.to-do-list-item-container {
+		height: 70px;
+		width: 100%;
+		padding: 0.5rem;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	.to-do-list-item-completed-form-and-item-text-container {
+		height: 45%;
+		width: 100%;
+		margin: 0 0 0.5rem 0;
+		position: relative;
+		bottom: 0.1rem;
+	}
+	.to-do-list-item-text-inline-edit-form {
+		height: 90%;
+		width: 100%;
+	}
+	.to-do-list-item-text-inline-edit-form-input {
+		width: 100%;
+		position: relative;
+		bottom: 0.1rem;
+	}
+	.to-do-list-details-container {
+		height: 45%;
+		width: 100%;
+		justify-content: flex-end;
+		position: relative;
+		bottom: -1.2rem;
+	}
+	.to-do-list-item-delete-button {
+		margin: 0 0 0 0.125rem;
+	}
+	.to-do-list-list-separator {
+		bottom: -5rem;
+	}
+	.to-do-list-list-separator-lifted{
+		display: block;
+	}
+	.entry-form-show-button-container {
+		display: block;
+	}
+	.to-do-list-entry-form-container {
+		width: 100%;
+		height: 120px;
+		justify-content: center;
+		align-items: center;
+		position: absolute;
+		bottom: -7rem;
+		visibility: collapse;
+		z-index: 2;
+		transition: bottom 500ms linear 100ms, visibility 500ms linear 100ms, width 500ms;
+	}
+	.entry-form-container-in-use {
+		width: 102%;
+		box-shadow: 0px -1px 5px black;
+		visibility: visible;
+		bottom: -0.3rem;
+		transition: bottom 500ms, visibility 500ms, width 500ms ease-out 250ms;
+	}
+	.to-do-list-entry-form {
+		display: none;
+	}
+	.to-do-list-entry-form-under-700-px-width {
+		height: 90%;
+		width: 99%;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
+	}
+	.to-do-list-entry-form-item-text-container {
+		height: min-content;
+		width: 100%;
+		margin: 0.125rem 0 0.5rem 0;
+		flex-grow: 0;
+	}
+	.to-do-list-entry-form-item-text-input {
+		height: 100%;
+	}
+	.to-do-list-entry-form-second-line-container-under-700-px-width {
+		height: 45%;
+		width: 100%;
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+	}
+	.to-do-list-entry-form-item-due-date-picker-show-button-month-day-display-container {
+		top: -2.4rem;
+	}
+	.to-do-list-item-delete-button-container {
+		margin: 0 0.125rem 0 0;
+	}
+	.to-do-list-vertical-hr:last-of-type {
+		height: 1000%;
+	}
+}
+
+@media (orientation: landscape) and (max-height: 450px) {
+	.to-do-list-details-container {
+		padding-left: 1.6rem;
+	}
+}
+
+@media (orientation: landscape) and (max-height: 375px) {
+	.list-item-edit-modal-header-and-form-container {
+		width: 14.5rem;
+	}
+	.to-do-list-edit-form {
+		height: unset;
+		padding: 0 0.5rem 0 0.5rem;
+	}
+	.list-item-edit-modal-form-header {
+		height: 2rem;
+	}
+	.to-do-list-edit-form-item-text-input {
+		bottom: -0.5rem;
+	}
+	.to-do-list-edit-form-item-due-date-input {
+		bottom: -0.5rem;
+	}
+	.to-do-list-edit-form-item-priority-container {
+		bottom: -0.6rem;
+	}
+	.to-do-list-edit-form-item-submit-button-input {
+		bottom: -0.6rem;
+	}
+	.to-do-list-edit-form-item-cancel-button-input {
+		bottom: -0.6rem;
+	}
+	.list-item-edit-modal-hr {
+		bottom: 0rem;
+	}
+}

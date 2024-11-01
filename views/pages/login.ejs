@@ -1,0 +1,28 @@
+<%layout("layouts/boilerplate")%>
+<%block('head').append(`<link rel="stylesheet" href="/css/login.css">`)%>
+<%block('head').append(`<title>Log In</title>`)%>
+
+<div class="login-container">
+	<div class="login-title-bar">
+		<p class="login-title-heading">Welcome!</p>
+		<p class="login-title-body">Please log in.</p>
+	</div>
+	<form class="login-form" action="/login" method="post">
+		<div class="login-user-email-container">
+			<input class="login-user-email-input" type="text" name="loginUserEmail" value="" id="login-user-email" placeholder="Email address" size="28" autofocus>
+		</div>
+		<div class="login-user-password-container">
+			<input class="login-user-password-input" type="password" name="loginUserPassword" value="" id="login-user-password" placeholder="Password" size="28">
+		</div>
+		<div class="login-submit-button-container">
+			<input class="login-submit-button-input" type="submit" name="loginSubmitButton" value="Log in!" id="login-submit-button">
+		</div>
+		<hr class="login-horizontal-rule">
+		<div class="go-to-registration-container">
+			<input class="go-to-registration-button-input" type="button" name="goToRegistrationButton" value="Not a member? Get registered!" id="go-to-registration-button">
+		</div>
+	</form>
+</div>
+<%-include('../partials/footer-logged-out')%>
+<%-include('../partials/credits-logged-out')%>
+<script type="module" src="/javascript/login.js"></script>

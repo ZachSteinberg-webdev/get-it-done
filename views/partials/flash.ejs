@@ -1,0 +1,52 @@
+<%if(success.length) {%>
+	<div class="flash-alert flash-alert-success" role="alert">
+		<div class="alert-text alert-text-success">
+			<%=success%>
+		</div>
+		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" tabindex="-1" autofocus><%=success%></button>
+	</div>
+<%}%>
+<%if(error.length) {%>
+	<div class="flash-alert flash-alert-error" role="alert">
+		<div class="alert-text alert-text-error">
+			<%=error%>
+		</div>
+		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" tabindex="-1"><%=error%></button>
+	</div>
+<%}%>
+<%if(registrationSuccess.length) {%>
+	<div class="flash-alert-backdrop">
+		<div class="flash-alert flash-alert-success flash-alert-success-registration" role="alert">
+			<div class="alert-text alert-text-success alert-text-success-registration">
+				<%=registrationSuccess%>
+			</div>
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" tabindex="-1" autofocus><%=registrationSuccess%></button>
+		</div>
+	</div>
+<%}%>
+<%if(registrationError.length) {%>
+	<div class="flash-alert flash-alert-error flash-alert-error-registration" role="alert">
+		<div class="alert-text alert-text-error">
+			<%=registrationError%>
+		</div>
+		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" tabindex="-1"><%=registrationError%></button>
+	</div>
+<%}%>
+<%if(loginSuccess.length) {%>
+	<div class="flash-alert-backdrop">
+		<div class="flash-alert flash-alert-success flash-alert-success-login" role="alert">
+			<div class="alert-text alert-text-success alert-text-success-login">
+				<%=loginSuccess%>
+			</div>
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" tabindex="-1" autofocus><%=loginSuccess%></button>
+		</div>
+	</div>
+<%}%>
+<%if(loginError.length) {%>
+	<div class="flash-alert flash-alert-error flash-alert-error-login" role="alert">
+		<div class="alert-text alert-text-error">
+			<%=loginError%>
+		</div>
+		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" tabindex="-1"><%=loginError%></button>
+	</div>
+<%}%>

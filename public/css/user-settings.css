@@ -1,0 +1,413 @@
+ /* #     #                         ###### */
+ /* #     #  ####  ###### #####     #     # #    # ##### #####  ####  #    # */
+ /* #     # #      #      #    #    #     # #    #   #     #   #    # ##   # */
+ /* #     #  ####  #####  #    #    ######  #    #   #     #   #    # # #  # */
+ /* #     #      # #      #####     #     # #    #   #     #   #    # #  # # */
+ /* #     # #    # #      #   #     #     # #    #   #     #   #    # #   ## */
+	/* #####   ####  ###### #    #    ######   ####    #     #    ####  #    # */
+
+.user-button-container {
+	height: 75%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-shrink: 0;
+	flex-grow: 0;
+	flex-basis: 50px;
+	border: none;
+	position: relative;
+	right: 3.5rem;
+}
+.user-button {
+	height: 105%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: #bebebe59;
+	border: 2px solid #bebebe;
+	border-radius: var(--border-radius);
+	box-shadow: var(--box-shadow-small);
+	transition: transform 250ms, border-color 500ms;
+}
+.user-button:hover {
+	border-color: rgba(25, 126, 250, 0.5);
+}
+.user-button:focus {
+	border-color: rgba(25, 126, 250, 0.5);
+	background-color: rgba(25, 126, 250, 0.5);
+}
+.user-button-top {
+	height: 10px;
+	width: 30px;
+	position: relative;
+	top: 0px;
+	transition: top 500ms;
+}
+.user-button-middle {
+	height: 10px;
+	width: 30px;
+}
+.user-button-bottom {
+	height: 10px;
+	width: 30px;
+	position: relative;
+	bottom: 0px;
+	transition: bottom 500ms;
+}
+.user-button-top-partially-expanded {
+	top: -2px;
+	transition: top 500ms;
+}
+.user-button-bottom-partially-expanded {
+	bottom: -2px;
+	transition: bottom 500ms;
+}
+.user-button-top-expanded {
+	top: -5px;
+	transition: top 500ms;
+}
+.user-button-bottom-expanded {
+	bottom: -5px;
+	transition: bottom 500ms;
+}
+
+ /* #     #                                #     #                         #######                */
+ /* ##   ##  ####  #####    ##   #         #     #  ####  ###### #####     #       #####  # #### */
+ /* # # # # #    # #    #  #  #  #         #     # #      #      #    #    #       #    # #   #  */
+ /* #  #  # #    # #    # #    # #         #     #  ####  #####  #    #    #####   #    # #   #  */
+ /* #     # #    # #    # ###### #         #     #      # #      #####     #       #    # #   #  */
+ /* #     # #    # #    # #    # #         #     # #    # #      #   #     #       #    # #   #  */
+ /* #     #  ####  #####  #    # ######     #####   ####  ###### #    #    ####### #####  #   #  */
+
+/* User edit modal window // ---------------------------------------------------------------- */
+.user-edit-modal-backdrop {
+	display: none;
+	height: 100vh;
+	width: 100vw;
+	position: absolute;
+	top: 0%;
+	right: 0%;
+	bottom: 0%;
+	left: 0%;
+	backdrop-filter: blur(0px);
+	background-color: transparent;
+	z-index: 4;
+	transition: background-color 0.3s linear, backdrop-filter 0.3s linear, -webkit-backdrop-filter 0.3s linear;
+}
+.user-edit-modal-backdrop-in-use{
+	backdrop-filter: blur(2px);
+	background-color: #00000080;
+}
+.user-edit-popup-wrapper {
+	height: 100%;
+	width: 100%;
+	margin: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 1rem;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+.user-edit-header-and-form-container {
+	width: 20rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.user-edit-form-header {
+	width: 101%;
+	background-image: url('../images/leather-1969-in-architextures.jpg');
+	background-size: 30rem;
+	padding: 0.5rem;
+	border-top-left-radius: var(--border-radius);
+	border-top-right-radius: var(--border-radius);
+	border: var(--border);
+	box-shadow: 0 0.5rem 0.25rem -0.2rem #363636, 0 -0.1rem 0.7rem 0.05rem #232323;
+	z-index: 2;
+	background-image: url('../images/leather-1969-in-architextures.jpg');
+	opacity: 0;
+	visibility: collapse;
+	transition: opacity 500ms, visibility 500ms;
+}
+.user-edit-form-header-in-use {
+	opacity: 1;
+	visibility: visible;
+}
+.user-edit-form {
+	height: min-content;
+	width: 100%;
+	padding: 0.5rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border: var(--border);
+	border-radius: var(--border-radius);
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+	background-color: #ffffca;
+	box-shadow: var(--box-shadow-large);
+	opacity: 0;
+	visibility: collapse;
+	box-shadow: 0 -0.1rem 0.7rem 0.05rem #232323;
+	transition: opacity 500ms, visibility 500ms;
+}
+.user-edit-form-in-use {
+	opacity: 1;
+	visibility: visible;
+	transition: opacity 500ms, visibility 500ms;
+}
+.user-edit-details-instructions-text{
+	margin: 0.25rem 0;
+	font-family: var(--font-main);
+	font-size: 1.5rem;
+	text-align: center;
+	color: white;
+}
+.user-edit-password-instruction-text {
+	font-family: var(--font-main);
+	font-size: 0.75rem;
+	text-align: center;
+	color: black;
+	position: relative;
+	bottom: 0.2rem;
+}
+.user-edit-user-name-container {
+	height: var(--user-settings-field-container-height);
+	width: 100%;
+	margin: 0.25rem auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-sizing: var(--box-sizing);
+}
+.user-edit-user-name-input {
+	height: 100%;
+	width: 100%;
+	padding: 0;
+	font-size: var(--user-settings-field-font-size);
+	font-family: 'The Penchill';
+	text-align: center;
+	background-color: transparent;
+	border: 1px solid transparent;
+	border-radius: var(--border-radius);
+	box-shadow: var(--box-shadow-small);
+}
+.user-edit-user-name-input:hover {
+	border: 1px solid rgb(25,126,250);
+}
+.user-edit-user-name-input:focus {
+	border: 1px solid rgb(25,126,250);
+}
+.user-edit-user-name-input:focus-visible {
+	border: 1px solid rgb(25,126,250);
+	outline: none;
+}
+.user-edit-modal-hr {
+	width: 100%;
+	color: #FF9191;
+	background-color: #FF9191;
+	border-color: #FF9191;
+	height: 0px;
+	position: relative;
+	bottom: 0.8rem;
+}
+.user-edit-user-email-container {
+	height: var(--user-settings-field-container-height);
+	width: 100%;
+	margin: 0.25rem auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-sizing: var(--box-sizing);
+}
+.user-edit-user-email-input {
+	height: 100%;
+	width: 100%;
+	padding: 0;
+	font-size: var(--user-settings-field-font-size);
+	font-family: 'The Penchill';
+	text-align: center;
+	background-color: transparent;
+	border: 1px solid transparent;
+	border-radius: var(--border-radius);
+	box-shadow: var(--box-shadow-small);
+}
+.user-edit-user-email-input:hover {
+	border: 1px solid rgb(25,126,250);
+}
+.user-edit-user-email-input:focus {
+	border: 1px solid rgb(25,126,250);
+}
+.user-edit-user-email-input:focus-visible {
+	border: 1px solid rgb(25,126,250);
+	outline: none;
+}
+.user-edit-user-current-password-container {
+	height: var(--user-settings-field-container-height);
+	width: 100%;
+	margin: 0.25rem auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-sizing: var(--box-sizing);
+}
+.user-edit-user-current-password-input {
+	height: 100%;
+	width: 100%;
+	padding: 0;
+	font-size: var(--user-settings-field-font-size);
+	font-family: 'The Penchill';
+	text-align: center;
+	background-color: transparent;
+	border: 1px solid transparent;
+	border-radius: var(--border-radius);
+	box-shadow: var(--box-shadow-small);
+}
+.user-edit-user-current-password-input:hover {
+	border: 1px solid rgb(25,126,250);
+}
+.user-edit-user-current-password-input:focus {
+	border: 1px solid rgb(25,126,250);
+}
+.user-edit-user-current-password-input:focus-visible {
+	border: 1px solid rgb(25,126,250);
+	outline: none;
+}
+.user-edit-user-new-password-container {
+	height: var(--user-settings-field-container-height);
+	width: 100%;
+	margin: 0.25rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-sizing: var(--box-sizing);
+}
+.user-edit-user-new-password-input {
+	height: 100%;
+	width: 100%;
+	padding: 0;
+	font-size: var(--user-settings-field-font-size);
+	font-family: 'The Penchill';
+	text-align: center;
+	background-color: transparent;
+	border: 1px solid transparent;
+	border-radius: var(--border-radius);
+	box-shadow: var(--box-shadow-small);
+}
+.user-edit-user-new-password-input:hover {
+	border: 1px solid rgb(25,126,250);
+}
+.user-edit-user-new-password-input:focus {
+	border: 1px solid rgb(25,126,250);
+}
+.user-edit-user-new-password-input:focus-visible {
+	border: 1px solid rgb(25,126,250);
+	outline: none;
+}
+.user-edit-submit-button-container {
+	height: var(--user-settings-button-container-height);
+	width: 100%;
+	margin: 0.25rem auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-sizing: var(--box-sizing);
+	position: relative;
+	bottom: 0.1rem;
+	transition: transform 250ms;
+}
+.user-edit-submit-button-container:hover {
+	transform: scale(1.025);
+}
+.user-edit-submit-button-container:focus {
+	transform: scale(1.025);
+}
+.user-edit-submit-button-input {
+	height: 100%;
+	width: 100%;
+	font-size: var(--user-settings-button-font-size);
+	font-family: var(--font-main);
+	text-align: center;
+	background-color: var(--background-color-lighter);
+	border: var(--border);
+	border-radius: var(--border-radius);
+	box-shadow: var(--box-shadow-small);
+}
+.user-edit-cancel-button-container {
+	height: var(--user-settings-button-container-height);
+	width: 100%;
+	margin: 0.25rem auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-sizing: var(--box-sizing);
+	position: relative;
+	bottom: 0.1rem;
+	transition: transform 250ms;
+}
+.user-edit-cancel-button-container:hover {
+	transform: scale(1.025);
+}
+.user-edit-cancel-button-container:focus {
+	transform: scale(1.025);
+}
+.user-edit-cancel-button-input {
+	height: 100%;
+	width: 100%;
+	font-size: var(--user-settings-button-font-size);
+	font-family: var(--font-main);
+	text-align: center;
+	background-color: var(--background-color-lighter);
+	border: var(--border);
+	border-radius: var(--border-radius);
+	box-shadow: var(--box-shadow-small);
+}
+
+ /* #     #                            #####                                       */
+ /* ##   ## ###### #####  #   ##      #     # #    # ###### #####  # ######  ####  */
+ /* # # # # #      #    # #  #  #     #     # #    # #      #    # # #      #      */
+ /* #  #  # #####  #    # # #    #    #     # #    # #####  #    # # #####   ####  */
+ /* #     # #      #    # # ######    #   # # #    # #      #####  # #           # */
+ /* #     # #      #    # # #    #    #    #  #    # #      #   #  # #      #    # */
+ /* #     # ###### #####  # #    #     #### #  ####  ###### #    # # ######  ####  */
+
+/* Landscape */
+@media(orientation: landscape) and (max-height: 550px) {
+	.user-edit-password-instruction-text {
+		display: none;
+	}
+	#user-edit-modal-hr-instructions {
+		display: none;
+	}
+}
+@media(orientation: landscape) and (max-height: 450px) {
+	.user-edit-header-and-form-container {
+		width: 15rem;
+	}
+	.user-edit-details-instructions-text {
+		font-size: 1.25rem;
+	}
+	.user-edit-form input {
+		font-size: 1.25rem;
+	}
+}
+
+/* Portrait */
+@media(orientation: portrait) and (max-width: 400px) {
+	.user-edit-header-and-form-container {
+		width: 15rem;
+	}
+	.user-edit-details-instructions-text {
+		font-size: 1.25rem;
+	}
+	.user-edit-form input {
+		font-size: 1.25rem;
+	}
+}

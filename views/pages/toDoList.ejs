@@ -1,0 +1,298 @@
+<%layout("layouts/boilerplate")%>
+<% block('head').append(`<link rel="stylesheet" href="/css/to-do-list.css">`) %>
+<% block('head').append(`<link rel="stylesheet" href="/css/user-settings.css">`) %>
+<% block('head').append(`<link rel="stylesheet" href="/css/nav.css">`) %>
+<% block('head').append(`<title>Your To-Do List Items</title>`) %>
+<div class="to-do-list-container">
+	<%-include('../partials/desktop-pen')%>
+	<%-include('../partials/desktop-coffee-cup')%>
+	<%-include('../partials/desktop-stain-ring')%>
+	<%-include('../partials/desktop-calculator')%>
+	<div class="to-do-list-burger-menu-blocker-dummy-container">
+		<div class="to-do-list-top-bar-container">
+			<div class="to-do-list-back-button-container">
+				<button class="to-do-list-back-button" tabindex="14">
+					<img class="to-do-list-back-button-icon" src="/images/back-symbol-silver-thicker.png" alt="Go back">
+				</button>
+			</div>
+			<div class="to-do-list-name-container">
+				<form class="to-do-list-name-inline-edit-form" action="/lists/edit/<%=list._id%>" method="post">
+					<input class="to-do-list-name-inline-edit-form-input top-bar-input" type="text" name="toDoListsEditListNameText" value="<%=list.listName%>" placeholder='Input a new list name and press "Enter"...' tabindex="13">
+				</form>
+			</div>
+			<%-include('../partials/userButton')%>
+		</div>
+	</div>
+	<%-include('../partials/nav')%>
+	<div class="to-do-list-items-container">
+		<%for (let [index, each] of listItems.entries()){%>
+			<div class="to-do-list-item-container">
+				<!-- <div class="to-do-list-vertical-hr-spacer"></div> -->
+				<div class="to-do-list-item-completed-form-and-item-text-container">
+					<form class="to-do-list-item-completed-form" action="/list/edit/<%=each._id%>" method="post">
+						<input class="to-do-list-item-completed-inline-edit-form-input" type="checkbox" name="toDoListItemIsCompleted" <%=each.itemIsCompleted?"checked":""%> tabindex="0">
+					</form>
+					<hr class="to-do-list-vertical-hr">
+					<form class="to-do-list-item-text-inline-edit-form" action="/list/edit/<%=each._id%>" method="post">
+						<input class="to-do-list-item-text-inline-edit-form-input <%=each.itemIsCompleted?'to-do-list-item-text-inline-edit-form-input-completed':''%>" type="text" name="toDoListItemText" value="<%=each.itemText%>" placeholder='Input a new description and press "Enter"...' tabindex="0">
+					</form>
+				</div>
+				<div class="to-do-list-details-container">
+					<form class="to-do-list-item-due-date-inline-edit-form" action="/list/edit/<%=each._id%>" method="post">
+						<input class="to-do-list-item-due-date-inline-edit-form-input" type="date" name="toDoListItemDueDate" value="<%=(each.itemDueDate).toISOString().split('T')[0]%>" pattern="\d{4}-\d{2}-\d{2}" min=<%= new Date().toISOString().split("T")[0] %>>
+						<button class="to-do-list-item-due-date-inline-edit-form-input-picker-show-button" type="button" name="inlineDueDatePicker" tabindex="0" value="<%=index%>">
+						</button>
+					</form>
+					<form class="to-do-list-item-priority-inline-edit-form" action="/list/edit/<%=each._id%>" method="post">
+						<div class="to-do-list-item-priority-inline-edit-container" tabindex="0" data-index="<%=index%>">
+							<input class="to-do-list-item-priority-inline-edit-input" id="star5InlineEdit<%=index%>" name="toDoListItemPriorityLevel" type="radio" value="5" tabindex="0">
+							<label class="to-do-list-item-priority-inline-edit-label" for="star5InlineEdit<%=index%>">☆</label>
+							<script type="text/javascript">
+								const priority5InlineEditIndex<%=index%> = document.getElementById("star5InlineEdit<%=index%>");
+								if("<%=(each.itemPriority)%>"=="5"){
+									priority5InlineEditIndex<%=index%>.defaultChecked = true;
+								}
+							</script>
+							<input class="to-do-list-item-priority-inline-edit-input" id="star4InlineEdit<%=index%>" name="toDoListItemPriorityLevel" type="radio" value="4" tabindex="0">
+							<label class="to-do-list-item-priority-inline-edit-label" for="star4InlineEdit<%=index%>">☆</label>
+							<script type="text/javascript">
+								const priority4InlineEditIndex<%=index%> = document.getElementById("star4InlineEdit<%=index%>");
+								if("<%=(each.itemPriority)%>"=="4"){
+									priority4InlineEditIndex<%=index%>.defaultChecked = true;
+								}
+							</script>
+							<input class="to-do-list-item-priority-inline-edit-input" id="star3InlineEdit<%=index%>" name="toDoListItemPriorityLevel" type="radio" value="3" tabindex="0">
+							<label class="to-do-list-item-priority-inline-edit-label" for="star3InlineEdit<%=index%>">☆</label>
+							<script type="text/javascript">
+								const priority3InlineEditIndex<%=index%> = document.getElementById("star3InlineEdit<%=index%>");
+								if("<%=(each.itemPriority)%>"=="3"){
+									priority3InlineEditIndex<%=index%>.defaultChecked = true;
+								}
+							</script>
+							<input class="to-do-list-item-priority-inline-edit-input" id="star2InlineEdit<%=index%>" name="toDoListItemPriorityLevel" type="radio" value="2" tabindex="0">
+							<label class="to-do-list-item-priority-inline-edit-label" for="star2InlineEdit<%=index%>">☆</label>
+							<script type="text/javascript">
+								const priority2InlineEditIndex<%=index%> = document.getElementById("star2InlineEdit<%=index%>");
+								if("<%=(each.itemPriority)%>"=="2"){
+									priority2InlineEditIndex<%=index%>.defaultChecked = true;
+								}
+							</script>
+							<input class="to-do-list-item-priority-inline-edit-input" id="star1InlineEdit<%=index%>" name="toDoListItemPriorityLevel" type="radio" value="1" tabindex="0">
+							<label class="to-do-list-item-priority-inline-edit-label" for="star1InlineEdit<%=index%>">☆</label>
+							<script type="text/javascript">
+								const priority1InlineEditIndex<%=index%> = document.getElementById("star1InlineEdit<%=index%>");
+								if("<%=(each.itemPriority)%>"=="1"){
+									priority1InlineEditIndex<%=index%>.defaultChecked = true;
+								}
+							</script>
+						</div>
+						<button class="to-do-list-item-priority-inline-edit-show-button" type="button" name="inlinePriorityPicker" tabindex="0" value="<%=index%>">
+							<div class="to-do-list-item-priority-inline-edit-show-button-priority-display-container">
+								<span class="to-do-list-item-priority-inline-edit-show-button-number"><%=each.itemPriority%></span>
+							</div>
+						</button>
+					</form>
+					<div class="to-do-list-item-edit-button-container">
+						<button class="to-do-list-item-edit-button" value="<%=index%>" type="button" name="editButton" id="to-do-list-item-edit-button">
+							<img class="to-do-list-item-edit-button-icon" src="/images/edit-symbol.png" alt="Edit list item">
+						</button>
+					</div>
+					<form class="to-do-list-item-delete-button-container" action="/list/delete/<%=each._id%>" method="post">
+						<button class="to-do-list-item-delete-button" value="<%=index%>" type="button" name="deleteButton" id="to-do-list-item-delete-button">
+							<img class="to-do-list-item-delete-button-icon" src="/images/delete-symbol.png" alt="Delete list item">
+						</button>
+					</form>
+				</div>
+			</div>
+			<div class="to-do-list-item-delete-confirmation-container-backdrop">
+				<div class="to-do-list-item-delete-confirmation-container" data-index="<%=index%>">
+					<div class="to-do-list-item-delete-confirmation-form-header">Confirm?</div>
+					<form class="to-do-list-item-delete-button-confirmation-form" action="/list/delete/<%=each._id%>" method="post">
+						<% for(let i=0; i<9; i++) {%>
+							<hr class="to-do-list-item-delete-confirmation-container-backdrop-hr" id="tdlidccbh-<%=i+1%>">
+						<% } %>
+						<p class="to-do-list-item-delete-confirmation-text">
+							Are you sure you want to delete this list item? This cannot be undone.
+						</p>
+						<div class="to-do-list-item-delete-confirmation-button-container">
+							<button class="to-do-list-item-delete-confirmation-button" value="<%=index%>" type="submit" name="deleteConfirmationButton" id="to-do-list-delete-confirmation-button">
+								<span>Okay</span>
+							</button>
+							<button class="to-do-list-item-delete-confirmation-cancel-button" value="<%=index%>" type="button" name="deleteConfirmationCancelButton" id="to-do-list-item-delete-confirmation-cancel-button">
+								<span>Cancel</span>
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+			<hr class="to-do-list-list-separator">
+			<hr class="to-do-list-list-separator-lifted">
+		<%}%>
+	</div>
+	<!-- List item entry form -->
+	<div class="entry-form-show-button-container">
+		<button class="entry-form-show-button" type="button" name="entryFormShowButton" tabindex="1">
+			<img class="entry-form-show-button-icon" src="/images/add-symbol-silver.png" alt="Pull up the form to create a new list">
+		</button>
+	</div>
+	<div class="to-do-list-entry-form-container">
+		<form class="to-do-list-entry-form" action="/list/<%=listId%>" method="post">
+			<div class="to-do-list-entry-form-item-text-container">
+				<input class="to-do-list-entry-form-item-text-input" type="text" name="toDoListItemText" value="" id="to-do-list-item-text" placeholder="Item description..." tabindex="1" autofocus>
+			</div>
+			<div class="to-do-list-entry-form-item-due-date-container">
+				<input class="to-do-list-entry-form-item-due-date-input" type="date" name="toDoListItemDueDate" value="" id="to-do-list-item-due-date" pattern="\d{4}-\d{2}-\d{2}" placeholder="When is it due?" min=<%= new Date().toISOString().split("T")[0] %>>
+			</div>
+			<div class="to-do-list-entry-form-item-due-date-picker-show-button-container">
+				<button class="to-do-list-entry-form-item-due-date-picker-show-button" type="button" name="picker" tabindex="2">
+					<img class="to-do-list-entry-form-item-due-date-picker-show-button-icon" src="/images/calendar-icon-blank.png" alt="Click to enter a due date">
+				</button>
+			</div>
+			<div class="to-do-list-entry-form-item-priority-container">
+				<input class="to-do-list-entry-form-item-priority-input" id="star5" name="toDoListItemPriorityLevel" type="radio" value="5" tabindex="7">
+				<label class="to-do-list-entry-form-item-priority-label" for="star5">☆</label>
+				<input class="to-do-list-entry-form-item-priority-input" id="star4" name="toDoListItemPriorityLevel" type="radio" value="4" tabindex="6">
+				<label class="to-do-list-entry-form-item-priority-label" for="star4">☆</label>
+				<input class="to-do-list-entry-form-item-priority-input" id="star3" name="toDoListItemPriorityLevel" type="radio" value="3" tabindex="5">
+				<label class="to-do-list-entry-form-item-priority-label" for="star3">☆</label>
+				<input class="to-do-list-entry-form-item-priority-input" id="star2" name="toDoListItemPriorityLevel" type="radio" value="2" tabindex="4">
+				<label class="to-do-list-entry-form-item-priority-label" for="star2">☆</label>
+				<input class="to-do-list-entry-form-item-priority-input" id="star1" name="toDoListItemPriorityLevel" type="radio" value="1" tabindex="3">
+				<label class="to-do-list-entry-form-item-priority-label" for="star1">☆</label>
+				<div class="clear">
+				</div>
+			</div>
+			<div class="to-do-lists-list-entry-form-item-owner-container">
+				<input type="text" name="toDoListItemOwner" value="<%=`${listId}`%>" id="" hidden>
+			</div>
+			<div class="to-do-list-entry-form-item-submit-button-container">
+				<button class="to-do-list-entry-form-item-submit-button-input" type="submit" name="toDoListItemSubmitButton" id="to-do-list-item-submit-button" tabindex="8">
+					<img class="to-do-list-item-submit-button-icon" src="/images/add-symbol.png" alt="Add this item to the list">
+				</button>
+			</div>
+		</form>
+		<form class="to-do-list-entry-form-under-700-px-width" action="/list/<%=listId%>" method="post">
+			<div class="to-do-list-entry-form-item-text-container">
+				<input class="to-do-list-entry-form-item-text-input-under-700-px-width" type="text" name="toDoListItemText" value="" id="to-do-list-item-text" placeholder="Item description..." tabindex="1" autofocus>
+			</div>
+			<div class="to-do-list-entry-form-second-line-container-under-700-px-width">
+				<div class="to-do-list-entry-form-item-due-date-container">
+					<input class="to-do-list-entry-form-item-due-date-input" type="date" name="toDoListItemDueDate" value="" id="to-do-list-item-due-date-input-under-700-px-width" pattern="d{4}-d{2}-d{2}" placeholder="When is it due?" min=<%= new Date().toISOString().split("T")[0] %>>
+				</div>
+				<div class="to-do-list-entry-form-item-due-date-picker-show-button-container">
+					<button class="to-do-list-entry-form-item-due-date-picker-show-button" type="button" name="picker" tabindex="2">
+						<img class="to-do-list-entry-form-item-due-date-picker-show-button-icon" src="/images/calendar-icon-blank.png" alt="Click to enter a due date">
+					</button>
+				</div>
+				<div class="to-do-list-entry-form-item-priority-container">
+					<input class="to-do-list-entry-form-item-priority-input" id="star5Under700px" name="toDoListItemPriorityLevel" type="radio" value="5" tabindex="7">
+					<label class="to-do-list-entry-form-item-priority-label" for="star5Under700px">☆</label>
+					<input class="to-do-list-entry-form-item-priority-input" id="star4Under700px" name="toDoListItemPriorityLevel" type="radio" value="4" tabindex="6">
+					<label class="to-do-list-entry-form-item-priority-label" for="star4Under700px">☆</label>
+					<input class="to-do-list-entry-form-item-priority-input" id="star3Under700px" name="toDoListItemPriorityLevel" type="radio" value="3" tabindex="5">
+					<label class="to-do-list-entry-form-item-priority-label" for="star3Under700px">☆</label>
+					<input class="to-do-list-entry-form-item-priority-input" id="star2Under700px" name="toDoListItemPriorityLevel" type="radio" value="2" tabindex="4">
+					<label class="to-do-list-entry-form-item-priority-label" for="star2Under700px">☆</label>
+					<input class="to-do-list-entry-form-item-priority-input" id="star1Under700px" name="toDoListItemPriorityLevel" type="radio" value="1" tabindex="3">
+					<label class="to-do-list-entry-form-item-priority-label" for="star1Under700px">☆</label>
+					<div class="clear">
+					</div>
+				</div>
+				<div class="to-do-lists-list-entry-form-item-owner-container">
+					<input type="text" name="toDoListItemOwner" value="<%=`${listId}`%>" id="" hidden>
+				</div>
+				<div class="to-do-list-entry-form-item-submit-button-container">
+					<button class="to-do-list-entry-form-item-submit-button-input" type="submit" name="toDoListItemSubmitButton" id="to-do-list-item-submit-button" tabindex="8">
+						<img class="to-do-list-item-submit-button-icon" src="/images/add-symbol.png" alt="Add this item to the list">
+					</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<!-- Modal list edit window // ---------------------------------------------------------------- -->
+<%for (let [index, each] of listItems.entries()){%>
+	<div class="popup-backdrop list-item-edit-modal" data-index="<%=index%>">
+		<div class="popup-wrapper" id="list-item-<%=index%>">
+			<div class="popup-container">
+				<div class="list-item-edit-modal-header-and-form-container">
+					<div class="list-item-edit-modal-form-header">
+						<p class="list-item-edit-modal-instructions-text">
+							Edit item
+						</p>
+					</div>
+					<form class="to-do-list-edit-form" action="/list/edit/<%=each._id%>" method="post" data-index="<%=index%>">
+						<div class="to-do-list-edit-form-item-text-container">
+							<input class="to-do-list-edit-form-item-text-input" type="text" name="toDoListItemText" value="<%=each.itemText%>" id="to-do-list-item-text" placeholder="To-do item description..." tabindex="1" data-index="<%=index%>">
+						</div>
+						<hr class="list-item-edit-modal-hr" id="list-item-edit-modal-hr-name">
+						<div class="to-do-list-edit-form-item-due-date-container">
+							<input class="to-do-list-edit-form-item-due-date-input" type="date" name="toDoListItemDueDate" value="<%=(each.itemDueDate).toISOString().split('T')[0]%>" pattern="d{4}-d{2}-d{2}" id="to-do-list-item-due-date" placeholder="When is it due?" tabindex="2" min=<%= new Date().toISOString().split("T")[0] %>>
+						</div>
+						<hr class="list-item-edit-modal-hr" id="list-item-edit-modal-hr-due-date">
+						<div class="to-do-list-edit-form-item-priority-container">
+							<input class="to-do-list-edit-form-item-priority-input" id="star5Edit<%=index%>" name="toDoListItemPriorityLevel" type="radio" value="5" tabindex="7">
+							<label class="to-do-list-edit-form-item-priority-label" for="star5Edit<%=index%>">☆</label>
+							<script type="text/javascript">
+								const priority5Index<%=index%> = document.getElementById("star5Edit<%=index%>");
+								if("<%=(each.itemPriority)%>"=="5"){
+									priority5Index<%=index%>.defaultChecked = true;
+								}
+							</script>
+							<input class="to-do-list-edit-form-item-priority-input" id="star4Edit<%=index%>" name="toDoListItemPriorityLevel" type="radio" value="4" tabindex="6">
+							<label class="to-do-list-edit-form-item-priority-label" for="star4Edit<%=index%>">☆</label>
+							<script type="text/javascript">
+								const priority4Index<%=index%> = document.getElementById("star4Edit<%=index%>");
+								if("<%=(each.itemPriority)%>"=="4"){
+									priority4Index<%=index%>.defaultChecked = true;
+								}
+							</script>
+							<input class="to-do-list-edit-form-item-priority-input" id="star3Edit<%=index%>" name="toDoListItemPriorityLevel" type="radio" value="3" tabindex="5">
+							<label class="to-do-list-edit-form-item-priority-label" for="star3Edit<%=index%>">☆</label>
+							<script type="text/javascript">
+								const priority3Index<%=index%> = document.getElementById("star3Edit<%=index%>");
+								if("<%=(each.itemPriority)%>"=="3"){
+									priority3Index<%=index%>.defaultChecked = true;
+								}
+							</script>
+							<input class="to-do-list-edit-form-item-priority-input" id="star2Edit<%=index%>" name="toDoListItemPriorityLevel" type="radio" value="2" tabindex="4">
+							<label class="to-do-list-edit-form-item-priority-label" for="star2Edit<%=index%>">☆</label>
+							<script type="text/javascript">
+								const priority2Index<%=index%> = document.getElementById("star2Edit<%=index%>");
+								if("<%=(each.itemPriority)%>"=="2"){
+									priority2Index<%=index%>.defaultChecked = true;
+								}
+							</script>
+							<input class="to-do-list-edit-form-item-priority-input" id="star1Edit<%=index%>" name="toDoListItemPriorityLevel" type="radio" value="1" tabindex="3">
+							<label class="to-do-list-edit-form-item-priority-label" for="star1Edit<%=index%>">☆</label>
+							<script type="text/javascript">
+								const priority1Index<%=index%> = document.getElementById("star1Edit<%=index%>");
+								if("<%=(each.itemPriority)%>"=="1"){
+									priority1Index<%=index%>.defaultChecked = true;
+								}
+							</script>
+						</div>
+						<hr class="list-item-edit-modal-hr" id="list-item-edit-modal-hr-priority">
+						<div class="to-do-lists-list-edit-form-item-owner-container">
+							<input type="text" name="toDoListItemOwner" value="<%=each.itemOwner%>" id="" hidden>
+						</div>
+						<div class="to-do-list-edit-form-item-submit-button-container">
+							<input class="to-do-list-edit-form-item-submit-button-input" type="submit" name="toDoListItemSubmitButton" value="Save it!" id="to-do-list-edit-form-item-submit-button-<%=index%>" data-index="<%=index%>" tabindex="8">
+						</div>
+						<hr class="list-item-edit-modal-hr" id="list-item-edit-modal-hr-submit">
+						<div class="to-do-list-edit-form-item-cancel-button-container">
+							<input class="to-do-list-edit-form-item-cancel-button-input" type="button" name="toDoListItemCancelButton" value="Cancel" id="to-do-list-edit-form-item-cancel-button-<%=index%>" data-index="<%=index%>" tabindex="9">
+						</div>
+						<hr class="list-item-edit-modal-hr" id="list-item-edit-modal-hr-cancel">
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+<%}%>
+<%-include('../partials/userSettings')%>
+<%-include('../partials/goodbye')%>
+<%-include('../partials/footer-logged-in')%>
+<%-include('../partials/credits-logged-in')%>
+<script type="module" src="/javascript/toDoList.js" charset="utf-8"></script>
+<script type="module" src="/javascript/desktopItems.js" charset="utf-8"></script>

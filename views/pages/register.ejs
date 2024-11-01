@@ -1,0 +1,44 @@
+<%layout("layouts/boilerplate")%>
+<%block('head').append(`<link rel="stylesheet" href="/css/register.css">`)%>
+<%block('head').append(`<title>Register</title>`)%>
+<div class="registration-container">
+	<form class="registration-form" action="/register" method="post">
+		<div class="registration-form-part-1">
+			<div class="registration-user-name-container">
+				<div class="hello-sticker-text-container">
+					<p class="hello-sticker-heading">Hello!</p>
+					<p class="hello-sticker-body">My username is...</p>
+				</div>
+				<div class="registration-user-name-input-div" contenteditable="true" maxlength="20">Your name</div>
+				<textarea class="registration-user-name-input" name="registrationUserName" rows="1" cols="14" id="registration-user-name" placeholder="Your name..." autofocus autocomplete="off" spellcheck="false" minlength="4" maxlength="50" hidden>;
+				</textarea>
+			</div>
+			<div class="registration-next-button-container">
+				<input class="registration-next-button-input" type="button" name="registrationNextButton" value="Next... >" id="registration-next-button">
+			</div>
+			<div class="go-to-login-container">
+				<input class="go-to-login-button-input" type="button" name="goToLoginButton" value="Already a member? Log in!" id="go-to-login-button">
+			</div>
+		</div>
+		<div class="registration-form-part-2">
+			<div class="registration-user-email-container">
+				<input class="registration-user-email-input" type="text" name="registrationUserEmail" value="" id="registration-user-email" placeholder="Your email address" autocomplete="off" spellcheck="false">
+			</div>
+			<div class="registration-user-password-container">
+				<input class="registration-user-password-input" type="password" name="registrationUserPassword" value="" id="registration-user-password" placeholder="Choose a password" autocomplete="off" spellcheck="false">
+			</div>
+			<div class="registration-user-password-confirmation-container">
+				<input class="registration-user-password-confirmation-input" type="password" name="registrationUserPasswordConfirmation" value="" id="registration-user-password-confirmation" placeholder="Re-enter password" autocomplete="off" spellcheck="false">
+			</div>
+			<div class="registration-submit-button-container">
+				<input class="registration-submit-button-input" type="submit" name="registrationSubmitButton" value="Register!" id="registration-submit-button">
+			</div>
+			<div class="registration-title-bar">
+				<p class="registration-title-body">Increased productivity awaits...</p>
+			</div>
+		</div>
+	</form>
+</div>
+<%-include('../partials/footer-logged-out')%>
+<%-include('../partials/credits-logged-out')%>
+<script type="module" src="/javascript/register.js" charset="utf-8"></script>

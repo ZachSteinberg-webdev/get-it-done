@@ -1,0 +1,676 @@
+@font-face {
+	font-family: 'Permanent Marker';
+	src: url("/fonts/PermanentMarker-Regular.ttf")
+}
+:root {
+	--font-size-input: 1.5rem;
+	--font-size-title: 2.5rem;
+	--font-family: 'Courier New';
+	--border: 1px solid black;
+	--border-radius: 0.5rem;
+	--box-sizing: border-box;
+	--box-shadow-large: 0 0 40px 1px grey;
+	--box-shadow-small: 0 0 20px 0.25px grey;
+	--background-color-lighter: white;
+	--background-color-darker: #E7E1E1;
+	--background-color-background: #93CCFB;
+	--text-color: black;
+	--placeholder-text-color: grey;
+	--registration-field-container-height: 4rem;
+	--registration-field-font-size: 3rem;
+	--registration-button-container-height: 4rem;
+	--registration-button-font-size: 3rem;
+	--input-field-letter-spacing: -0.1rem;
+	--input-field-word-spacing: -0.6rem;
+}
+body {
+	height: 100vh;
+	width: 100vw;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-sizing: border-box;
+	background-color: var(--background-color-darker);
+	background-image: url('../images/leather-1969-in-architextures.jpg');
+	overflow: hidden;
+}
+.registration-container {
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.registration-title-bar {
+	height: 4rem;
+	width: 90%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 3vh 0 0 0;
+	position: fixed;
+	bottom: -1rem;
+	color: white;
+}
+.registration-title-heading {
+	text-align: center;
+	font-size: 4vh;
+	font-family: var(--font-family);
+	margin: 0;
+}
+.registration-title-body {
+	text-align: center;
+	font-size: 1.25rem;
+	font-family: var(--font-family);
+	margin: 1rem 0;
+}
+.registration-form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.registration-form-part-1 {
+	height: min-content;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	right: 0%;
+	visibility: visible;
+	transition: right 500ms, visibility 550ms;
+}
+
+.registration-user-name-container {
+	width: 50rem;
+	aspect-ratio: 16/7;
+	margin: 1.5% auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	border: var(--border);
+	border-radius: var(--border-radius);
+	background-color: #377DF5;
+}
+.hello-sticker-text-container {
+	height: 30%;
+	width: 90%;
+	margin-top: 15px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.hello-sticker-text {
+	height: 100%;
+	margin: 4% 0 0 0;
+	aspect-ratio: 2/1;
+}
+.hello-sticker-heading {
+	margin: 0.25rem 0 0.1rem 0;
+	font-family: 'Lucida Grande', 'Arial';
+	font-size: 3.25rem;
+	font-weight: bold;
+	color: white;
+	text-shadow: -1.5px -1.5px 0 #000, 1.5px -1.5px 0 #000, -1.5px 1.5px 0 #000, 1.5px 1.5px 0 #000;
+}
+.hello-sticker-body {
+	margin: 0.1rem 0 0.25rem 0;
+	font-family: 'Lucida Grande', 'Arial';
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: white;
+	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+.registration-user-name-input-div {
+	height: 85%;
+	width: 90%;
+	padding: 1.5%;
+	margin: 4% auto;
+	font-size: 5rem;
+	font-family: 'Permanent Marker', 'Brush Script MT', 'Courier New';
+	display: flex;
+	align-items: center;
+	text-align: center;
+	justify-content: center;
+	overflow: scroll;
+	overflow-wrap: anywhere;
+	background-color: white;
+	border: var(--border);
+	border-radius: 12px;
+	color: grey;
+}
+
+.registration-user-name-input-div::after{
+	content: '\200B';
+}
+.registration-user-name-input {
+	height: 60%;
+	width: 95%;
+	line-height: 13rem;
+	margin: 0.75rem 0.75rem;
+	font-size: 5rem;
+	font-family: 'Permanent Marker', 'Brush Script MT', 'Courier New';
+	text-align: center;
+	border: none;
+	border-radius: 12px;
+	resize: none;
+}
+.registration-next-button-container {
+	height: var(--registration-button-container-height);
+	width: 50rem;
+	margin: 1vh auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: var(--border-radius);
+}
+.registration-next-button-input {
+	height: 100%;
+	width: 100%;
+	font-size: var(--registration-button-font-size);
+	letter-spacing: var(--input-field-letter-spacing);
+	word-spacing: var(--input-field-word-spacing);
+	font-family: var(--font-family);
+	text-align: center;
+	border: var(--border);
+	border-radius: var(--border-radius);
+	background-color: var(--background-color-lighter);
+}
+.go-to-login-container {
+	height: var(--registration-button-container-height);
+	width: 50rem;
+	margin: 1vh auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: var(--border-radius);
+}
+.go-to-login-button-input {
+	height: 100%;
+	width: 100%;
+	font-size: var(--registration-button-font-size);
+	letter-spacing: var(--input-field-letter-spacing);
+	word-spacing: var(--input-field-word-spacing);
+	font-family: var(--font-family);
+	text-align: center;
+	border: var(--border);
+	border-radius: var(--border-radius);
+	background-color: var(--background-color-lighter);
+}
+.registration-form-part-2 {
+	height: min-content;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	right: -100%;
+	visibility: collapse;
+	transition: right 500ms, visibility 0ms;
+}
+.registration-user-email-container {
+	height: var(--registration-field-container-height);
+	width: 50%;
+	margin: 1vh auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: var(--border);
+	border-radius: var(--border-radius);
+}
+.registration-user-email-input {
+	height: 100%;
+	width: 100%;
+	padding: 0 1rem;
+	font-size: 3rem;
+	letter-spacing: var(--input-field-letter-spacing);
+	word-spacing: var(--input-field-word-spacing);
+	font-family: var(--font-family);
+	text-align: center;
+	border: none;
+	border-radius: var(--border-radius);
+	background-color: var(--background-color-lighter);
+}
+.registration-user-password-container {
+	height: var(--registration-field-container-height);
+	width: 50%;
+	margin: 1vh auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: var(--border);
+	border-radius: var(--border-radius);
+}
+.registration-user-password-input {
+	height: 100%;
+	width: 100%;
+	padding: 0 1rem;
+	font-size: 3rem;
+	letter-spacing: var(--input-field-letter-spacing);
+	word-spacing: var(--input-field-word-spacing);
+	font-family: var(--font-family);
+	text-align: center;
+	border: none;
+	border-radius: var(--border-radius);
+	background-color: var(--background-color-lighter);
+}
+.registration-user-password-confirmation-container {
+	height: var(--registration-field-container-height);
+	width: 50%;
+	margin: 1vh auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: var(--border);
+	border-radius: var(--border-radius);
+}
+.registration-user-password-confirmation-input {
+	height: 100%;
+	width: 100%;
+	padding: 0 1rem;
+	font-size: 3rem;
+	letter-spacing: var(--input-field-letter-spacing);
+	word-spacing: var(--input-field-word-spacing);
+	font-family: var(--font-family);
+	text-align: center;
+	border: none;
+	border-radius: var(--border-radius);
+	background-color: var(--background-color-lighter);
+}
+.registration-submit-button-container {
+	height: var(--registration-button-container-height);
+	width: 50%;
+	margin: 1vh auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: var(--border);
+	border-radius: var(--border-radius);
+}
+.registration-submit-button-input {
+	height: 100%;
+	width: 100%;
+	font-size: var(--registration-button-font-size);
+	letter-spacing: var(--input-field-letter-spacing);
+	word-spacing: var(--input-field-word-spacing);
+	font-family: var(--font-family);
+	text-align: center;
+	border: none;
+	border-radius: var(--border-radius);
+	background-color: var(--background-color-lighter);
+}
+/* Shake animation for flash error messages */
+@keyframes shake {
+	0% { transform: translate(1px, 1px) rotate(0deg); }
+	10% { transform: translate(-1px, -2px) rotate(-1deg); }
+	20% { transform: translate(-3px, 0px) rotate(1deg); }
+	30% { transform: translate(3px, 2px) rotate(0deg); }
+	40% { transform: translate(1px, -1px) rotate(1deg); }
+	50% { transform: translate(-1px, 2px) rotate(-1deg); }
+	60% { transform: translate(-3px, 1px) rotate(0deg); }
+	70% { transform: translate(3px, 1px) rotate(-1deg); }
+	80% { transform: translate(-1px, -1px) rotate(1deg); }
+	90% { transform: translate(1px, 2px) rotate(0deg); }
+	100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+@media (orientation: portrait) and (max-width: 1100px){
+	.registration-user-email-container{
+		width: 70%;
+	}
+	.registration-user-password-container{
+		width: 70%;
+	}
+	.registration-user-password-confirmation-container{
+		width: 70%;
+	}
+	.registration-submit-button-container{
+		width: 70%;
+	}
+}
+
+@media (orientation: portrait) and (max-width: 900px){
+	.registration-user-name-container{
+		width: 40rem;
+	}
+	.registration-next-button-container{
+		width: 40rem;
+	}
+	.go-to-login-container{
+		width: 40rem;
+	}
+	.go-to-login-button-input{
+		font-size: 2rem;
+	}
+	.registration-user-email-input {
+		font-size: 2rem;
+	}
+	.registration-user-password-input {
+		font-size: 2rem;
+	}
+	.registration-user-password-confirmation-input {
+		font-size: 2rem;
+	}
+	.registration-submit-button-input {
+		font-size: 2rem;
+	}
+}
+
+@media (orientation: portrait) and (max-width: 700px){
+	.registration-user-name-container{
+		width: 30rem;
+	}
+	.registration-next-button-container{
+		width: 30rem;
+	}
+	.go-to-login-container{
+		width: 30rem;
+	}
+}
+
+@media (orientation: portrait) and (max-width: 500px) {
+	.registration-user-name-container{
+		width: 25rem;
+	}
+	.registration-next-button-container{
+		width: 25rem;
+	}
+	.go-to-login-container{
+		width: 25rem;
+	}
+	.go-to-login-button-input{
+		font-size: 1.25rem;
+		letter-spacing: 0px;
+		word-spacing: 0px;
+	}
+	.registration-user-name-input-div {
+		font-size: 3rem;
+	}
+	.registration-next-button-input {
+		font-size: 1.5rem;
+	}
+	.registration-user-email-input {
+		font-size: 1.5rem;
+		letter-spacing: 0px;
+		word-spacing: 0px;
+	}
+	.registration-user-password-input {
+		font-size: 1.5rem;
+		letter-spacing: 0px;
+		word-spacing: 0px;
+	}
+	.registration-user-password-confirmation-input {
+		font-size: 1.5rem;
+		letter-spacing: 0px;
+		word-spacing: 0px;
+	}
+	.registration-submit-button-input {
+		font-size: 1.5rem;
+		letter-spacing: 0px;
+		word-spacing: 0px;
+	}
+	.registration-title-body {
+		font-size: 0.95rem;
+	}
+}
+
+@media (orientation: portrait) and (max-width: 450px){
+	.registration-user-name-container{
+		width: 20rem;
+	}
+	.registration-next-button-container{
+		width: 20rem;
+	}
+	.go-to-login-container{
+		width: 20rem;
+	}
+	.registration-next-button-input {
+		font-size: 2rem;
+	}
+	.registration-user-email-input {
+		font-size: 1.25rem;
+		letter-spacing: 0px;
+		word-spacing: 0px;
+	}
+	.registration-user-password-input {
+		font-size: 1.25rem;
+		letter-spacing: 0px;
+		word-spacing: 0px;
+	}
+	.registration-user-password-confirmation-input {
+		font-size: 1.25rem;
+		letter-spacing: 0px;
+		word-spacing: 0px;
+	}
+	.registration-submit-button-input {
+		font-size: 1.25rem;
+		letter-spacing: 0px;
+		word-spacing: 0px;
+	}
+}
+
+@media (orientation: portrait) and (max-width: 400px){
+	.registration-user-name-input-div {
+		font-size: 2.75rem;
+	}
+	.registration-next-button-input {
+		font-size: 1.25rem;
+	}
+}
+
+@media (orientation: portrait) and (max-width: 375px){
+	.registration-user-name-container{
+		width: 17.5rem;
+	}
+	.registration-next-button-container{
+		width: 17.5rem;
+	}
+	.go-to-login-container{
+		width: 17.5rem;
+	}
+	.go-to-login-button-input{
+		font-size: 1rem;
+		letter-spacing: 0px;
+		word-spacing: 0px;
+	}
+	.hello-sticker-heading {
+		font-size: 2.25rem;
+	}
+	.registration-user-name-input-div {
+		font-size: 2.25rem;
+	}
+	.registration-next-button-input {
+		font-size: 1.25rem;
+	}
+	.registration-user-email-input {
+		font-size: 1rem;
+		letter-spacing: 0px;
+		word-spacing: 0px;
+	}
+	.registration-user-password-input {
+		font-size: 1rem;
+		letter-spacing: 0px;
+		word-spacing: 0px;
+	}
+	.registration-user-password-confirmation-input {
+		font-size: 1rem;
+		letter-spacing: 0px;
+		word-spacing: 0px;
+	}
+	.registration-submit-button-input {
+		font-size: 1rem;
+		letter-spacing: 0px;
+		word-spacing: 0px;
+	}
+}
+@media(orientation: landscape) and (max-height: 800px){
+	.registration-user-name-container{
+		width: 40rem;
+	}
+	.registration-next-button-container{
+		width: 40rem;
+	}
+	.go-to-login-container{
+		width: 40rem;
+	}
+	.go-to-login-button-input{
+		font-size: 2rem;
+	}
+}
+@media(orientation: landscape) and (max-height: 675px){
+	.registration-user-name-container{
+		width: 30rem;
+	}
+	.registration-next-button-container{
+		width: 30rem;
+	}
+	.go-to-login-container{
+		width: 30rem;
+	}
+}
+@media(orientation: landscape) and (max-height: 550px){
+	.registration-user-name-container{
+		width: 25rem;
+	}
+	.registration-next-button-container{
+		width: 25rem;
+	}
+	.go-to-login-container{
+		width: 25rem;
+	}
+	.go-to-login-button-input{
+		font-size: 1.25rem;
+		letter-spacing: 0px;
+		word-spacing: 0px;
+	}
+}
+@media (orientation: landscape) and (max-height: 525px){
+	.registration-form-part-1 {
+		width: 75%;
+		right: 12.5%;
+	}
+	.registration-user-name-input-div {
+		font-size: 2.75rem;
+	}
+	.registration-next-button-container{
+		height: 3rem;
+	}
+	.registration-next-button-input {
+		font-size: 1.5rem;
+	}
+	.go-to-login-container {
+		height: 3rem;
+	}
+	.registration-user-email-input {
+		font-size: 2rem;
+	}
+	.registration-user-password-input {
+		font-size: 2rem;
+	}
+	.registration-user-password-confirmation-input {
+		font-size: 2rem;
+	}
+	.registration-submit-button-input {
+		font-size: 2rem;
+	}
+}
+
+@media (orientation: landscape) and (max-height: 450px){
+	.registration-user-name-container {
+		width: 20rem;
+	}
+	.registration-next-button-container {
+		width: 20rem;
+		height: 2.5rem;
+	}
+	.go-to-login-container {
+		width: 20rem;
+		height: 2.5rem;
+	}
+	.registration-user-email-input {
+		font-size: 1.5rem;
+	}
+	.registration-user-password-input {
+		font-size: 1.5rem;
+	}
+	.registration-user-password-confirmation-input {
+		font-size: 1.5rem;
+	}
+	.registration-submit-button-input {
+		font-size: 1.5rem;
+	}
+}
+
+@media (orientation: landscape) and (max-height: 400px){
+	.registration-form-part-1 {
+		width: 66.6%;
+		right: 16.65%;
+	}
+	.hello-sticker-heading {
+		font-size: 2.25rem;
+	}
+	.registration-user-email-container {
+		height: 3rem;
+	}
+	.registration-user-password-container {
+		height: 3rem;
+	}
+	.registration-user-password-confirmation-container {
+		height: 3rem;
+	}
+	.registration-submit-button-container {
+		height: 3rem;
+	}
+}
+
+@media (orientation: landscape) and (max-height: 375px){
+	.registration-user-name-container {
+		width: 17.5rem;
+	}
+	.registration-next-button-container {
+		width: 17.5rem;
+		height: 2rem;
+	}
+	.go-to-login-container {
+		width: 17.5rem;
+		height: 2rem;
+	}
+	.go-to-login-button-input {
+		font-size: 1rem;
+	}
+}
+
+@media (orientation: landscape) and (max-height: 350px){
+	.registration-form-part-1 {
+		width: 60%;
+		right: 20%;
+	}
+	.registration-user-name-input-div {
+		font-size: 2.5rem;
+	}
+	.registration-next-button-input {
+		font-size: 1.25rem;
+	}
+}
+
+/* Transition classes for parts 1 and 2 of the form */
+/* Must come after media queries or else the media queries will override them */
+.registration-form-part-1-after-transition {
+	right: 100%;
+	visibility: collapse;
+	transition: right 500ms, visibility 550ms;
+}
+.registration-form-part-2-after-transition {
+	right: 0%;
+	visibility: visible;
+	transition: right 500ms, visibility 0ms;
+}

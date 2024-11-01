@@ -1,0 +1,287 @@
+<%layout("layouts/boilerplate")%>
+<%block('head').append(`<link rel="stylesheet" href="/css/to-do-lists.css">`) %>
+<%block('head').append(`<link rel="stylesheet" href="/css/user-settings.css">`) %>
+<%block('head').append(`<link rel="stylesheet" href="/css/nav.css">`) %>
+<%block('head').append(`<title>Your To-Do Lists</title>`) %>
+<div class="to-do-lists-container">
+	<%-include('../partials/desktop-pen')%>
+	<%-include('../partials/desktop-coffee-cup')%>
+	<%-include('../partials/desktop-stain-ring')%>
+	<%-include('../partials/desktop-calculator')%>
+	<div class="to-do-lists-burger-menu-blocker-dummy-container">
+		<div class="to-do-lists-top-bar-container">
+			<div class="to-do-lists-top-bar-dummy-container">
+			</div>
+			<div class="to-do-lists-list-owner-container">
+				<form class="to-do-lists-list-owner-update-form" action="/user/update" method="post">
+					<input class="to-do-lists-list-owner-input top-bar-input" type="text" name="newUserName" tabindex="13"
+						<%if(user.userName.includes(" ")){%>
+							<%const spaceIndex = user.userName.indexOf(" ");%>
+							<%const firstName = user.userName.slice(0, spaceIndex);%>
+							placeholder="<%=firstName%>'s lists"
+						<%}else{%>
+							placeholder="<%=user.userName%>'s lists"
+						<%}%>>
+					<div class="to-do-lists-heading-container-under-600-px-width">
+						<span class="to-do-lists-heading-under-600-px-width">Your lists</span>
+					</div>
+					<span class="to-do-lists-top-bar-user-name-change-input-tooltip">You can click here to change your name</span>
+				</form>
+			</div>
+			<%-include('../partials/userButton')%>
+		</div>
+	</div>
+	<%-include('../partials/nav')%>
+	<div class="to-do-lists-list-container">
+		<%for (let [index, each] of toDoLists.entries()){%>
+			<div class="to-do-lists-list">
+				<div class="to-do-lists-vertical-hr-spacer"></div>
+				<hr class="to-do-lists-vertical-hr">
+				<form class="to-do-lists-list-name-inline-edit-form" action="/lists/edit/<%=each._id%>" method="post">
+					<input class="to-do-lists-list-name-inline-edit-form-input" id="to-do-lists-list-name-inline-edit-form-input-<%=index%>" type="text" name="toDoListsEditListNameText" value="<%=each.listName%>" placeholder='Input a new list name and press "Enter"...' data-index="<%=index%>" data-list-id="<%=each._id%>" tabindex="0">
+				</form>
+				<div class="to-do-lists-list-details-container">
+					<form class="to-do-lists-list-category-inline-edit-form" action="/lists/edit/<%=each._id%>" method="post">
+						<select class="to-do-lists-list-category-inline-edit-form-input" name="toDoListsEditListCategory" value="<%=each.listCategory%>" id="to-do-list-list-category" tabindex="0">
+							<option value="" disabled>Category:</option>
+							<option id="inline-edit-personal<%=index%>" value="personal">Personal</option>
+							<script type="text/javascript">
+								const inlineEditOptionPersonal<%=index%> = document.getElementById("inline-edit-personal<%=index%>");
+								if("<%=(each.listCategory)%>"=="personal"){
+									inlineEditOptionPersonal<%=index%>.defaultSelected = true;
+								}
+							</script>
+							<option id="inline-edit-professional<%=index%>" value="professional">Professional</option>
+							<script type="text/javascript">
+								const inlineEditOptionProfessional<%=index%> = document.getElementById("inline-edit-professional<%=index%>");
+								if("<%=(each.listCategory)%>"=="professional"){
+									inlineEditOptionProfessional<%=index%>.defaultSelected = true;
+								}
+							</script>
+						</select>
+					</form>
+					<div class="to-do-lists-list-view-button-container">
+						<button class="to-do-lists-list-view-button" value="<%=index%>" type="button" name="viewButton" id="to-do-lists-list-view-button" tabindex="0">
+							<a class="to-do-lists-list-anchor" href="/list/<%=each._id%>" tabindex="-1">
+								<img class="to-do-lists-list-view-button-icon" src="/images/view-symbol.png" alt="View this list">
+							</a>
+						</button>
+					</div>
+					<div class="to-do-lists-list-edit-button-container">
+						<button class="to-do-lists-list-edit-button" value="<%=index%>" type="button" name="editButton" id="to-do-lists-list-edit-button" tabindex="0">
+							<img class="to-do-lists-list-edit-button-icon" src="/images/edit-symbol.png" alt="Edit this list">
+						</button>
+					</div>
+					<form class="to-do-lists-list-delete-button-container">
+						<button class="to-do-lists-list-delete-button" type="button" value="<%=index%>" name="deleteButton" id="to-do-lists-list-delete-button">
+							<img class="to-do-lists-list-delete-button-icon" src="/images/delete-symbol.png" alt="Delete this list">
+						</button>
+					</form>
+				</div>
+			</div>
+			<div class="to-do-lists-list-under-400-px-width">
+				<div class="to-do-lists-vertical-hr-spacer-under-400-px-width"></div>
+				<hr class="to-do-lists-vertical-hr-under-400-px-width">
+				<div class="to-do-lists-list-name-and-category-container">
+					<form class="to-do-lists-list-name-inline-edit-form" action="/lists/edit/<%=each._id%>" method="post">
+						<input class="to-do-lists-list-name-inline-edit-form-input-under-400-px" id="to-do-lists-list-name-inline-edit-form-input-<%=index%>" type="text" name="toDoListsEditListNameText" value="<%=each.listName%>" placeholder='Input a new list name and press "Enter"...' data-index="<%=index%>" data-list-id="<%=each._id%>" tabindex="0">
+					</form>
+					<form class="to-do-lists-list-category-inline-edit-form" action="/lists/edit/<%=each._id%>" method="post">
+						<select class="to-do-lists-list-category-inline-edit-form-input" name="toDoListsEditListCategory" value="<%=each.listCategory%>" id="to-do-list-list-category" tabindex="0">
+							<option value="" disabled>Category:</option>
+							<option id="inline-edit-personal<%=index%>" value="personal">Personal</option>
+							<script type="text/javascript">
+								const inlineEditOptionPersonalUnder400px<%=index%> = document.getElementById("inline-edit-personal<%=index%>");
+								if("<%=(each.listCategory)%>"=="personal"){
+									inlineEditOptionPersonalUnder400px<%=index%>.defaultSelected = true;
+								}
+							</script>
+							<option id="inline-edit-professional<%=index%>" value="professional">Professional</option>
+							<script type="text/javascript">
+								const inlineEditOptionProfessionalUnder400px<%=index%> = document.getElementById("inline-edit-professional<%=index%>");
+								if("<%=(each.listCategory)%>"=="professional"){
+									inlineEditOptionProfessionalUnder400px<%=index%>.defaultSelected = true;
+								}
+							</script>
+						</select>
+					</form>
+				</div>
+				<div class="to-do-lists-list-buttons-container-under-400-px-width">
+					<div class="to-do-lists-list-view-button-container">
+						<a class="to-do-lists-list-anchor" href="/list/<%=each._id%>" tabindex="-1">
+							<button class="to-do-lists-list-view-button" value="<%=index%>" type="button" name="viewButton" id="to-do-lists-list-view-button" tabindex="0">
+								<img class="to-do-lists-list-view-button-icon" src="/images/view-symbol.png" alt="View this list">
+							</button>
+						</a>
+					</div>
+					<div class="to-do-lists-list-edit-button-container">
+						<button class="to-do-lists-list-edit-button" value="<%=index%>" type="button" name="editButton" id="to-do-lists-list-edit-button" tabindex="0">
+							<img class="to-do-lists-list-edit-button-icon" src="/images/edit-symbol.png" alt="Edit this list">
+						</button>
+					</div>
+					<form class="to-do-lists-list-delete-button-container">
+						<button class="to-do-lists-list-delete-button-under-400-px-width" value="<%=index%>" type="button" name="deleteButton" id="to-do-lists-list-delete-button">
+							<img class="to-do-lists-list-delete-button-icon" src="/images/delete-symbol.png" alt="Delete this list">
+						</button>
+					</form>
+				</div>
+			</div>
+			<div class="to-do-lists-delete-confirmation-container-backdrop">
+				<div class="to-do-lists-delete-confirmation-container" data-index="<%=index%>">
+					<div class="to-do-lists-delete-confirmation-form-header">Confirm?</div>
+					<form class="to-do-lists-delete-confirmation-form" action="/lists/delete/<%=each._id%>" method="post">
+						<% for(let i=0; i<9; i++) {%>
+							<hr class="to-do-lists-delete-confirmation-container-backdrop-hr" id="tdldccbh-<%=i+1%>">
+						<% } %>
+						<p class="to-do-lists-delete-confirmation-text">
+							Are you sure you want to delete this list? This cannot be undone.
+						</p>
+						<div class="to-do-lists-list-delete-confirmation-button-container">
+							<button class="to-do-lists-list-delete-confirmation-button" value="<%=index%>" type="submit" name="deleteConfirmationButton" id="to-do-lists-list-delete-confirmation-button">
+								<span>
+									Okay
+								</span>
+							</button>
+							<button class="to-do-lists-list-delete-confirmation-cancel-button" value="<%=index%>" type="button" name="deleteConfirmationCancelButton" id="to-do-lists-list-delete-confirmation-cancel-button">
+								<span>
+									Cancel
+								</span>
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="to-do-lists-delete-confirmation-container-backdrop-under-400-px-width">
+				<div class="to-do-lists-delete-confirmation-container-under-400-px-width" data-index="<%=index%>">
+					<div class="to-do-lists-delete-confirmation-form-header-under-400-px-width"></div>
+					<form class="to-do-lists-delete-confirmation-form-under-400-px-width" action="/lists/delete/<%=each._id%>" method="post">
+						<p class="to-do-lists-delete-confirmation-text">
+							Are you sure you want to delete this list? The list and all its associated list items will be deleted. This cannot be undone.
+						</p>
+						<div class="to-do-lists-list-delete-confirmation-button-container">
+							<button class="to-do-lists-list-delete-confirmation-button" value="<%=index%>" type="submit" name="deleteConfirmationButton" id="to-do-lists-list-delete-confirmation-button">
+								<span>Okay</span>
+							</button>
+							<button class="to-do-lists-list-delete-confirmation-cancel-button-under-400-px" value="<%=index%>" type="button" name="deleteConfirmationCancelButton" id="to-do-lists-list-delete-confirmation-cancel-button">
+								<span>Cancel</span>
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+			<hr class="to-do-lists-list-separator">
+			<hr class="to-do-lists-list-separator-lifted">
+		<%}%>
+	</div>
+	<!-- New list entry form // ------------------------------------------------------------------>
+	<div class="entry-form-show-button-container">
+		<button class="entry-form-show-button" type="button" name="entryFormShowButton" tabindex="1">
+			<img class="entry-form-show-button-icon" src="/images/add-symbol-silver.png" alt="Pull up the form to create a new list">
+		</button>
+	</div>
+	<div class="to-do-lists-list-entry-form-container">
+		<!-- Above 400px width -->
+		<form class="to-do-lists-list-entry-form" action="/lists" method="post">
+			<div class="to-do-lists-list-entry-form-list-name-container">
+				<input class="to-do-lists-list-entry-form-list-name-input" type="text" name="toDoListsListNameText" value="" id="to-do-list-list-name-text" placeholder="List name..." tabindex="1" autofocus>
+			</div>
+			<div class="to-do-lists-list-entry-form-list-category-container">
+				<select class="to-do-lists-list-entry-form-list-category-input" type="date" name="toDoListsListCategory" value="" id="to-do-list-list-category" tabindex="2">
+					<option selected disabled>Category:</option>
+					<option value="personal">Personal</option>
+					<option value="professional">Professional</option>
+				</select>
+				<button class="to-do-lists-list-entry-form-list-category-show-button" type="button" tabindex="-1">
+					<img class="to-do-lists-list-entry-form-list-category-input-icon" src="/images/category-symbol.png" alt="Select a list category">
+				</button>
+			</div>
+			<div class="to-do-lists-list-entry-form-list-owner-container">
+				<input type="text" name="toDoListsListOwner" value="<%=user._id%>" id="" hidden>
+			</div>
+			<div class="to-do-lists-list-entry-form-list-submit-button-container">
+				<button class="to-do-lists-list-entry-form-list-submit-button-input" value="" type="submit" name="to-do-list-item-submit-button" id="to-do-list-item-submit-button" tabindex="3">
+					<img class="to-do-lists-list-submit-button-icon" src="/images/add-symbol.png" alt="Create this list">
+				</button>
+			</div>
+		</form>
+		<!-- Below 400px width -->
+		<form class="to-do-lists-list-entry-form-under-400-px-width" action="/lists" method="post">
+			<div class="to-do-lists-list-name-and-category-container-under-400-px-width">
+				<div class="to-do-lists-list-entry-form-list-name-container-under-400-px-width">
+					<input class="to-do-lists-list-entry-form-list-name-input-under-400-px-width" type="text" name="toDoListsListNameText" value="" id="to-do-list-list-name-text" placeholder="List name..." tabindex="1" autofocus>
+				</div>
+				<div class="to-do-lists-list-entry-form-list-category-container-under-400-px-width">
+					<select class="to-do-lists-list-entry-form-list-category-input-under-400-px-width" type="date" name="toDoListsListCategory" value="" id="to-do-list-list-category" tabindex="2">
+						<option selected disabled>Category:</option>
+						<option value="personal">Personal</option>
+						<option value="professional">Professional</option>
+					</select>
+				</div>
+			</div>
+			<div class="to-do-lists-list-entry-form-list-owner-container">
+				<input type="text" name="toDoListsListOwner" value="<%=user._id%>" id="" hidden>
+			</div>
+			<div class="to-do-lists-list-entry-form-list-submit-button-container-under-400-px-width">
+				<button class="to-do-lists-list-entry-form-list-submit-button-input" value="" type="submit" name="to-do-list-item-submit-button" id="to-do-list-item-submit-button" tabindex="3">
+					<img class="to-do-lists-list-submit-button-icon" src="/images/add-symbol.png" alt="Create this list">
+				</button>
+			</div>
+		</form>
+	</div>
+</div>
+<!-- Modal list edit window // ---------------------------------------------------------------- -->
+<%for (let [index, each] of toDoLists.entries()){%>
+	<div class="list-edit-modal-backdrop" data-index="<%=index%>">
+		<div class="popup-wrapper" id="list-<%=index%>">
+			<div class="popup-container">
+				<div class="list-edit-modal-header-and-form-container">
+					<div class="list-edit-modal-form-header">
+						<p class="list-edit-modal-instructions-text">
+							Edit list
+						</p>
+					</div>
+					<form class="to-do-list-edit-form" action="/lists/edit/<%=each._id%>" method="post" data-index="<%=index%>">
+						<div class="to-do-lists-list-edit-form-list-name-container">
+							<input class="to-do-lists-list-edit-form-list-name-input" type="text" name="toDoListsEditListNameText" value="<%=each.listName%>" id="to-do-lists-list-edit-form-list-name-input-<%=index%>" placeholder="List name..." data-index="<%=index%>" tabindex="1">
+						</div>
+						<hr class="list-edit-modal-hr" id="list-edit-modal-hr-name">
+						<div class="to-do-lists-list-edit-form-list-category-container">
+							<select class="to-do-lists-list-edit-form-list-category-input" name="toDoListsEditListCategory" value="<%=each.listCategory%>" id="to-do-list-list-category" tabindex="2">
+								<option value="" disabled>Category:</option>
+								<option id="modal-edit-personal<%=index%>" value="personal">Personal</option>
+								<script type="text/javascript">
+									const modalEditOptionPersonal<%=index%> = document.getElementById("modal-edit-personal<%=index%>");
+									if("<%=(each.listCategory)%>"=="personal"){
+										modalEditOptionPersonal<%=index%>.defaultSelected = true;
+									}
+								</script>
+								<option id="modal-edit-professional<%=index%>" value="professional">Professional</option>
+								<script type="text/javascript">
+									const modalEditOptionProfessional<%=index%> = document.getElementById("modal-edit-professional<%=index%>");
+									if("<%=(each.listCategory)%>"=="professional"){
+										modalEditOptionProfessional<%=index%>.defaultSelected = true;
+									}
+								</script>
+							</select>
+						</div>
+						<hr class="list-edit-modal-hr" id="list-edit-modal-hr-category">
+						<div class="to-do-lists-list-edit-form-list-submit-button-container">
+							<input class="to-do-lists-list-edit-form-list-submit-button-input" type="submit" name="toDoListsListEditSubmitButton" value="Save it!" id="to-do-list-item-submit-button-<%=index%>" data-index="<%=index%>" tabindex="3">
+						</div>
+						<hr class="list-edit-modal-hr" id="list-edit-modal-hr-submit">
+						<div class="to-do-lists-list-edit-form-list-cancel-button-container">
+							<input class="to-do-lists-list-edit-form-list-cancel-button-input" type="button" name="toDoListsListEditCancelButton" value="Cancel" id="to-do-list-edit-form-item-cancel-button-<%=index%>" data-index="<%=index%>" tabindex="4">
+						</div>
+						<hr class="list-edit-modal-hr" id="list-edit-modal-hr-cancel">
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+<%}%>
+<%-include('../partials/userSettings')%>
+<%-include('../partials/goodbye')%>
+<%-include('../partials/footer-logged-in')%>
+<%-include('../partials/credits-logged-in')%>
+<script type="module" src="/javascript/toDoLists.js" charset="utf-8"></script>
+<script type="module" src="/javascript/desktopItems.js" charset="utf-8"></script>

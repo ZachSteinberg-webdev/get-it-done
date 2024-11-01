@@ -1,0 +1,100 @@
+ /* #     #               */
+ /* ##    #   ##   #    # */
+ /* # #   #  #  #  #    # */
+ /* #  #  # #    # #    # */
+ /* #   # # ###### #    # */
+ /* #    ## #    #  #  #  */
+ /* #     # #    #   ##   */
+
+.navigation-small {
+	height: 300px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: center;
+	z-index: 3;
+	line-height: 2.5;
+	padding: 1rem 0.5rem 0.5rem 0.5rem;
+	right: 2%;
+	width: min-content;
+	text-align: center;
+	font-size: 1.3rem;
+	position: absolute;
+	top: -280px;
+	color: black;
+	background-color: var(--background-color-lighter);
+	list-style-type: none;
+	border-left: var(--border);
+	border-right: var(--border);
+	border-bottom: var(--border);
+	border-bottom-left-radius: 1rem;
+	border-bottom-right-radius: 1rem;
+	box-shadow: 0 0.2rem 0.25rem 0.2rem #585858;
+	transition: top 1000ms;
+	background-image: url('../images/leather-1969-in-architextures.jpg');
+	background-position: center;
+	background-repeat: repeat;
+	background-size: auto;
+}
+.navigation-small button {
+	height: min-content;
+	width: 100%;
+	padding: 0.5rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: var(--font-main);
+	font-weight: var(--bold-font);
+	font-size: 1.5rem;
+	color: #bebebe;
+	cursor: default;
+	background-color: transparent;
+	border: 0.1875rem solid #bebebe;
+	border-radius: 0.5rem;
+	transition: transform 250ms;
+}
+.navigation-small button:hover {
+	transform: scale(1.05);
+}
+.navigation-small button:active {
+	transform: scale(1.05);
+}
+.user-settings-button .nav-link-icon-container {
+	height: 30px;
+	width: 30px;
+	margin: 0 0.5rem;
+	background-image: url("/images/settings-symbol-silver.png");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+.user-instructions-button .nav-link-icon-container {
+	height: 30px;
+	width: 30px;
+	margin: 0 0.5rem;
+	background-image: url("/images/instructions-symbol-silver.png");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+.user-logout-button .nav-link-icon-container {
+	height: 30px;
+	width: 30px;
+	margin: 0 0.5rem;
+	background-image: url("/images/logout-symbol-silver.png");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+.navigation-small-horizontal-rule {
+	border-top: 0.25px solid black;
+	height: 0px;
+	width: 90%;
+	opacity: 0;
+}
+.show { /* Must follow .navigation for cascade effect */
+	opacity: 100%;
+	position: absolute;
+	top: -80px;
+	transition: top 750ms;
+}

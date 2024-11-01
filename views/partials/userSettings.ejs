@@ -1,0 +1,41 @@
+<div class="user-edit-modal-backdrop">
+	<div class="user-edit-popup-wrapper">
+		<div class="user-edit-header-and-form-container">
+			<div class="user-edit-form-header">
+				<p class="user-edit-details-instructions-text">
+					Update your details
+				</p>
+			</div>
+			<form class="user-edit-form"  action="/user/update" method="post">
+				<div class="user-edit-user-name-container">
+					<input class="user-edit-user-name-input" type="text" name="newUserName" value="<%=user.userName%>" id="user-edit-user-name" placeholder="Your new name" tabindex="1">
+				</div>
+				<hr class="user-edit-modal-hr" id="user-edit-modal-hr-username">
+				<div class="user-edit-user-email-container">
+					<input class="user-edit-user-email-input" type="text" name="newUserEmail" value="<%=user.userEmail%>" id="user-edit-user-email" placeholder="Your new email address" tabindex="2">
+				</div>
+				<hr class="user-edit-modal-hr" id="user-edit-modal-hr-email">
+				<div class="user-edit-user-current-password-container">
+					<input class="user-edit-user-current-password-input" type="password" name="userCurrentPassword" value="" id="user-edit-user-current-password" placeholder="Your current password" tabindex="3">
+				</div>
+				<hr class="user-edit-modal-hr" id="user-edit-modal-hr-current-password">
+				<div class="user-edit-user-new-password-container">
+					<input class="user-edit-user-new-password-input" type="password" name="userNewPassword" value="" id="user-edit-user-new-password" placeholder="Your new password" tabindex="4">
+				</div>
+				<hr class="user-edit-modal-hr" id="user-edit-modal-hr-new-password">
+				<small class="user-edit-password-instruction-text">
+					If you don't want to change your password, leave the password fields blank.
+				</small>
+				<hr class="user-edit-modal-hr" id="user-edit-modal-hr-instructions">
+				<div class="user-edit-submit-button-container">
+					<input class="user-edit-submit-button-input" type="submit" name="userEditSubmitButton" value="Update!" id="user-edit-submit-button" tabindex="5">
+				</div>
+				<hr class="user-edit-modal-hr" id="user-edit-modal-hr-submit">
+				<div class="user-edit-cancel-button-container">
+					<input class="user-edit-cancel-button-input" type="button" name="userEditCancelButton" value="Cancel" id="user-edit-cancel-button" tabindex="6">
+				</div>
+				<hr class="user-edit-modal-hr" id="user-edit-modal-hr-cancel">
+			</form>
+		</div>
+	</div>
+</div>
