@@ -8,7 +8,7 @@ function userLogoutButtonClickEventHandler(event){
 	setTimeout(()=>{
 		goodbyeContainer.classList.add('goodbye-container-in-use');
 		setTimeout(()=>{
-			window.location.href = '/to-do-list/logout';
+			window.location.href = '/logout';
 		}, 2500);
 	}, 250);
 };

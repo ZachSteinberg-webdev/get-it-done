@@ -109,6 +109,10 @@ app.use(userRoutes);
 app.use(listRoutes);
 app.use(listItemRoutes);
 
+app.get('/', (req, res)=>{
+	res.redirect('/login');
+});
+
 app.get('/test', (req,res)=>{
 	if(true===false){
 		next();

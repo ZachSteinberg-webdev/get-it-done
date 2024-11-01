@@ -7,7 +7,7 @@ import './loginEventHandlers.js';
 
 // Event handlers ----------------------------------------------------------------
 function registrationButtonClickEventHandler(event){
-	window.location.href = '/to-do-list/register';
+	window.location.href = '/register';
 };
 
 globalizeVariables({

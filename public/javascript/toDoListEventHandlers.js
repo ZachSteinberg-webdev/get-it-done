@@ -593,7 +593,7 @@ function newListItemEntryFormSubmitButtonKeydownEventHandler(event){
 
 function listBackButtonClickEventHandler(event){
 	stopPropagationAndPreventDefault(event);
-	window.location.href = '/to-do-list/lists';
+	window.location.href = '/lists';
 };
 
 globalizeVariables({

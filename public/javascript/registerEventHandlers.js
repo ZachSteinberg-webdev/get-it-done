@@ -54,7 +54,7 @@ function registrationFormSubmitEventHandler(event){
 
 // Take user back to login
 function loginButtonClickEventHandler(event){
-	window.location.href = '/to-do-list/login';
+	window.location.href = '/login';
 };
 
 // Globalized variables ----------------------------------------------------------------
