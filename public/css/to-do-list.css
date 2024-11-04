@@ -996,7 +996,7 @@ body {
 }
 .to-do-list-entry-form-item-due-date-picker-show-button {
 	height: 100%;
-	width: 100%;
+	width: 4rem;
 	color: var(--text-color);
 	background-color: #ffffff9e;
 	border: var(--border);
