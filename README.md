@@ -1,0 +1,3 @@
+Get It Done! is a skeuomorphic to-do list web application with a moveable, built-in calculator. It uses HTML, CSS and JavaScript, plus dynamic templating via EJS, server functionality via Node.js, as well as a database via MongoDB and Mongoose, with a focus on keeping the user interface clean and simple, so as to stay out of the way of the user and let them focus on... getting it done!
+
+This is my first web application! Through building this application, I really began to get a sense for how exciting it would be to work on a real web application used by people in their personal and professional pursuits.
