@@ -173,6 +173,14 @@ body {
 	border-radius: var(--border-radius);
 	background-color: var(--background-color-lighter);
 }
+.project-guest-credentials-container, .project-guest-credentials {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	font-family: var(--font-family);
+}
 
 /* Media queries */
 
