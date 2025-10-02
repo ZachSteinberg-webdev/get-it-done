@@ -4,7 +4,8 @@
 	--font-size-input: 1.5rem;
 	--font-size-title: 2.5rem;
 }
-body{
+
+body {
 	height: 100vh;
 	width: 100vw;
 	margin: 0;
@@ -15,7 +16,8 @@ body{
 	align-items: center;
 	box-sizing: border-box;
 }
-.error-container{
+
+.error-container {
 	height: min-content;
 	width: 60vw;
 	display: flex;
@@ -25,25 +27,28 @@ body{
 	border: var(--border);
 	border-radius: var(--border-radius);
 }
-.error-heading-container{
+
+.error-heading-container {
 	padding: 1rem;
 }
-.error-heading{
+
+.error-heading {
 	font-family: sans-serif;
 }
-.error-emoji-container{
+
+.error-emoji-container {
 	padding: 1rem;
 }
-.error-emoji{
+
+.error-emoji {
 	height: 40vh;
 	width: auto;
 }
-.error-text-container{
+
+.error-text-container {
 	padding: 1rem;
 }
-.error-text{
-	font-family: sans-serif;
-}
-.error-stack-trace{
 
+.error-text {
+	font-family: sans-serif;
 }

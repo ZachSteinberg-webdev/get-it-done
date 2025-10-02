@@ -1,13 +1,14 @@
+<% const guestActive = typeof isGuest !== 'undefined' && isGuest; %>
 <div class="navigation-small" inert>
-	<button class="nav-link user-settings-button" type="button" name="userSettingsButton" tabindex="10">
+	<button class="nav-link user-settings-button" type="button" name="userSettingsButton" tabindex="10"<% if (guestActive) { %> disabled title="Guest mode users cannot update settings."<% } %>>
 		<div class="nav-link-icon-container">
 		</div>
 		<span>Settings</span>
 	</button>
 	<hr class="navigation-small-horizontal-rule">
-	<button class="nav-link user-logout-button" type="button" name="userLogoutButton" tabindex="12">
+	<button class="nav-link user-logout-button" type="button" name="userLogoutButton" tabindex="12" data-action="<%= guestActive ? '/register' : '/logout' %>">
 		<div class="nav-link-icon-container">
 		</div>
-		<span>Logout</span>
+		<span><%= guestActive ? 'Register' : 'Logout' %></span>
 	</button>
 </div>

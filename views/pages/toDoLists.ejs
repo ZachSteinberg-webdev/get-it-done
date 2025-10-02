@@ -8,6 +8,7 @@
 	<%-include('../partials/desktop-coffee-cup')%>
 	<%-include('../partials/desktop-stain-ring')%>
 	<%-include('../partials/desktop-calculator')%>
+	<%-include('../partials/guestBanner')%>
 	<div class="to-do-lists-burger-menu-blocker-dummy-container">
 		<div class="to-do-lists-top-bar-container">
 			<div class="to-do-lists-top-bar-dummy-container">
@@ -15,12 +16,17 @@
 			<div class="to-do-lists-list-owner-container">
 				<form class="to-do-lists-list-owner-update-form" action="/user/update" method="post">
 					<input class="to-do-lists-list-owner-input top-bar-input" type="text" name="newUserName" tabindex="13"
-						<%if(user.userName.includes(" ")){%>
+						<% if(isGuest){ %>
+							disabled title="Guest mode uses a generic name. Create an account to personalize it." value="Guest mode"
+						<% } %>
+						<%if(!isGuest && user.userName.includes(" ")){%>
 							<%const spaceIndex = user.userName.indexOf(" ");%>
 							<%const firstName = user.userName.slice(0, spaceIndex);%>
 							placeholder="<%=firstName%>'s lists"
-						<%}else{%>
+						<%}else if(!isGuest){%>
 							placeholder="<%=user.userName%>'s lists"
+						<%}else{%>
+							placeholder="Guest mode"
 						<%}%>>
 					<div class="to-do-lists-heading-container-under-600-px-width">
 						<span class="to-do-lists-heading-under-600-px-width">Your lists</span>
@@ -283,5 +289,8 @@
 <%-include('../partials/goodbye')%>
 <%-include('../partials/footer-logged-in')%>
 <%-include('../partials/credits-logged-in')%>
+<% if (isGuest) { %>
+<script type="application/json" id="guest-mode-bootstrap-data"><%- JSON.stringify(guestData) %></script>
+<% } %>
 <script type="module" src="/javascript/toDoLists.js" charset="utf-8"></script>
 <script type="module" src="/javascript/desktopItems.js" charset="utf-8"></script>

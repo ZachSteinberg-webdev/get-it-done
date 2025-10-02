@@ -21,6 +21,11 @@ const {
 	isLoggedIn
 } = require('./utilities/middleware');
 const {
+	isGuestSession,
+	getGuestUser,
+	exportGuestData
+} = require('./utilities/guestMode');
+const {
 	CustomError,
 	tryCatch,
 	errorHandler
@@ -31,6 +36,7 @@ const router = express.Router();
 const userRoutes = require('./routes/userRoutes.js');
 const listRoutes = require('./routes/listRoutes.js');
 const listItemRoutes = require('./routes/listItemRoutes.js');
+const guestRoutes = require('./routes/guestRoutes.js');
 
 const mongoDbUrl = process.env.MONGO_ATLAS_URL;
 
@@ -100,11 +106,28 @@ app.use((req,res,next)=>{
 	res.locals.registrationSuccess = req.flash('registrationSuccess');
 	res.locals.loginError = req.flash('loginError');
 	res.locals.loginSuccess = req.flash('loginSuccess');
-	res.locals.currentUser = req.user;
+	const guestActive = isGuestSession(req.session);
+	if(guestActive){
+		const guestUser = JSON.parse(JSON.stringify(getGuestUser(req.session)));
+		if(!req.user){
+			req.user = guestUser;
+		}
+		res.locals.currentUser = guestUser;
+	}else{
+		res.locals.currentUser = req.user;
+	}
+	res.locals.isGuest = guestActive;
+	res.locals.guestData = guestActive ? exportGuestData(req.session) : null;
+	const shouldClearGuestStorage = Boolean(req.session && req.session.clearGuestStorage);
+	res.locals.clearGuestStorage = shouldClearGuestStorage;
+	if(shouldClearGuestStorage){
+		delete req.session.clearGuestStorage;
+	}
 	next();
 });
 
 // Router extensions
+app.use(guestRoutes);
 app.use(userRoutes);
 app.use(listRoutes);
 app.use(listItemRoutes);

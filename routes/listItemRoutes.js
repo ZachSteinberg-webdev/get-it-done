@@ -15,10 +15,28 @@ const {
 	CustomError,
 	tryCatch
 } = require('../utilities/errorHandling');
+const {
+	isGuestSession,
+	createGuestItem,
+	updateGuestItem,
+	deleteGuestItem,
+	getGuestItemById,
+	runGuestSessionMutation
+} = require('../utilities/guestMode');
 
 // Create a new list item
 router.post('/list/:listId', isLoggedIn, tryCatch(async(req,res)=>{
 	const listId = req.params.listId;
+	if(isGuestSession(req.session)){
+		const created = await runGuestSessionMutation(req, (session)=>{
+			return createGuestItem(session, listId, req.body || {});
+		});
+		if(!created){
+			req.flash('error', `Sorry! That list doesn't exist.`);
+			return res.redirect('/lists');
+		}
+		return res.redirect(`/list/${listId}`);
+	}
 	const newListItem = {
 		itemText: req.body.toDoListItemText,
 		itemDueDate: req.body.toDoListItemDueDate,
@@ -36,6 +54,16 @@ router.post('/list/edit/:listItemId', isLoggedIn, tryCatch(async(req,res)=>{
 		req.body.toDoListItemIsCompleted=false;
 	};
 	const listItemId = req.params.listItemId;
+	if(isGuestSession(req.session)){
+		const updated = await runGuestSessionMutation(req, (session)=>{
+			return updateGuestItem(session, listItemId, req.body || {});
+		});
+		if(!updated){
+			req.flash('error', `Sorry! That list item doesn't exist.`);
+			return res.redirect('/lists');
+		}
+		return res.redirect(`/list/${updated.itemOwner}`);
+	}
 	const listItem = await ToDoListItem.findById(`${listItemId}`);
 	const updatedListItem = {
 		itemText: req.body.toDoListItemText,
@@ -51,6 +79,20 @@ router.post('/list/edit/:listItemId', isLoggedIn, tryCatch(async(req,res)=>{
 // Delete a list item
 router.post('/list/delete/:listItemId', isLoggedIn, tryCatch(async(req,res)=>{
 	const listItemId = req.params.listItemId;
+	if(isGuestSession(req.session)){
+		const result = await runGuestSessionMutation(req, (session)=>{
+			const currentItem = getGuestItemById(session, listItemId);
+			const ownerId = currentItem ? currentItem.itemOwner : null;
+			const removed = deleteGuestItem(session, listItemId);
+			return { owner: ownerId, deleted: removed };
+		});
+		const owner = result ? result.owner : null;
+		if(!owner){
+			req.flash('error', `Sorry! That list item doesn't exist.`);
+			return res.redirect('/lists');
+		}
+		return res.redirect(`/list/${owner}`);
+	}
 	const listItem = await ToDoListItem.findByIdAndDelete(`${listItemId}`);
 	res.redirect(`/list/${listItem.itemOwner}`);
 }));

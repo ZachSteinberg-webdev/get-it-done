@@ -8,7 +8,6 @@ const ToDoListItem = require('../models/to-do-list-item-model');
 const passport = require('passport');
 const mongoose = require('mongoose');
 const {
-	logUserIn,
 	getUserFirstName,
 	isLoggedIn,
 	doUserUpdate,
@@ -16,12 +15,20 @@ const {
 	isNewUserNameDifferent,
 	isNewUserEmailDifferent,
 	doAfterSuccessCondition,
-	doAfterFailureCondition
+	doAfterFailureCondition,
+	requireNonGuest
 } = require('../utilities/middleware.js');
 const {
 	CustomError,
 	tryCatch
 } = require('../utilities/errorHandling');
+const {
+	isGuestSession,
+	updateGuestDesktopItems,
+	clearGuestSession,
+	migrateGuestDataToUser,
+	runGuestSessionMutation
+} = require('../utilities/guestMode');
 
 
 // Show registration screen
@@ -47,15 +54,24 @@ router.post('/register', tryCatch(async(req,res,next)=>{
 	}else if(registrationUserPassword===registrationUserPasswordConfirmation){
 		const registrationDetails = {userName: req.body.registrationUserName, userEmail: req.body.registrationUserEmail};
 		const registrationPassword = req.body.registrationUserPassword;
-		const newUser = await new User(registrationDetails);
 		const registeredUser = await User.register(registrationDetails, registrationPassword);
+		let migrationSummary = {listsMigrated: 0, itemsMigrated: 0};
+		const wasGuest = isGuestSession(req.session);
+		if(wasGuest){
+			migrationSummary = await runGuestSessionMutation(req, (session)=> migrateGuestDataToUser(session, registeredUser));
+		}
 		req.login(registeredUser, (e)=>{
 			if(e){
 				return next(e);
-			}else{
-				req.flash('registrationSuccess', 'Welcome aboard and happy list-keeping!');
-				return res.redirect('/lists');
 			}
+			if(wasGuest){
+				req.session.clearGuestStorage = true;
+			}
+			if(migrationSummary.listsMigrated || migrationSummary.itemsMigrated){
+				req.flash('success', `${migrationSummary.listsMigrated} list${migrationSummary.listsMigrated===1?'':'s'} and ${migrationSummary.itemsMigrated} item${migrationSummary.itemsMigrated===1?'':'s'} migrated from guest mode.`);
+			}
+			req.flash('registrationSuccess', 'Welcome aboard and happy list-keeping!');
+			res.redirect('/lists');
 		});
 	}else if(registrationUserPassword!==registrationUserPasswordConfirmation){
 		throw new CustomError(400, `Your password and password confirmation entries do not match. Please try again.`, 'registrationError', 'registrationRoute');
@@ -76,27 +92,64 @@ router.get('/login', tryCatch(async(req,res)=>{
 }));
 
 // Process login submission
-router.post('/login', logUserIn, tryCatch(async(req,res)=>{
-	req.flash('loginSuccess', `Welcome back, ${getUserFirstName(req)}! Good to see you again. :)`);
-	if(req.app.locals.originalUrl){
-		const originalUrl = req.app.locals.originalUrl;
-		req.app.locals.originalUrl = undefined;
-		res.redirect(originalUrl);
-	}else{
-		res.redirect('/lists');
-	};
-}));
+router.post('/login', (req,res,next)=>{
+	passport.authenticate('local', async(err,user,info)=>{
+		try{
+			if(err){
+				return next(err);
+			}
+			if(!user){
+				req.flash('loginError', info?.message || 'Invalid email or password. Please try again.');
+				return res.redirect('/login');
+			}
+			let migrationSummary = {listsMigrated: 0, itemsMigrated: 0};
+			const wasGuest = isGuestSession(req.session);
+			if(wasGuest){
+				migrationSummary = await runGuestSessionMutation(req, (session)=> migrateGuestDataToUser(session, user));
+			}
+			req.login(user, (loginErr)=>{
+				if(loginErr){
+					return next(loginErr);
+				}
+				if(wasGuest){
+					req.session.clearGuestStorage = true;
+				}
+				req.flash('loginSuccess', `Welcome back, ${getUserFirstName(req)}! Good to see you again. :)`);
+				if(migrationSummary.listsMigrated || migrationSummary.itemsMigrated){
+					req.flash('success', `We moved ${migrationSummary.listsMigrated} list${migrationSummary.listsMigrated===1?'':'s'} and ${migrationSummary.itemsMigrated} item${migrationSummary.itemsMigrated===1?'':'s'} from guest mode into your account.`);
+				}
+				if(req.app.locals.originalUrl){
+					const originalUrl = req.app.locals.originalUrl;
+					req.app.locals.originalUrl = undefined;
+					return res.redirect(originalUrl);
+				}
+				return res.redirect('/lists');
+			});
+		}catch(handlerError){
+			next(handlerError);
+		}
+	})(req,res,next);
+});
 
 // Log user out
-router.get('/logout', tryCatch(async(req,res)=>{
+router.get('/logout', tryCatch(async(req,res,next)=>{
 	req.app.locals.originalUrl = req.get('referer');
+	if(isGuestSession(req.session)){
+		await runGuestSessionMutation(req, (session)=>{
+			clearGuestSession(session);
+		});
+		return res.redirect('/login');
+	}
 	req.logout((err)=>{
+		if(err){
+			return next(err);
+		}
 		res.redirect('/login');
-	})
+	});
 }));
 
 // Update userName, userEmail and/or password
-router.post('/user/update', tryCatch(async(req,res)=>{
+router.post('/user/update', requireNonGuest, tryCatch(async(req,res)=>{
 	const previousUrl = req.get('referer');
 	const userId = req.user._id;
 	const currentEmail = req.user.userEmail;
@@ -132,6 +185,12 @@ router.post('/user/update', tryCatch(async(req,res)=>{
 
 // Update desktop item location and rotation
 router.post('/user/desktop', tryCatch(async(req,res)=>{
+	if(isGuestSession(req.session)){
+		await runGuestSessionMutation(req, (session)=>{
+			updateGuestDesktopItems(session, req.body || {});
+		});
+		return res.json({ success: true });
+	}
 	let xPosition=req.body.itemXPosition;
 	let yPosition=req.body.itemYPosition;
 	let rotation=req.body.itemRotation;
@@ -149,6 +208,7 @@ router.post('/user/desktop', tryCatch(async(req,res)=>{
 		user.desktopItems[itemId].rotation=rotation;
 	};
 	await user.save();
+	res.json({ success: true });
 }));
 
 module.exports = router;

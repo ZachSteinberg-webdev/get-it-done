@@ -1,0 +1,10 @@
+<% if (typeof isGuest !== 'undefined' && isGuest) { %>
+<div class="guest-mode-alert" data-role="guest-alert">
+	<span class="guest-mode-alert-text">
+		You’re exploring Get It Done! in guest mode. <a class="guest-mode-alert-link" href="/register">Create an account</a> to save your lists permanently.
+	</span>
+	<button type="button" class="guest-mode-alert-dismiss" data-role="guest-alert-dismiss" aria-label="Dismiss guest mode notice">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>
+<% } %>

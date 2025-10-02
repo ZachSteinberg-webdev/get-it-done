@@ -1,9 +1,15 @@
  /* #     #                                                    */
+
  /* #     #   ##   #####  #   ##   #####  #      ######  ####  */
+
  /* #     #  #  #  #    # #  #  #  #    # #      #      #      */
+
  /* #     # #    # #    # # #    # #####  #      #####   ####  */
+
 	/* #   #  ###### #####  # ###### #    # #      #           # */
+
 	 /* # #   #    # #   #  # #    # #    # #      #      #    # */
+
 		/* #    #    # #    # # #    # #####  ###### ######  ####  */
 
 :root {
@@ -32,14 +38,21 @@
 }
 
 /* #     # */
+
 /* ##   ##   ##   # #    #    #####    ##    ####  ###### */
+
 /* # # # #  #  #  # ##   #    #    #  #  #  #    # #      */
+
 /* #  #  # #    # # # #  #    #    # #    # #      #####  */
+
 /* #     # ###### # #  # #    #####  ###### #  ### #      */
+
 /* #     # #    # # #   ##    #      #    # #    # #      */
+
 /* #     # #    # # #    #    #      #    #  ####  ###### */
 
 /* Main page */
+
 body {
 	width: 100vw;
 	height: 100vh;
@@ -57,6 +70,7 @@ body {
 	overflow: hidden;
 	transition: backdrop-filter 0.3s linear, -webkit-backdrop-filter 0.3s linear;
 }
+
 .to-do-lists-container {
 	max-width: 90vw;
 	height: calc(99vh - 0.5rem);
@@ -77,11 +91,17 @@ body {
 }
 
 /* #######                  ######                */
+
 	/* #     ####  #####     #     #   ##   #####   */
+
 	/* #    #    # #    #    #     #  #  #  #    #  */
+
 	/* #    #    # #    #    ######  #    # #    #  */
+
 	/* #    #    # #####     #     # ###### #####   */
+
 	/* #    #    # #         #     # #    # #   #   */
+
 	/* #     ####  #         ######  #    # #    #  */
 
 .to-do-lists-burger-menu-blocker-dummy-container {
@@ -98,6 +118,7 @@ body {
 	background-position: center;
 	z-index: 4;
 }
+
 .to-do-lists-top-bar-container {
 	height: 70px;
 	width: 100%;
@@ -119,6 +140,7 @@ body {
 	background-repeat: repeat;
 	background-size: auto;
 }
+
 .to-do-lists-top-bar-dummy-container {
 	height: 75%;
 	width: 5%;
@@ -130,6 +152,7 @@ body {
 	border-radius: 1rem;
 	overflow: hidden;
 }
+
 .to-do-lists-list-owner-container {
 	width: 100%;
 	height: 100%;
@@ -140,6 +163,7 @@ body {
 	align-items: center;
 	box-sizing: var(--box-sizing);
 }
+
 .to-do-lists-list-owner-update-form {
 	height: 100%;
 	width: 100%;
@@ -147,6 +171,7 @@ body {
 	justify-content: center;
 	align-items: center;
 }
+
 .to-do-lists-list-owner-input {
 	font-family: var(--font-main);
 	font-size: 1.75rem;
@@ -162,20 +187,25 @@ body {
 	background-color: transparent;
 	transition: border-color 500ms, background-color 500ms;
 }
+
 .to-do-lists-list-owner-input:hover {
 	border-color: rgba(25, 126, 250, 0.5);
 }
+
 .to-do-lists-list-owner-input:focus {
 	border-color: rgba(25, 126, 250, 0.5);
 }
+
 .to-do-lists-list-owner-input::placeholder {
 	color: #bebebe;
 	opacity: 1;
 }
+
 .grey-placeholder::placeholder {
 	color: #E4E4E4;
 	opacity: 1;
 }
+
 .to-do-lists-top-bar-user-name-change-input-tooltip {
 	visibility: hidden;
 	height: min-content;
@@ -195,6 +225,7 @@ body {
 	opacity: 0;
 	transition: opacity 0.3s;
 }
+
 .to-do-lists-top-bar-user-name-change-input-tooltip::after {
 	content: "";
 	position: absolute;
@@ -205,24 +236,33 @@ body {
 	border-style: solid;
 	border-color: transparent transparent #555 transparent;
 }
+
 .to-do-lists-list-owner-input:hover + .to-do-lists-top-bar-user-name-change-input-tooltip {
 	visibility: visible;
 	opacity: 1;
 }
+
 .to-do-lists-list-owner-input:focus + .to-do-lists-top-bar-user-name-change-input-tooltip {
 	visibility: hidden;
 	opacity: 0;
 }
+
 .to-do-lists-heading-container-under-600-px-width {
 	display: none;
 }
 
  /* #                                 #####                                                    */
+
  /* #       #  ####  #####  ####     #     #  ####  #    # #####   ##   # #    # ###### #####  */
+
  /* #       # #        #   #         #       #    # ##   #   #    #  #  # ##   # #      #    # */
+
  /* #       #  ####    #    ####     #       #    # # #  #   #   #    # # # #  # #####  #    # */
+
  /* #       #      #   #        #    #       #    # #  # #   #   ###### # #  # # #      #####  */
+
  /* #       # #    #   #   #    #    #     # #    # #   ##   #   #    # # #   ## #      #   #  */
+
  /* ####### #  ####    #    ####      #####   ####  #    #   #   #    # # #    # ###### #    # */
 
 .to-do-lists-list-container {
@@ -248,16 +288,20 @@ body {
 	scrollbar-color: transparent transparent;
 	background-color: white;
 }
+
 .to-do-lists-list-container::-webkit-scrollbar{
 	width: 0.5rem;
 }
+
 .to-do-lists-list-container::-webkit-scrollbar-thumb{
 	background: transparent;
 	border-radius: 2rem;
 }
+
 .to-do-lists-list-container::-webkit-scrollbar-track{
 	background: transparent;
 }
+
 .to-do-lists-list {
 	height: 35px;
 	width: 100%;
@@ -277,12 +321,15 @@ body {
 	bottom: -5rem;
 	z-index: 1;
 }
+
 .to-do-lists-list-under-400-px-width {
 	display: none;
 }
+
 .to-do-lists-vertical-hr-spacer {
 	width: 3.5rem;
 }
+
 .to-do-lists-vertical-hr{
 	width: 0px;
 	height: 700%;
@@ -292,12 +339,15 @@ body {
 	position: relative;
 	bottom: 0rem;
 }
+
 .to-do-lists-vertical-hr:last-of-type {
 	height: 600%;
 }
+
 .to-do-lists-vertical-hr-spacer-under-400-px-width {
 	width: 2rem;
 }
+
 .to-do-lists-vertical-hr-under-400-px-width{
 	width: 0px;
 	height: 300%;
@@ -308,6 +358,7 @@ body {
 	position: relative;
 	bottom: 0rem;
 }
+
 .to-do-lists-list-name-inline-edit-form {
 	height: 90%;
 	margin: 0 0.5rem 0 0;
@@ -317,6 +368,7 @@ body {
 	justify-content: center;
 	align-items: center;
 }
+
 .to-do-lists-list-name-inline-edit-form-input {
 	font-family: 'The Penchill';
 	font-size: 1.25rem;
@@ -333,19 +385,23 @@ body {
 	bottom: 0.2rem;
 	left: 0rem;
 }
+
 .to-do-lists-list-name-inline-edit-form-input:hover {
 	border: 2px solid rgb(25,126,250);
 	border-bottom: none;
 }
+
 .to-do-lists-list-name-inline-edit-form-input:focus {
 	border: 2px solid rgb(25,126,250);
 	border-bottom: none;
 }
+
 .to-do-lists-list-name-inline-edit-form-input:focus-visible {
 	border: 2px solid rgb(25,126,250);
 	border-bottom: none;
 	outline: none;
 }
+
 .to-do-lists-list-name-inline-edit-form-input-under-400-px {
 	font-family: 'The Penchill';
 	font-size: 1rem;
@@ -361,14 +417,17 @@ body {
 	bottom: 0rem;
 	box-sizing: border-box;
 }
+
 .to-do-lists-list-name-inline-edit-form-input-under-400-px:hover {
 	border: 2px solid rgb(25,126,250);
 	border-bottom: none;
 }
+
 .to-do-lists-list-name-inline-edit-form-input-under-400-px:focus {
 	border: 2px solid rgb(25,126,250);
 	border-bottom: none;
 }
+
 .to-do-lists-list-details-container {
 	height: 100%;
 	width: min-content;
@@ -381,6 +440,7 @@ body {
 	position: relative;
 	bottom: 0.15rem;
 }
+
 .to-do-lists-list-details-container-under-400-px-width {
 	height: 90%;
 	width: min-content;
@@ -391,16 +451,19 @@ body {
 	justify-content: flex-end;
 	align-items: center;
 }
+
 .to-do-lists-list-details-category-container-under-400-px-width {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
+
 .to-do-lists-list-butons-container-under-400-px-width {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
+
 .to-do-lists-list-category-inline-edit-form {
 	height: 100%;
 	width: min-content;
@@ -410,6 +473,7 @@ body {
 	justify-content: center;
 	align-items: center;
 }
+
 .to-do-lists-list-category-inline-edit-form-input {
 	font-family: 'The Penchill';
 	font-size: 0.95rem;
@@ -430,12 +494,15 @@ body {
 	background-color: transparent;
 	transition: font-size 250ms, transform 250ms;
 }
+
 .to-do-lists-list-category-inline-edit-form-input:hover {
 	font-size: 1.05rem;
 }
+
 .to-do-lists-list-category-inline-edit-form-input:focus {
 	font-size: 1.05rem;
 }
+
 .to-do-lists-list-anchor {
 	height: 100%;
 	width: 100%;
@@ -447,9 +514,11 @@ body {
 	cursor: default;
 	border-radius: var(--border-radius);
 }
+
 .to-do-lists-list-anchor:visited {
 	color: inherit;
 }
+
 .to-do-lists-list-view-button-container {
 	height: 100%;
 	width: 50px;
@@ -459,6 +528,7 @@ body {
 	align-items: center;
 	box-sizing: var(--box-sizing);
 }
+
 .to-do-lists-list-view-button {
 	font-family: var(--font-main);
 	color: var(--text-color);
@@ -475,16 +545,20 @@ body {
 	background-color: transparent;
 	transition: transform 250ms;
 }
+
 .to-do-lists-list-view-button:hover img {
 	height: 1.5rem;
 }
+
 .to-do-lists-list-view-button:focus img {
 	height: 1.5rem;
 }
+
 .to-do-lists-list-view-button-icon {
 	height: 1.3125rem;
 	transition: height 250ms;
 }
+
 .to-do-lists-list-edit-button-container {
 	height: 100%;
 	width: 57px;
@@ -494,6 +568,7 @@ body {
 	align-items: center;
 	box-sizing: var(--box-sizing);
 }
+
 .to-do-lists-list-edit-button {
 	height: 100%;
 	width: 100%;
@@ -508,16 +583,20 @@ body {
 	border-radius: 1rem;
 	transition: transform 250ms;
 }
+
 .to-do-lists-list-edit-button:hover img {
 	height: 1.1875rem;
 }
+
 .to-do-lists-list-edit-button:focus img {
 	height: 1.1875rem;
 }
+
 .to-do-lists-list-edit-button-icon {
 	height: 1rem;
 	transition: height 250ms;
 }
+
 .to-do-lists-list-delete-button-container {
 	height: 100%;
 	width: 50px;
@@ -527,6 +606,7 @@ body {
 	align-items: center;
 	box-sizing: var(--box-sizing);
 }
+
 .to-do-lists-list-delete-button {
 	height: 100%;
 	width: 100%;
@@ -541,12 +621,15 @@ body {
 	border-radius: 1rem;
 	transition: transform 250ms;
 }
+
 .to-do-lists-list-delete-button:hover img {
 	height: 1rem;
 }
+
 .to-do-lists-list-delete-button:focus img {
 	height: 1rem;
 }
+
 .to-do-lists-list-delete-button-under-400-px-width {
 	height: 100%;
 	width: 100%;
@@ -560,16 +643,20 @@ body {
 	border-radius: 1rem;
 	transition: transform 250ms;
 }
+
 .to-do-lists-list-delete-button-under-400-px-width:hover img {
 	height: 1rem;
 }
+
 .to-do-lists-list-delete-button-under-400-px-width:focus img {
 	height: 1rem;
 }
+
 .to-do-lists-list-delete-button-icon {
 	height: 0.8125rem;
 	transition: height 250ms;
 }
+
 .to-do-lists-list-separator{
 	width: 100%;
 	height: 0rem;
@@ -580,9 +667,11 @@ body {
 	position: relative;
 	bottom: -4rem;
 }
+
 .to-do-lists-list-separator-lifted{
 	display: none;
 }
+
 .to-do-lists-delete-confirmation-container-backdrop {
 	display: none;
 	height: 100vh;
@@ -597,10 +686,12 @@ body {
 	z-index: 4;
 	transition: background-color 0.3s linear, backdrop-filter 0.3s linear, -webkit-backdrop-filter 0.3s linear;
 }
+
 .to-do-lists-delete-confirmation-container-backdrop-in-use{
 	backdrop-filter: blur(2px);
 	background-color: #00000080;
 }
+
 .to-do-lists-delete-confirmation-container-backdrop-under-400-px-width {
 	display: none;
 	height: 100vh;
@@ -615,10 +706,12 @@ body {
 	z-index: 4;
 	transition: background-color 0.3s linear, backdrop-filter 0.3s linear, -webkit-backdrop-filter 0.3s linear;
 }
+
 .to-do-lists-delete-confirmation-container-backdrop-under-400-px-width-in-use{
 	backdrop-filter: blur(2px);
 	background-color: #00000080;
 }
+
 .to-do-lists-delete-confirmation-container-backdrop-hr {
 	width: 100%;
 	height: 0px;
@@ -629,9 +722,11 @@ body {
 	position: relative;
 	top: 1.3rem;
 }
+
 .to-do-lists-delete-confirmation-container-backdrop-hr:first-of-type {
 	margin-top: 1rem;
 }
+
 .to-do-lists-delete-confirmation-container {
 	height: 18.5rem;
 	width: 14rem;
@@ -656,6 +751,7 @@ body {
 	opacity: 0;
 	transition: opacity 500ms, visibility 500ms;
 }
+
 .to-do-lists-delete-confirmation-form-header {
 	width: 101%;
 	height: 3rem;
@@ -676,6 +772,7 @@ body {
 	z-index: 2;
 	background-image: url('../images/leather-1969-in-architextures.jpg');
 }
+
 .to-do-lists-delete-confirmation-form {
 	width: 100%;
 	display: flex;
@@ -683,6 +780,7 @@ body {
 	justify-content: center;
 	align-items: center;
 }
+
 .to-do-lists-delete-confirmation-container-under-400-px-width {
 	width: 14rem;
 	aspect-ratio: 3/4;
@@ -709,44 +807,53 @@ body {
 	opacity: 0;
 	transition: opacity 500ms, visibility 500ms;
 }
+
 .to-do-lists-delete-confirmation-form-under-400-px-width {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 }
+
 .to-do-lists-delete-confirmation-container-show {
 	visibility: visible;
 	opacity: 1;
 }
+
 @keyframes fadeInFromNone {
 		0% {
 				display: none;
 				opacity: 0;
 		}
+
 		1% {
 				display: flex;
 				opacity: 0;
 		}
+
 		100% {
 				display: flex;
 				opacity: 1;
 		}
 }
+
 @keyframes fadeOutFromFlex {
 		0% {
 				display: flex;
 				opacity: 1;
 		}
+
 		99% {
 				display: flex;
 				opacity: 0;
 		}
+
 		100% {
 				display: none;
 				opacity: 0;
 		}
 }
+
 .to-do-lists-delete-confirmation-text {
 	width: 80%;
 	margin: 2.6rem 0.5rem 0.5rem 0.5rem;
@@ -759,6 +866,7 @@ body {
 	top: 0.8rem;
 	line-height: 1.7;
 }
+
 .to-do-lists-list-delete-confirmation-button-container {
 	height: 1.7rem;
 	width: 80%;
@@ -770,6 +878,7 @@ body {
 	position: relative;
 	bottom: 6.3rem;
 }
+
 .to-do-lists-list-delete-confirmation-button {
 	height: 100%;
 	width: 45%;
@@ -779,6 +888,7 @@ body {
 	font-size: 1.25rem;
 	font-family: var(--font-main);
 }
+
 .to-do-lists-list-delete-confirmation-cancel-button {
 	height: 100%;
 	width: 45%;
@@ -788,6 +898,7 @@ body {
 	font-size: 1.25rem;
 	font-family: var(--font-main);
 }
+
 .to-do-lists-list-delete-confirmation-cancel-button-under-400-px {
 	height: var(--edit-modal-button-container-height);
 	width: 45%;
@@ -799,14 +910,21 @@ body {
 }
 
  /* #                                                                                         */
+
  /* #       #  ####  #####    ###### #    # ##### #####  #   #    ######  ####  #####  #    # */
+
  /* #       # #        #      #      ##   #   #   #    #  # #     #      #    # #    # ##  ## */
+
  /* #       #  ####    #      #####  # #  #   #   #    #   #      #####  #    # #    # # ## # */
+
  /* #       #      #   #      #      #  # #   #   #####    #      #      #    # #####  #    # */
+
  /* #       # #    #   #      #      #   ##   #   #   #    #      #      #    # #   #  #    # */
+
  /* ####### #  ####    #      ###### #    #   #   #    #   #      #       ####  #    # #    # */
 
 /* List entry form // ---------------------------------------------------------------- */
+
 .entry-form-show-button-container {
 	height: 4rem;
 	width: 4rem;
@@ -817,10 +935,12 @@ body {
 	right: -0.75rem;
 	transition: right 500ms, transform 250ms;
 }
+
 .entry-form-show-button-container-after-clicked {
 	right: -100px;
 	transition: right 500ms;
 }
+
 .entry-form-show-button {
 	height: 100%;
 	width: 100%;
@@ -832,18 +952,22 @@ body {
 	outline-offset: -0.4rem;
 	transition: right 500ms, transform 250ms;
 }
+
 .entry-form-show-button:hover {
 	transform: scale(1.1);
 }
+
 .entry-form-show-button:focus {
 	transform: scale(1.1);
 }
+
 .entry-form-show-button-icon {
 	height: 55%;
 	width: auto;
 	position: relative;
 	left: 0.2rem;
 }
+
 .to-do-lists-list-entry-form-container {
 	height: 70px;
 	width: 101%;
@@ -862,6 +986,7 @@ body {
 	outline: 2px dashed silver;
 	outline-offset: -0.5rem;
 }
+
 .to-do-lists-list-entry-form {
 	height: 90%;
 	width: 99%;
@@ -871,9 +996,11 @@ body {
 	align-items: center;
 	box-sizing: var(--box-sizing);
 }
+
 .to-do-lists-list-entry-form-under-400-px-width {
 	display: none;
 }
+
 .to-do-lists-list-entry-form-list-name-container {
 	height: 90%;
 	margin-right: 0.5rem;
@@ -885,6 +1012,7 @@ body {
 	align-items: center;
 	box-sizing: var(--box-sizing);
 }
+
 .to-do-lists-list-entry-form-list-name-input {
 	height: 100%;
 	width: 100%;
@@ -897,6 +1025,7 @@ body {
 	border-radius: var(--border-radius);
 	box-shadow: var(--box-shadow-small);
 }
+
 .to-do-lists-list-entry-form-list-category-container {
 	height: 100%;
 	margin-right: 0.5rem;
@@ -908,6 +1037,7 @@ body {
 	align-items: center;
 	box-sizing: var(--box-sizing);
 }
+
 .to-do-lists-list-entry-form-list-category-input {
 	height: 60px;
 	width: 65px;
@@ -924,20 +1054,26 @@ body {
 	position: absolute;
 	transition: transform 250ms;
 }
+
 .to-do-lists-list-entry-form-list-category-input:hover {
 	transform: scale(1.1);
 }
+
 .to-do-lists-list-entry-form-list-category-input:focus {
 	transform: scale(1.1);
 }
+
 .to-do-lists-list-entry-form-list-category-input:hover + .to-do-lists-list-entry-form-list-category-show-button {
 	transform: scale(1.1);
 }
+
 .to-do-lists-list-entry-form-list-category-input:focus + .to-do-lists-list-entry-form-list-category-show-button {
 	transform: scale(1.1);
 }
+
 .to-do-lists-list-entry-form-list-category-show-button {
 	/* If outline, height or width values are changed, the corresponding styling values in the JS file must be modified */
+
 	/* Search "newListEntryFormCategoryInput.addEventListener" in the JS file to pull up those .style values */
 	height: 100%;
 	width: 95%;
@@ -952,17 +1088,21 @@ body {
 	z-index: 3;
 	transition: transform 250ms;
 }
+
 .to-do-lists-list-entry-form-list-category-input-icon {
 	/* If height value is changed, the corresponding styling value in the JS file must be modified */
+
 	/* Search "newListEntryFormCategoryInput.addEventListener" in the JS file to pull up that .style value */
 	height: 80%;
 	padding: 0 0.25rem;
 	text-align: center;
 	vertical-align: middle;
 }
+
 .to-do-lists-list-entry-form-list-owner-container {
 	display: none;
 }
+
 .to-do-lists-list-entry-form-list-submit-button-container {
 	height: 100%;
 	display: flex;
@@ -974,6 +1114,7 @@ body {
 	border-radius: var(--border-radius);
 	box-sizing: var(--box-sizing);
 }
+
 .to-do-lists-list-entry-form-list-submit-button-input {
 	height: 100%;
 	width: 95%;
@@ -991,12 +1132,15 @@ body {
 	box-shadow: var(--box-shadow-small);
 	transition: transform 250ms;
 }
+
 .to-do-lists-list-entry-form-list-submit-button-input:hover {
 	transform: scale(1.1);
 }
+
 .to-do-lists-list-entry-form-list-submit-button-input:focus {
 	transform: scale(1.1);
 }
+
 .to-do-lists-list-submit-button-icon {
 	height: 80%;
 	padding: 0.25rem 0;
@@ -1005,14 +1149,21 @@ body {
 }
 
  /* #     #                                #                         #######                */
+
  /* ##   ##  ####  #####    ##   #         #       #  ####  #####    #       #####  # ##### */
+
  /* # # # # #    # #    #  #  #  #         #       # #        #      #       #    # #   #   */
+
  /* #  #  # #    # #    # #    # #         #       #  ####    #      #####   #    # #   #   */
+
  /* #     # #    # #    # ###### #         #       #      #   #      #       #    # #   #   */
+
  /* #     # #    # #    # #    # #         #       # #    #   #      #       #    # #   #   */
+
  /* #     #  ####  #####  #    # ######    ####### #  ####    #      ####### #####  #   #   */
 
 /* Modal list edit window // ---------------------------------------------------------------- */
+
 .list-edit-modal-backdrop {
 	display: none;
 	height: 100vh;
@@ -1027,10 +1178,12 @@ body {
 	z-index: 4;
 	transition: background-color 0.3s linear, backdrop-filter 0.3s linear, -webkit-backdrop-filter 0.3s linear;
 }
+
 .list-edit-modal-backdrop-in-use{
 	backdrop-filter: blur(2px);
 	background-color: #00000080;
 }
+
 .popup-wrapper {
 	height: 100%;
 	width: 100%;
@@ -1044,6 +1197,7 @@ body {
 	bottom: 0;
 	left: 0;
 }
+
 .popup-container {
 	height: 100%;
 	width: 100%;
@@ -1052,6 +1206,7 @@ body {
 	justify-content: space-evenly;
 	align-items: center;
 }
+
 .list-edit-modal-header-and-form-container {
 	width: 14rem;
 	aspect-ratio: 3/4;
@@ -1060,6 +1215,7 @@ body {
 	justify-content: space-between;
 	align-items: center;
 }
+
 .list-edit-modal-form-header {
 	width: 102%;
 	height: 2.5rem;
@@ -1080,10 +1236,12 @@ body {
 	visibility: collapse;
 	transition: opacity 500ms, visibility 500ms;
 }
+
 .list-edit-modal-form-header-in-use {
 	opacity: 1;
 	visibility: visible;
 }
+
 .list-edit-modal-instructions-text {
 	margin: auto;
 	font-size: 1.25rem;
@@ -1091,6 +1249,7 @@ body {
 	color: white;
 	text-align: center;
 }
+
 .to-do-list-edit-form {
 	width: 99%;
 	padding: 0.5rem 0.5rem 1rem 0.5rem;
@@ -1110,10 +1269,12 @@ body {
 	visibility: collapse;
 	transition: opacity 500ms, visibility 500ms;
 }
+
 .list-edit-form-in-use {
 	opacity: 1;
 	visibility: visible;
 }
+
 .to-do-list-edit-modal-title {
 	text-align: center;
 	font-size: 1.5rem;
@@ -1121,6 +1282,7 @@ body {
 	margin: 0;
 	padding: 0.5rem;
 }
+
 .to-do-lists-list-edit-form-list-name-container {
 	height: min-content;
 	width: 100%;
@@ -1130,6 +1292,7 @@ body {
 	align-items: center;
 	box-sizing: var(--box-sizing);
 }
+
 .to-do-lists-list-edit-form-list-name-input {
 	height: 100%;
 	width: 100%;
@@ -1143,16 +1306,20 @@ body {
 	position: relative;
 	bottom: -0.4rem;
 }
+
 .to-do-lists-list-edit-form-list-name-input:hover {
 	border: 1px solid rgb(25,126,250);
 }
+
 .to-do-lists-list-edit-form-list-name-input:focus {
 	border: 1px solid rgb(25,126,250);
 }
+
 .to-do-lists-list-edit-form-list-name-input:focus-visible {
 	border: 1px solid rgb(25,126,250);
 	outline: none;
 }
+
 .list-edit-modal-hr {
 	width: 100%;
 	color: #FF9191;
@@ -1160,6 +1327,7 @@ body {
 	position: relative;
 	bottom: 0.3rem;
 }
+
 .to-do-lists-list-edit-form-list-category-container {
 	height: min-content;
 	width: 100%;
@@ -1169,6 +1337,7 @@ body {
 	align-items: center;
 	box-sizing: var(--box-sizing);
 }
+
 .to-do-lists-list-edit-form-list-category-input {
 	height: 100%;
 	width: 100%;
@@ -1182,16 +1351,20 @@ body {
 	position: relative;
 	bottom: -0.5rem;
 }
+
 .to-do-lists-list-edit-form-list-category-input:hover {
 	border: 1px solid rgb(25,126,250);
 }
+
 .to-do-lists-list-edit-form-list-category-input:focus {
 	border: 1px solid rgb(25,126,250);
 }
+
 .to-do-lists-list-edit-form-list-category-input:focus-visible {
 	border: 1px solid rgb(25,126,250);
 	outline: none;
 }
+
 .to-do-lists-list-edit-form-list-submit-button-container {
 	height: min-content;
 	width: 100%;
@@ -1201,6 +1374,7 @@ body {
 	align-items: center;
 	box-sizing: var(--box-sizing);
 }
+
 .to-do-lists-list-edit-form-list-submit-button-input {
 	height: 100%;
 	width: 100%;
@@ -1214,16 +1388,20 @@ body {
 	position: relative;
 	bottom: -0.5rem;
 }
+
 .to-do-lists-list-edit-form-list-submit-button-input:hover {
 	border: 1px solid rgb(25,126,250);
 }
+
 .to-do-lists-list-edit-form-list-submit-button-input:focus {
 	border: 1px solid rgb(25,126,250);
 }
+
 .to-do-lists-list-edit-form-list-submit-button-input:focus-visible {
 	border: 1px solid rgb(25,126,250);
 	outline: none;
 }
+
 .to-do-lists-list-edit-form-list-cancel-button-container {
 	height: min-content;
 	width: 100%;
@@ -1233,6 +1411,7 @@ body {
 	align-items: center;
 	box-sizing: var(--box-sizing);
 }
+
 .to-do-lists-list-edit-form-list-cancel-button-input {
 	height: 100%;
 	width: 100%;
@@ -1246,18 +1425,22 @@ body {
 	position: relative;
 	bottom: -0.5rem;
 }
+
 .to-do-lists-list-edit-form-list-cancel-button-input:hover {
 	border: 1px solid rgb(25,126,250);
 }
+
 .to-do-lists-list-edit-form-list-cancel-button-input:focus {
 	border: 1px solid rgb(25,126,250);
 }
+
 .to-do-lists-list-edit-form-list-cancel-button-input:focus-visible {
 	border: 1px solid rgb(25,126,250);
 	outline: none;
 }
 
 /* Shake animation for modals */
+
 @keyframes shake {
 	0% { transform: translate(1px, 1px) rotate(0deg); }
 	10% { transform: translate(-1px, -2px) rotate(-1deg); }
@@ -1273,21 +1456,30 @@ body {
 }
 
  /* #     #                            #####                                       */
+
  /* ##   ## ###### #####  #   ##      #     # #    # ###### #####  # ######  ####  */
+
  /* # # # # #      #    # #  #  #     #     # #    # #      #    # # #      #      */
+
  /* #  #  # #####  #    # # #    #    #     # #    # #####  #    # # #####   ####  */
+
  /* #     # #      #    # # ######    #   # # #    # #      #####  # #           # */
+
  /* #     # #      #    # # #    #    #    #  #    # #      #   #  # #      #    # */
+
  /* #     # ###### #####  # #    #     #### #  ####  ###### #    # # ######  ####  */
 
 /* Portrait */
+
 @media (orientation: portrait) and (max-width: 700px) {
 	.to-do-lists-list-owner-input {
 		font-size: 1.5rem;
 	}
+
 	.to-do-lists-list-container {
 		height: 90%;
 	}
+
 	.to-do-lists-list {
 		height: 70px;
 		width: 90%;
@@ -1298,50 +1490,62 @@ body {
 		position: relative;
 		left: 2rem;
 	}
+
 	.to-do-lists-vertical-hr-spacer{
 		display: none;
 	}
+
 	.to-do-lists-vertical-hr{
 		position: absolute;
 		bottom: -2rem;
 		left: 0rem;
 	}
+
 	.to-do-lists-list-name-inline-edit-form {
 		height: 45%;
 		width: 100%;
 		margin: 0 0 0.5rem 0;
 	}
+
 	.to-do-lists-list-name-inline-edit-form-input {
 		width: 100%;
 		bottom: -0.6rem;
 	}
+
 	.to-do-lists-list-details-container {
 		height: 45%;
 		width: 100%;
 		margin: 1.5rem 0 0 0;
 		bottom: -0.4rem;
 	}
+
 	.to-do-lists-list-category-inline-edit-form {
 		flex-grow: 1;
 		margin: 0 0.25rem 0 0;
 	}
+
 	.to-do-lists-list-category-inline-edit-form-input {
 		height: 100%;
 		width: 100%;
 	}
+
 	.to-do-lists-list-view-button-container {
 		width: 15%;
 	}
+
 	.to-do-lists-list-edit-button-container {
 		width: 16%;
 	}
+
 	.to-do-lists-list-delete-button-container {
 		width: 14%;
 	}
+
 	.to-do-lists-list-separator{
 		position: relative;
 		bottom: -5.2rem;
 	}
+
 	.to-do-lists-list-separator-lifted{
 		width: 100%;
 		height: 0rem;
@@ -1353,10 +1557,12 @@ body {
 		position: relative;
 		bottom: -0.8rem;
 	}
+
 	.entry-form-show-button-container {
 		display: block;
 		transition: right 500ms, transform 250ms;
 	}
+
 	.to-do-lists-list-entry-form-container {
 		width: 100%;
 		height: 70px;
@@ -1367,6 +1573,7 @@ body {
 		z-index: 2;
 		transition: bottom 500ms linear 100ms, visibility 500ms linear 100ms, width 500ms;
 	}
+
 	.entry-form-container-in-use {
 		width: 102%;
 		box-shadow: 0px -1px 5px black;
@@ -1374,6 +1581,7 @@ body {
 		bottom: -0.3rem;
 		transition: bottom 500ms, visibility 500ms, width 500ms ease-out 250ms;
 	}
+
 	.to-do-lists-vertical-hr:last-of-type {
 		bottom: -4.5rem;
 	}
@@ -1392,10 +1600,12 @@ body {
 }
 
 /* Landscape */
+
 @media (orientation: landscape) and (max-width: 600px) {
 	.to-do-lists-list-name-inline-edit-form-input{
 		width: 84%;
 	}
+
 	.to-do-lists-list-details-container{
 		width: 88%;
 		left: 2.3rem;
@@ -1407,6 +1617,7 @@ body {
 		width: 81%;
 		left: 0.5rem;
 	}
+
 	.to-do-lists-list-details-container{
 		width: 85%;
 	}
@@ -1416,9 +1627,11 @@ body {
 	.to-do-lists-list-container {
 		height: 90%;
 	}
+
 	.to-do-lists-list-owner-input {
 		font-size: 1.5rem;
 	}
+
 	.to-do-lists-list {
 		height: 70px;
 		width: 100%;
@@ -1427,9 +1640,11 @@ body {
 		justify-content: center;
 		align-items: center;
 	}
+
 	.to-do-lists-vertical-hr-spacer{
 		display: none;
 	}
+
 	.to-do-lists-vertical-hr{
 		width: 0px;
 		height: 200%;
@@ -1440,9 +1655,11 @@ body {
 		bottom: -1rem;
 		left: 4rem;
 	}
+
 	.to-do-lists-vertical-hr:last-of-type {
 		bottom: -4.5rem;
 	}
+
 	.to-do-lists-list-name-inline-edit-form {
 		height: 45%;
 		width: 88%;
@@ -1450,15 +1667,18 @@ body {
 		justify-content: flex-end;
 
 	}
+
 	.to-do-lists-list-name-inline-edit-form-input{
 		width: 100%;
 		bottom: 1.5rem;
 		left: 0.2rem;
 	}
+
 	.to-do-lists-list-name-inline-edit-form-input-under-400-px {
 		height: 70%;
 		width: 100%;
 	}
+
 	.to-do-lists-list-details-container {
 		height: 45%;
 		width: 85%;
@@ -1466,27 +1686,34 @@ body {
 		bottom: -0.1rem;
 		left: 2rem;
 	}
+
 	.to-do-lists-list-category-inline-edit-form {
 		flex-grow: 1;
 		margin: 0 0.25rem 0 0;
 	}
+
 	.to-do-lists-list-category-inline-edit-form-input {
 		height: 100%;
 		width: 100%;
 	}
+
 	.to-do-lists-list-view-button-container {
 		width: 15%;
 	}
+
 	.to-do-lists-list-edit-button-container {
 		width: 16%;
 	}
+
 	.to-do-lists-list-delete-button-container {
 		width: 14%;
 	}
+
 	.to-do-lists-list-separator{
 		position: relative;
 		bottom: -4.1rem;
 	}
+
 	.to-do-lists-list-separator-lifted{
 		width: 100%;
 		height: 0rem;
@@ -1496,13 +1723,16 @@ body {
 		position: relative;
 		bottom: 0.5rem;
 	}
+
 	.entry-form-show-button-container {
 		display: block;
 	}
+
 	.entry-form-show-button-container-after-clicked {
 		right: -110%;
 		transition: right 500ms;
 	}
+
 	.entry-form-show-button {
 		height: 100%;
 		width: 100%;
@@ -1510,12 +1740,14 @@ body {
 		border-radius: 50%;
 		background-color: var(--background-color-lighter);
 	}
+
 	.entry-form-show-button-icon {
 		height: 55%;
 		width: auto;
 		position: relative;
 		left: 0.25rem;
 	}
+
 	.to-do-lists-list-entry-form-container {
 		width: 100%;
 		height: 70px;
@@ -1525,6 +1757,7 @@ body {
 		visibility: collapse;
 		z-index: 2;
 	}
+
 	.entry-form-container-in-use {
 		width: 102%;
 		box-shadow: 0px -1px 5px black;

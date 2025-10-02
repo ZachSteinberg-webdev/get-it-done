@@ -8,10 +8,14 @@ import './loginEventHandlers.js';
 // Element selections ----------------------------------------------------------------
 // Registration button
 const registrationButton = document.querySelector('.go-to-registration-button-input');
+const guestModeButton = document.querySelector('.guest-mode-button');
 
 // Event listeners ----------------------------------------------------------------
 // Go to registration page trigger
 registrationButton.addEventListener('click', registrationButtonClickEventHandler);
+if(guestModeButton){
+	guestModeButton.addEventListener('click', guestModeButtonClickEventHandler);
+}
 
 // Text input field font size increase descrease to prevent overflow-x ---------------------
 shrinkTextToFitWhenTyping('.login-user-email-input');
@@ -19,5 +23,6 @@ shrinkTextToFitWhenTyping('.login-user-password-input');
 
 // Globalized variables ----------------------------------------------------------------
 globalizeVariables({
-	registrationButton
+	registrationButton,
+	guestModeButton
 });

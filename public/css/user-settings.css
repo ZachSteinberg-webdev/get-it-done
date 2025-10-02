@@ -96,6 +96,9 @@
 	z-index: 4;
 	transition: background-color 0.3s linear, backdrop-filter 0.3s linear, -webkit-backdrop-filter 0.3s linear;
 }
+.user-edit-modal-backdrop[data-guest-disabled="true"] {
+	display: none !important;
+}
 .user-edit-modal-backdrop-in-use{
 	backdrop-filter: blur(2px);
 	background-color: #00000080;

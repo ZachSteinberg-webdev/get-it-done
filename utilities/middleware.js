@@ -8,6 +8,10 @@ const passportLocalMongoose = require('passport-local-mongoose');
 const User = require('../models/user-model.js');
 const flash = require('connect-flash');
 const cookierParser = require('cookie-parser');
+const {
+	isGuestSession,
+	getGuestUser
+} = require('./guestMode');
 
 const logUserIn = passport.authenticate('local', {failureFlash: true, failureRedirect: '/login'});
 
@@ -24,13 +28,27 @@ const getUserFirstName = (req)=>{
 };
 
 const isLoggedIn = function(req,res,next){
-	if(req.isAuthenticated()){
-		next();
-	}else{
-		req.app.locals.originalUrl = req.originalUrl;
-		req.flash('error', `You must be logged in to do that.`);
-		res.redirect('/login');
-	};
+	if(typeof req.isAuthenticated === 'function' && req.isAuthenticated()){
+		return next();
+	}
+	if(isGuestSession(req.session)){
+		if(!req.user){
+			req.user = JSON.parse(JSON.stringify(getGuestUser(req.session)));
+		}
+		return next();
+	}
+	req.app.locals.originalUrl = req.originalUrl;
+	req.flash('error', `You must be logged in to do that.`);
+	res.redirect('/login');
+};
+
+const requireNonGuest = function(req,res,next){
+	if(isGuestSession(req.session)){
+		req.flash('error', `Guest mode users can't do that. Please create an account to unlock this feature.`);
+		const fallback = req.get('referer') || '/lists';
+		return res.redirect(fallback);
+	}
+	return next();
 };
 
 // User settings and password change
@@ -88,5 +106,6 @@ module.exports = {
 	doUserUpdate,
 	doPasswordUpdate,
 	isNewUserNameDifferent,
-	isNewUserEmailDifferent
+	isNewUserEmailDifferent,
+	requireNonGuest
 };

@@ -8,8 +8,8 @@
 	--box-shadow-large: 0 0 40px 1px grey;
 	--box-shadow-small: 0 0 20px 0.25px grey;
 	--background-color-lighter: white;
-	--background-color-darker: #E7E1E1;
-	--background-color-background: #93CCFB;
+	--background-color-darker: #e7e1e1;
+	--background-color-background: #93ccfb;
 	--text-color: black;
 	--placeholder-text-color: grey;
 	--log-in-field-container-height: 4rem;
@@ -19,6 +19,7 @@
 	--input-field-letter-spacing: -0.1rem;
 	--input-field-word-spacing: -0.6rem;
 }
+
 body {
 	height: 100vh;
 	width: 100vw;
@@ -31,6 +32,7 @@ body {
 	background-color: var(--background-color-darker);
 	background-image: url('../images/leather-1969-in-architextures.jpg');
 }
+
 .login-container {
 	height: min-content;
 	width: 50%;
@@ -43,6 +45,7 @@ body {
 	border-radius: var(--border-radius);
 	background-color: transparent;
 }
+
 .login-title-bar {
 	width: 90%;
 	display: flex;
@@ -51,6 +54,7 @@ body {
 	align-items: center;
 	margin: 0 0 2rem 0;
 }
+
 .login-title-heading {
 	text-align: center;
 	font-size: 3.5rem;
@@ -61,6 +65,7 @@ body {
 	font-family: var(--font-family);
 	margin: 0;
 }
+
 .login-title-body {
 	text-align: center;
 	font-size: 2.5rem;
@@ -71,6 +76,7 @@ body {
 	font-family: var(--font-family);
 	margin: 0;
 }
+
 .login-form {
 	height: min-content;
 	width: 100%;
@@ -79,6 +85,7 @@ body {
 	justify-content: center;
 	align-items: center;
 }
+
 .login-user-email-container {
 	height: var(--log-in-field-container-height);
 	width: 90%;
@@ -89,6 +96,7 @@ body {
 	border: var(--border);
 	border-radius: var(--border-radius);
 }
+
 .login-user-email-input {
 	height: 100%;
 	width: 100%;
@@ -101,6 +109,7 @@ body {
 	border-radius: var(--border-radius);
 	background-color: var(--background-color-lighter);
 }
+
 .login-user-password-container {
 	height: var(--log-in-field-container-height);
 	width: 90%;
@@ -111,6 +120,7 @@ body {
 	border: var(--border-none);
 	border-radius: var(--border-radius);
 }
+
 .login-user-password-input {
 	height: 100%;
 	width: 100%;
@@ -123,6 +133,7 @@ body {
 	border-radius: var(--border-radius);
 	background-color: var(--background-color-lighter);
 }
+
 .login-submit-button-container {
 	height: var(--log-in-button-container-height);
 	width: 90%;
@@ -133,6 +144,7 @@ body {
 	border: var(--border);
 	border-radius: var(--border-radius);
 }
+
 .login-submit-button-input {
 	height: 100%;
 	width: 100%;
@@ -145,12 +157,14 @@ body {
 	border-radius: var(--border-radius);
 	background-color: var(--background-color-lighter);
 }
+
 .login-horizontal-rule {
 	color: white;
 	width: 80%;
 	border-top: 1px solid black;
 	height: 0px;
 }
+
 .go-to-registration-container {
 	height: var(--log-in-button-container-height);
 	width: 90%;
@@ -161,6 +175,7 @@ body {
 	border: var(--border);
 	border-radius: var(--border-radius);
 }
+
 .go-to-registration-button-input {
 	height: 100%;
 	width: 100%;
@@ -173,192 +188,263 @@ body {
 	border-radius: var(--border-radius);
 	background-color: var(--background-color-lighter);
 }
-.project-guest-credentials-container, .project-guest-credentials {
+
+.guest-mode-button-container {
+	width: 90%;
+	margin: 1.5rem auto 0;
+	padding: 1.5rem;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
 	align-items: center;
-	color: white;
-	font-family: var(--font-family);
+	gap: 0.75rem;
+	border: var(--border);
+	border-radius: var(--border-radius);
+	background-color: rgba(255, 255, 255, 0.9);
 }
 
-/* Media queries */
+.guest-mode-header {
+	margin: 0;
+	font-family: var(--font-family);
+	font-size: 1.75rem;
+	font-weight: bold;
+	text-align: center;
+}
 
+.guest-mode-body {
+	margin: 0;
+	font-family: var(--font-family);
+	font-size: 1.1rem;
+	text-align: center;
+}
+
+.guest-mode-button {
+	height: 3rem;
+	width: 70%;
+	padding: 0 1.5rem;
+	font-size: 1.5rem;
+	letter-spacing: var(--input-field-letter-spacing);
+	font-family: var(--font-family);
+	border: none;
+	border-radius: var(--border-radius);
+	background-color: #ffdd57;
+	box-shadow: var(--box-shadow-small);
+	cursor: pointer;
+}
+
+.guest-mode-button:disabled {
+	opacity: 0.65;
+	cursor: wait;
+}
+
+.guest-mode-helper-text {
+	margin: 0;
+	font-family: var(--font-family);
+	font-size: 1rem;
+	text-align: center;
+	color: #333;
+}
+/* Media queries */
 /* Portrait orientation */
-@media (orientation: portrait) and (max-width: 900px){
+@media (orientation: portrait) and (max-width: 900px) {
 	.login-container {
 		width: 70%;
 	}
 }
-
-@media (orientation: portrait) and (max-width: 700px){
+@media (orientation: portrait) and (max-width: 700px) {
 	.login-container {
 		width: 80%;
 	}
 }
-
-@media (orientation: portrait) and (max-width: 550px){
+@media (orientation: portrait) and (max-width: 550px) {
 	.login-container {
 		width: 100%;
 	}
+
 	.go-to-registration-button-input {
 		font-size: 1.2rem;
 	}
 }
-
 @media (orientation: portrait) and (max-width: 450px) {
 	.login-user-email-input {
 		font-size: 2.25rem;
 	}
+
 	.login-user-password-input {
 		font-size: 2.25rem;
 	}
+
 	.login-submit-button-input {
 		font-size: 2.25rem;
 	}
 }
-
-@media (orientation: portrait) and (max-width: 400px){
+@media (orientation: portrait) and (max-width: 400px) {
 	.login-title-body {
 		font-size: 2rem;
 	}
+
 	.login-user-email-input {
 		font-size: 2rem;
 	}
+
 	.login-user-password-input {
 		font-size: 2rem;
 	}
+
 	.login-submit-button-input {
 		font-size: 2rem;
 	}
+
 	.go-to-registration-button-input {
 		font-size: 1rem;
 	}
 }
-
-@media (orientation: portrait) and (max-width: 300px){
+@media (orientation: portrait) and (max-width: 300px) {
 	.login-title-heading {
 		font-size: 2.75rem;
 	}
+
 	.login-title-body {
 		font-size: 1.75rem;
 	}
+
 	.login-user-email-input {
 		font-size: 1.5rem;
 	}
+
 	.login-user-password-input {
 		font-size: 1.5rem;
 	}
+
 	.login-submit-button-input {
 		font-size: 1.5rem;
 	}
+
 	.go-to-registration-button-input {
 		font-size: 0.75rem;
 	}
 }
-
 /* Landscape orientation */
-@media (orientation: landscape) and (max-width: 900px){
+@media (orientation: landscape) and (max-width: 900px) {
 	.login-user-email-input {
 		font-size: 2rem;
 	}
+
 	.login-user-password-input {
 		font-size: 2rem;
 	}
+
 	.login-submit-button-input {
 		font-size: 2rem;
 	}
+
 	.go-to-registration-button-input {
 		font-size: 1.25rem;
 	}
 }
-
-@media (orientation: landscape) and (max-width: 600px){
+@media (orientation: landscape) and (max-width: 600px) {
 	.login-user-email-input {
 		font-size: 1.75rem;
 	}
+
 	.login-user-password-input {
 		font-size: 1.75rem;
 	}
+
 	.login-submit-button-input {
 		font-size: 1.75rem;
 	}
+
 	.go-to-registration-button-input {
 		font-size: 1rem;
 	}
 }
-
 @media (orientation: landscape) and (max-height: 600px) {
 	.login-title-heading {
 		font-size: 2.75rem;
 	}
+
 	.login-title-body {
 		font-size: 1.75rem;
 	}
+
 	.login-user-email-input {
 		font-size: 2.25rem;
 	}
+
 	.login-user-password-input {
 		font-size: 2.25rem;
 	}
+
 	.login-submit-button-input {
 		font-size: 2.25rem;
 	}
+
 	.go-to-registration-button-input {
 		font-size: 1.25rem;
 	}
 }
-
-@media (orientation: landscape) and ((max-height: 500px) or (max-width: 600px)){
+@media (orientation: landscape) and ((max-height: 500px) or (max-width: 600px)) {
 	.login-title-bar {
 		flex-direction: row;
 		justify-content: center;
 		width: 200%;
 	}
+
 	.login-title-heading {
 		font-size: 2rem;
 		margin: 0 0.5rem;
 	}
+
 	.login-title-body {
 		font-size: 2rem;
 		margin: 0 0.5rem;
 	}
+
 	.login-user-email-container {
 		height: 3rem;
 	}
+
 	.login-user-email-input {
 		font-size: 1.75rem;
 	}
+
 	.login-user-password-container {
 		height: 3rem;
 	}
+
 	.login-user-password-input {
 		font-size: 1.75rem;
 	}
+
 	.login-submit-button-container {
 		height: 3rem;
 	}
+
 	.login-submit-button-input {
 		font-size: 1.75rem;
 	}
+
 	.go-to-registration-container {
 		height: 3rem;
 	}
+
 	.go-to-registration-button-input {
 		font-size: 1rem;
 	}
 }
-
-@media (orientation: landscape) and (max-height: 350px){
+@media (orientation: landscape) and (max-height: 350px) {
 	.login-user-email-container {
 		height: 2rem;
 	}
+
 	.login-user-password-container {
 		height: 2rem;
 	}
+
 	.login-submit-button-container {
 		height: 2rem;
 	}
+
 	.go-to-registration-container {
 		height: 2rem;
 	}

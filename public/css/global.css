@@ -1,25 +1,26 @@
 /* Fonts */
 @font-face {
 	font-family: 'The Penchill';
-	src: url("/fonts/The Penchill.otf");
+	src: url('/fonts/The Penchill.otf');
 }
 @font-face {
 	font-family: 'digital-7';
-	src: url("/fonts/digital-7 (mono italic).ttf");
+	src: url('/fonts/digital-7 (mono italic).ttf');
 }
 /* Root */
+
 :root {
 	--border: 1px solid black;
 	--border-radius: 0.5rem;
-	--button-border-color: #C0BFBF;
-	--button-background-color: #F5F5F5;
+	--button-border-color: #c0bfbf;
+	--button-background-color: #f5f5f5;
 	--button-border: 1px dashed black;
 	--box-sizing: border-box;
 	--background-color-lighter: white;
-	--background-color-darker: #E7E1E1;
-	--background-color-background: #93CCFB;
-	--background-color-darker-1: #C6C5C5;
-	--background-color-darker-2: #AFAFAF;
+	--background-color-darker: #e7e1e1;
+	--background-color-background: #93ccfb;
+	--background-color-darker-1: #c6c5c5;
+	--background-color-darker-2: #afafaf;
 	--text-color: black;
 	--placeholder-text-color: grey;
 	--font-main: 'Courier New', monospace;
@@ -32,17 +33,17 @@
 	--user-settings-button-container-height: min-content;
 	--user-settings-button-font-size: 1.5rem;
 }
+
 html {
 	font-size: 16px;
 }
-
- /* #######                             */
- /* #       #        ##    ####  #    # */
- /* #       #       #  #  #      #    # */
- /* #####   #      #    #  ####  ###### */
- /* #       #      ######      # #    # */
- /* #       #      #    # #    # #    # */
- /* #       ###### #    #  ####  #    # */
+/* #######                             */
+/* #       #        ##    ####  #    # */
+/* #       #       #  #  #      #    # */
+/* #####   #      #    #  ####  ###### */
+/* #       #      ######      # #    # */
+/* #       #      #    # #    # #    # */
+/* #       ###### #    #  ####  #    # */
 
 .flash-message {
 	height: min-content;
@@ -52,6 +53,7 @@ html {
 	align-items: center;
 	position: absolute;
 }
+
 .flash-alert-backdrop {
 	display: block;
 	width: 100vw;
@@ -65,9 +67,11 @@ html {
 	z-index: 4;
 	transition: backdrop-filter 1000ms;
 }
+
 .flash-alert-backdrop-closed {
 	backdrop-filter: blur(0px);
 }
+
 .flash-alert {
 	height: min-content;
 	width: max-content;
@@ -88,14 +92,17 @@ html {
 	opacity: 1;
 	transition: opacity 1500ms, visibility 1500ms;
 }
+
 .flash-alert-success {
 	color: #0f5132;
 	background-color: white;
 }
+
 .flash-alert-error {
 	color: #842029;
 	background-color: white;
 }
+
 .flash-alert-success-registration {
 	width: 14rem;
 	margin: auto;
@@ -116,6 +123,7 @@ html {
 	left: 0;
 	right: 0;
 }
+
 .flash-alert-success-login {
 	width: 14rem;
 	margin: auto;
@@ -136,6 +144,7 @@ html {
 	left: 0;
 	right: 0;
 }
+
 .alert-text {
 	height: min-content;
 	width: 100%;
@@ -149,18 +158,80 @@ html {
 	font-size: 1.25rem;
 	font-weight: bold;
 }
+
 .alert-text-success {
 	color: #0f5132;
 }
+
 .alert-text-error {
-	color: #F43243;
+	color: #f43243;
 }
+
 .alert-text-success-login {
 	color: silver;
 }
+
+.guest-mode-alert {
+	width: min(90%, 40rem);
+	margin: 0.5rem auto;
+	padding: 1rem 1.25rem;
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	border: 2px dashed #b48d57;
+	border-radius: var(--border-radius);
+	background-color: #fff9e6;
+	color: #4a3722;
+	box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+	font-family: var(--font-main);
+	position: absolute;
+	z-index: 5;
+}
+
+.guest-mode-alert-text {
+	flex: 1;
+	margin: 0;
+	font-size: 1.05rem;
+	line-height: 1.4;
+}
+
+.guest-mode-alert-link {
+	/* color: #0058b0; */
+	color: currentColor;
+	font-weight: normal;
+	text-decoration: underline;
+}
+
+.guest-mode-alert-link:hover {
+	/* color: #0058b0; */
+	color: currentColor;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.guest-mode-alert-dismiss {
+	border: none;
+	background: none;
+	color: inherit;
+	font-size: 1.75rem;
+	line-height: 1;
+	cursor: pointer;
+}
+
+.guest-mode-alert-dismiss:hover,
+.guest-mode-alert-dismiss:focus {
+	color: #2c1d0f;
+}
+
+.guest-mode-disabled-control {
+	opacity: 0.6;
+	cursor: not-allowed !important;
+}
+
 .alert-text-success-registration {
 	color: silver;
 }
+
 .btn-close {
 	width: 100%;
 	height: 100%;
@@ -177,19 +248,20 @@ html {
 	z-index: 2;
 	opacity: 1;
 }
+
 .flash-alert-close-without-click {
 	visibility: collapse;
 	opacity: 0;
 }
+/* ####### */
+/* #        ####   ####  ##### ###### ##### */
+/* #       #    # #    #   #   #      #    # */
+/* #####   #    # #    #   #   #####  #    # */
+/* #       #    # #    #   #   #      ##### */
+/* #       #    # #    #   #   #      #   # */
+/* #        ####   ####    #   ###### #    # */
 
- /* ####### */
- /* #        ####   ####  ##### ###### ##### */
- /* #       #    # #    #   #   #      #    # */
- /* #####   #    # #    #   #   #####  #    # */
- /* #       #    # #    #   #   #      ##### */
- /* #       #    # #    #   #   #      #   # */
- /* #        ####   ####    #   ###### #    # */
-.footer{
+.footer {
 	margin-bottom: 0.15rem;
 	font-family: var(--font-main);
 	font-size: 0.65rem;
@@ -199,57 +271,70 @@ html {
 	opacity: 1;
 	transition: opacity 200ms;
 }
+
 .footer-logged-out {
 	color: black;
 }
-.footer-link{
+
+.footer-link {
 	color: #c9c9c9;
 	text-decoration: none;
 }
+
 .footer-link:visited {
 	color: #c9c9c9;
 }
+
 .footer-link:hovered {
 	color: #c9c9c9;
 }
+
 .footer-logged-out-link {
 	color: black;
 	text-decoration: none;
 }
+
 .footer-logged-out-link:visited {
 	color: black;
 }
+
 .footer-logged-out-link:hovered {
 	color: black;
 }
-.credits-logged-in-link{
+
+.credits-logged-in-link {
 	color: #c9c9c9;
 	text-decoration: none;
 }
+
 .credits-logged-in-link:visited {
 	color: #c9c9c9;
 }
+
 .credits-logged-in-link:hovered {
 	color: #c9c9c9;
 }
-.credits-logged-out-link{
+
+.credits-logged-out-link {
 	color: black;
 	text-decoration: none;
 }
+
 .credits-logged-out-link:visited {
 	color: black;
 }
+
 .credits-logged-out-link:hovered {
 	color: black;
 }
-
- /* ##### */
+/* ##### */
 /* #     # #####  ###### #####  # #####  #### */
 /* #       #    # #      #    # #   #   # */
 /* #       #    # #####  #    # #   #    #### */
 /* #       #####  #      #    # #   #        # */
 /* #     # #   #  #      #    # #   #   #    # */
- /* #####  #    # ###### #####  #   #    #### */
+/* #####  #    # ###### #####  #   #    #### */
+
 .credits-logged-in-backdrop {
 	display: none;
 	height: 100vh;
@@ -263,9 +348,11 @@ html {
 	z-index: 4;
 	transition: backdrop-filter 1000ms;
 }
+
 .credits-logged-in-backdrop-in-use {
 	backdrop-filter: blur(1px);
 }
+
 .credits-logged-in-container {
 	height: min-content;
 	width: 15rem;
@@ -286,11 +373,13 @@ html {
 	visibility: collapse;
 	transition: opacity 1000ms, visibility 1000ms;
 }
+
 .credits-logged-in-container-in-use {
 	opacity: 1;
 	visibility: visible;
 	transition: opacity 1000ms, visibility 1000ms;
 }
+
 .credits-logged-in-header {
 	width: 101%;
 	height: 2.5rem;
@@ -308,6 +397,7 @@ html {
 	color: white;
 	text-align: center;
 }
+
 .credits-logged-in-preamble-text {
 	margin: 0.25rem;
 	margin-top: 1rem;
@@ -318,6 +408,7 @@ html {
 	color: black;
 	letter-spacing: -1px;
 }
+
 .credits-logged-in-text {
 	margin: 0.25rem;
 	padding: 0;
@@ -327,17 +418,20 @@ html {
 	color: black;
 	letter-spacing: -1px;
 }
-.credits-logged-in-text a{
+
+.credits-logged-in-text a {
 	text-decoration-line: none;
 }
+
 .credits-logged-in-hr {
 	width: 100%;
 	height: 0px;
-	color: #FF9191;
+	color: #ff9191;
 	position: relative;
 	bottom: 0.4rem;
 	margin: 0;
 }
+
 .credits-logged-in-text-small {
 	margin: 0.25rem 0 0 0;
 	padding: 0;
@@ -347,7 +441,6 @@ html {
 	color: black;
 	letter-spacing: -1px;
 }
-
 /* Credits logged out */
 
 .credits-logged-out-backdrop {
@@ -363,9 +456,11 @@ html {
 	z-index: 4;
 	transition: backdrop-filter 1000ms;
 }
+
 .credits-logged-out-backdrop-in-use {
 	backdrop-filter: blur(1px);
 }
+
 .credits-logged-out-container {
 	height: min-content;
 	width: 15rem;
@@ -387,17 +482,20 @@ html {
 	visibility: collapse;
 	transition: opacity 1000ms, visibility 1000ms;
 }
+
 .credits-logged-out-container-in-use {
 	opacity: 1;
 	visibility: visible;
 	transition: opacity 1000ms, visibility 1000ms;
 }
+
 .credits-logged-out-header {
 	margin: 0.25rem;
 	font-family: var(--font-main);
 	color: white;
 	text-align: center;
 }
+
 .credits-logged-out-text {
 	margin: 0.25rem;
 	padding: 0;
@@ -407,6 +505,7 @@ html {
 	color: white;
 	letter-spacing: -1px;
 }
+
 .credits-logged-out-text-small {
 	margin: 0.25rem 0 0 0;
 	padding: 0;
@@ -416,7 +515,6 @@ html {
 	color: white;
 	letter-spacing: -1px;
 }
-
 /* ######                                              ### */
 /* #     # ######  ####  #    # #####  ####  #####      #  ##### ###### #    #  #### */
 /* #     # #      #      #   #    #   #    # #    #     #    #   #      ##  ## # */
@@ -425,10 +523,12 @@ html {
 /* #     # #      #    # #   #    #   #    # #          #    #   #      #    # #    # */
 /* ######  ######  ####  #    #   #    ####  #         ###   #   ###### #    #  #### */
 /* All items */
+
 .desktop-item {
 	opacity: 1;
 }
 /* Desktop pen */
+
 .desktop-pen-img {
 	width: 2.3rem;
 	height: 24rem;
@@ -445,6 +545,7 @@ html {
 	transition: opacity 1000ms, visibility 1000ms;
 }
 /* Desktop coffee cup */
+
 .desktop-coffee-cup-img {
 	width: 18rem;
 	height: 22rem;
@@ -460,6 +561,7 @@ html {
 	transition: opacity 1000ms, visibility 1000ms;
 }
 /* Desktop stain ring */
+
 .desktop-stain-ring-img {
 	width: 13rem;
 	height: 13rem;
@@ -475,6 +577,7 @@ html {
 	transition: opacity 1000ms, visibility 1000ms;
 }
 /* Desktop calculator */
+
 .desktop-calculator-img {
 	width: 22rem;
 	height: 26rem;
@@ -494,6 +597,7 @@ html {
 	cursor: move;
 	transition: opacity 1000ms, visibility 1000ms, rotate 250ms;
 }
+
 .desktop-calculator-display {
 	width: 13.9rem;
 	height: 2.6rem;
@@ -501,6 +605,7 @@ html {
 	bottom: 5.35rem;
 	transform: scaleY(1.5);
 }
+
 .desktop-calculator-display-input {
 	width: 100%;
 	height: 100%;
@@ -514,6 +619,7 @@ html {
 	border: none;
 	box-sizing: border-box;
 }
+
 .desktop-calculator-keypad {
 	width: 19.2rem;
 	height: 12.1rem;
@@ -527,12 +633,14 @@ html {
 	position: relative;
 	bottom: 2.5rem;
 }
+
 .calculator-row-1 {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-evenly;
 	align-items: center;
 }
+
 .calculator-row-2 {
 	display: flex;
 	flex-direction: row;
@@ -541,6 +649,7 @@ html {
 	position: relative;
 	top: -0.5rem;
 }
+
 .calculator-row-3 {
 	display: flex;
 	flex-direction: row;
@@ -549,6 +658,7 @@ html {
 	position: relative;
 	top: -0.8rem;
 }
+
 .calculator-row-4 {
 	display: flex;
 	flex-direction: row;
@@ -557,6 +667,7 @@ html {
 	position: relative;
 	top: -0.9rem;
 }
+
 .calculator-row-5 {
 	display: flex;
 	flex-direction: row;
@@ -565,6 +676,7 @@ html {
 	position: relative;
 	top: -1.3rem;
 }
+
 .desktop-calculator-power-switch-flipped {
 	background-image: url('../images/desktop-calculator-power-switch-flipped-reduced.png');
 	width: 4rem;
@@ -576,6 +688,7 @@ html {
 	background-size: 3.7rem;
 	background-repeat: no-repeat;
 }
+
 .calculator-button {
 	width: 2.9rem;
 	height: 2.4rem;
@@ -587,9 +700,11 @@ html {
 	pointer-events: all;
 	cursor: pointer;
 }
+
 .calculator-button:active {
 	border-color: currentColor;
 }
+
 #powerSwitch1 {
 	width: 3rem;
 	height: 1.2rem;
@@ -599,6 +714,7 @@ html {
 	bottom: 0.1rem;
 	left: 0.9rem;
 }
+
 #powerSwitch2 {
 	height: 2rem;
 	display: none;
@@ -609,36 +725,42 @@ html {
 	bottom: 0.2rem;
 	right: 0.2rem;
 }
+
 #memoryRecall {
 	height: 1.7rem;
 	position: relative;
 	bottom: 0.3rem;
 	left: -0.5rem;
 }
+
 #memoryMinus {
 	height: 1.7rem;
 	position: relative;
 	bottom: 0.3rem;
 	left: -0.3rem;
 }
+
 #memoryPlus {
 	height: 1.7rem;
 	position: relative;
 	bottom: 0.3rem;
 	left: 0.1rem;
 }
+
 #gt {
 	height: 1.7rem;
 	position: relative;
 	bottom: 0.3rem;
 	left: 0.2rem;
 }
+
 #backspace {
 	height: 2rem;
 	position: relative;
 	top: 0.6rem;
 	right: 1rem;
 }
+
 #seven {
 	height: 2rem;
 	margin-left: 0.2rem;
@@ -646,6 +768,7 @@ html {
 	top: 0.6rem;
 	right: 0.8rem;
 }
+
 #eight {
 	width: 2.6rem;
 	height: 2rem;
@@ -653,6 +776,7 @@ html {
 	top: 0.6rem;
 	right: 0.6rem;
 }
+
 #nine {
 	width: 2.7rem;
 	height: 2rem;
@@ -660,24 +784,28 @@ html {
 	top: 0.6rem;
 	right: 0.1rem;
 }
+
 #percent {
 	height: 2rem;
 	position: relative;
 	top: 0.6rem;
 	right: -0.2rem;
 }
+
 #mu {
 	height: 2rem;
 	position: relative;
 	top: 0.6rem;
 	left: 0.4rem;
 }
+
 #plusMinus {
 	height: 2rem;
 	position: relative;
 	top: 1.2rem;
 	left: -1.7rem;
 }
+
 #four {
 	height: 2rem;
 	width: 2.7rem;
@@ -685,6 +813,7 @@ html {
 	top: 1.2rem;
 	left: -1.1rem;
 }
+
 #five {
 	height: 2rem;
 	top: 1.2rem;
@@ -692,6 +821,7 @@ html {
 	width: 2.6rem;
 	left: -0.7rem;
 }
+
 #six {
 	height: 2rem;
 	width: 2.6rem;
@@ -699,6 +829,7 @@ html {
 	top: 1.2rem;
 	left: -0.2rem;
 }
+
 #multiply {
 	height: 2rem;
 	width: 2.6rem;
@@ -706,6 +837,7 @@ html {
 	top: 1.2rem;
 	left: 0.3rem;
 }
+
 #divide {
 	height: 2rem;
 	width: 2.6rem;
@@ -713,6 +845,7 @@ html {
 	top: 1.2rem;
 	left: 0.8rem;
 }
+
 #squareRoot {
 	height: 2rem;
 	width: 2.6rem;
@@ -720,6 +853,7 @@ html {
 	top: 1.5rem;
 	left: -1.5rem;
 }
+
 #one {
 	height: 2rem;
 	width: 2.6rem;
@@ -727,6 +861,7 @@ html {
 	top: 1.5rem;
 	left: -0.7rem;
 }
+
 #two {
 	height: 2rem;
 	width: 2.6rem;
@@ -734,6 +869,7 @@ html {
 	top: 1.5rem;
 	left: -0.3rem;
 }
+
 #three {
 	height: 2rem;
 	width: 2.6rem;
@@ -741,6 +877,7 @@ html {
 	top: 1.5rem;
 	left: 0.15rem;
 }
+
 #add1 {
 	border-bottom: none;
 	border-bottom-left-radius: 0rem;
@@ -749,6 +886,7 @@ html {
 	top: 1.5rem;
 	left: 0.6rem;
 }
+
 #subtract {
 	height: 2rem;
 	width: 2.6rem;
@@ -756,6 +894,7 @@ html {
 	top: 1.5rem;
 	left: 0.95rem;
 }
+
 #clear {
 	height: 2.2rem;
 	width: 2.6rem;
@@ -763,6 +902,7 @@ html {
 	top: 1.8rem;
 	left: -1.65rem;
 }
+
 #zero {
 	height: 2.2rem;
 	width: 2.6rem;
@@ -770,6 +910,7 @@ html {
 	top: 1.8rem;
 	left: -0.8rem;
 }
+
 #doubleZero {
 	height: 2.2rem;
 	width: 2.6rem;
@@ -777,6 +918,7 @@ html {
 	top: 1.8rem;
 	left: -0.3rem;
 }
+
 #point {
 	height: 2.2rem;
 	width: 2.6rem;
@@ -784,6 +926,7 @@ html {
 	top: 1.8rem;
 	left: 0.2rem;
 }
+
 #add2 {
 	height: 2.5rem;
 	border-top: none;
@@ -793,6 +936,7 @@ html {
 	top: 1.5rem;
 	left: 0.6rem;
 }
+
 #equals {
 	height: 2.2rem;
 	width: 2.6rem;
@@ -800,7 +944,6 @@ html {
 	top: 1.8rem;
 	left: 0.9rem;
 }
-
 /*  ##### */
 /* #     #  ####   ####  #####  #####  #   # ######    #    #  ####  #####    ##   # */
 /* #       #    # #    # #    # #    #  # #  #         ##  ## #    # #    #  #  #  # */
@@ -808,6 +951,7 @@ html {
 /* #     # #    # #    # #    # #    #   #   #         #    # #    # #    # ###### # */
 /* #     # #    # #    # #    # #    #   #   #         #    # #    # #    # #    # # */
 /*  #####   ####   ####  #####  #####    #   ######    #    #  ####  #####  #    # ###### */
+
 .goodbye-backdrop {
 	display: none;
 	height: 100vh;
@@ -820,6 +964,7 @@ html {
 	backdrop-filter: blur(1px);
 	z-index: 4;
 }
+
 .goodbye-container {
 	height: min-content;
 	width: min-content;
@@ -844,11 +989,13 @@ html {
 	visibility: collapse;
 	transition: opacity 2000ms, visibility 2000ms;
 }
+
 .goodbye-container-in-use {
 	opacity: 1;
 	visibility: visible;
 	transition: opacity 2000ms, visibility 2000ms;
 }
+
 .goodbye-text {
 	margin: 1rem;
 	padding: 0;
@@ -861,7 +1008,6 @@ html {
 	letter-spacing: 4px;
 	word-spacing: -35px;
 }
-
 /* #     # */
 /* ##   ## ###### #####  #   ##       ####  #    # ###### #####  # ######  #### */
 /* # # # # #      #    # #  #  #     #    # #    # #      #    # # #      # */
@@ -870,64 +1016,65 @@ html {
 /* #     # #      #    # # #    #    #   #  #    # #      #   #  # #      #    # */
 /* #     # ###### #####  # #    #     ### #  ####  ###### #    # # ######  #### */
 /* Media queries */
-@media(orientation: landscape) and (max-height: 450px) {
+@media (orientation: landscape) and (max-height: 450px) {
 	.credits-logged-in-container {
 		line-height: 0.8;
 	}
+
 	.credits-logged-in-preamble-text {
 		font-size: 0.65rem;
 	}
+
 	.credits-logged-in-text {
 		font-size: 0.65rem;
 	}
 }
-@media(orientation: landscape) and ((max-height: 700px) or (max-width: 1300px)) {
+@media (orientation: landscape) and ((max-height: 700px) or (max-width: 1300px)) {
 	.desktop-calculator-img {
 		scale: 0.75;
 	}
 }
-@media(orientation: landscape) and (max-width: 1150px) {
+@media (orientation: landscape) and (max-width: 1150px) {
 	.desktop-item {
 		opacity: 0;
 		visibility: collapse;
 	}
 }
-@media(orientation: portrait) {
+@media (orientation: portrait) {
 	.desktop-item {
 		opacity: 0;
 		visibility: collapse;
 	}
 }
-
 /* Rem scaling */
 /* Width */
-@media(min-width: 2100px){
-	html{
+@media (min-width: 2100px) {
+	html {
 		font-size: 20px;
 	}
 }
-@media(min-width: 2600px){
-	html{
+@media (min-width: 2600px) {
+	html {
 		font-size: 26px;
 	}
 }
-@media(min-width: 3000px){
-	html{
+@media (min-width: 3000px) {
+	html {
 		font-size: 30px;
 	}
 }
-@media(min-width: 4000px){
-	html{
+@media (min-width: 4000px) {
+	html {
 		font-size: 40px;
 	}
 }
-@media(min-width: 5000px){
-	html{
+@media (min-width: 5000px) {
+	html {
 		font-size: 50px;
 	}
 }
-@media(min-width: 7000px){
-	html{
+@media (min-width: 7000px) {
+	html {
 		font-size: 60px;
 	}
 }

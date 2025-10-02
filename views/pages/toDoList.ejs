@@ -8,6 +8,7 @@
 	<%-include('../partials/desktop-coffee-cup')%>
 	<%-include('../partials/desktop-stain-ring')%>
 	<%-include('../partials/desktop-calculator')%>
+	<%-include('../partials/guestBanner')%>
 	<div class="to-do-list-burger-menu-blocker-dummy-container">
 		<div class="to-do-list-top-bar-container">
 			<div class="to-do-list-back-button-container">
@@ -294,5 +295,8 @@
 <%-include('../partials/goodbye')%>
 <%-include('../partials/footer-logged-in')%>
 <%-include('../partials/credits-logged-in')%>
+<% if (isGuest) { %>
+<script type="application/json" id="guest-mode-bootstrap-data"><%- JSON.stringify(guestData) %></script>
+<% } %>
 <script type="module" src="/javascript/toDoList.js" charset="utf-8"></script>
 <script type="module" src="/javascript/desktopItems.js" charset="utf-8"></script>

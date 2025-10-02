@@ -7,6 +7,7 @@ import './global.js';
 import './burgerMenu.js';
 import './userSettings.js';
 import './nav.js';
+import initializeGuestMode from './guestModeRuntime.js';
 
 // Element selections ----------------------------------------------------------------
 	// Top bar user name input
@@ -14,6 +15,8 @@ const topBarContainer = document.querySelector('.to-do-lists-top-bar-container')
 const topBarUserNameInput = document.querySelector('.to-do-lists-list-owner-input');
 let topBarUserNameInputPlaceholderText;
 const originalPlaceholderText = topBarUserNameInput.placeholder;
+
+const guestModeActive = initializeGuestMode({ page: 'lists' });
 
 	// Lists container
 const listsContainer = document.querySelector('.to-do-lists-list-container');

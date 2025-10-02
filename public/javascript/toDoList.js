@@ -7,6 +7,7 @@ import './global.js';
 import './burgerMenu.js';
 import './userSettings.js';
 import './nav.js';
+import initializeGuestMode from './guestModeRuntime.js';
 
 // Element selections ----------------------------------------------------------------
 	// Top bar list name input
@@ -39,6 +40,8 @@ const listItemDeleteConfirmationContainer = document.querySelectorAll('.to-do-li
 const listItemDeleteConfirmationContainerUnder400px = document.querySelectorAll('.to-do-list-item-delete-confirmation-container-under-400-px-width');
 const listItemDeleteConfirmationButton = document.querySelectorAll('.to-do-list-item-delete-confirmation-button');
 const listItemDeleteConfirmationCancelButton = document.querySelectorAll('.to-do-list-item-delete-confirmation-cancel-button');
+
+const guestModeActive = initializeGuestMode({ page: 'list' });
 
 	// New list item entry form
 const newListItemEntryFormShowButtonContainer = document.querySelector('.entry-form-show-button-container');
