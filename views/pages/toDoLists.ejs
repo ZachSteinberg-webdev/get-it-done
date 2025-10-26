@@ -3,6 +3,10 @@
 <%block('head').append(`<link rel="stylesheet" href="/css/user-settings.css">`) %>
 <%block('head').append(`<link rel="stylesheet" href="/css/nav.css">`) %>
 <%block('head').append(`<title>Your To-Do Lists</title>`) %>
+<%
+	const normalizedCategory = (value)=> String(value ?? '').toLowerCase();
+	const categorySelectedAttr = (value, expected)=> normalizedCategory(value) === expected ? 'selected' : '';
+%>
 <div class="to-do-lists-container">
 	<%-include('../partials/desktop-pen')%>
 	<%-include('../partials/desktop-coffee-cup')%>
@@ -48,22 +52,10 @@
 				</form>
 				<div class="to-do-lists-list-details-container">
 					<form class="to-do-lists-list-category-inline-edit-form" action="/lists/edit/<%=each._id%>" method="post">
-						<select class="to-do-lists-list-category-inline-edit-form-input" name="toDoListsEditListCategory" value="<%=each.listCategory%>" id="to-do-list-list-category" tabindex="0">
+						<select class="to-do-lists-list-category-inline-edit-form-input" name="toDoListsEditListCategory" id="to-do-list-list-category-<%=index%>" tabindex="0">
 							<option value="" disabled>Category:</option>
-							<option id="inline-edit-personal<%=index%>" value="personal">Personal</option>
-							<script type="text/javascript">
-								const inlineEditOptionPersonal<%=index%> = document.getElementById("inline-edit-personal<%=index%>");
-								if("<%=(each.listCategory)%>"=="personal"){
-									inlineEditOptionPersonal<%=index%>.defaultSelected = true;
-								}
-							</script>
-							<option id="inline-edit-professional<%=index%>" value="professional">Professional</option>
-							<script type="text/javascript">
-								const inlineEditOptionProfessional<%=index%> = document.getElementById("inline-edit-professional<%=index%>");
-								if("<%=(each.listCategory)%>"=="professional"){
-									inlineEditOptionProfessional<%=index%>.defaultSelected = true;
-								}
-							</script>
+							<option value="personal" <%=categorySelectedAttr(each.listCategory, 'personal')%>>Personal</option>
+							<option value="professional" <%=categorySelectedAttr(each.listCategory, 'professional')%>>Professional</option>
 						</select>
 					</form>
 					<div class="to-do-lists-list-view-button-container">
@@ -93,22 +85,10 @@
 						<input class="to-do-lists-list-name-inline-edit-form-input-under-400-px" id="to-do-lists-list-name-inline-edit-form-input-<%=index%>" type="text" name="toDoListsEditListNameText" value="<%=each.listName%>" placeholder='Input a new list name and press "Enter"...' data-index="<%=index%>" data-list-id="<%=each._id%>" tabindex="0">
 					</form>
 					<form class="to-do-lists-list-category-inline-edit-form" action="/lists/edit/<%=each._id%>" method="post">
-						<select class="to-do-lists-list-category-inline-edit-form-input" name="toDoListsEditListCategory" value="<%=each.listCategory%>" id="to-do-list-list-category" tabindex="0">
+						<select class="to-do-lists-list-category-inline-edit-form-input" name="toDoListsEditListCategory" id="to-do-list-list-category-under-400-<%=index%>" tabindex="0">
 							<option value="" disabled>Category:</option>
-							<option id="inline-edit-personal<%=index%>" value="personal">Personal</option>
-							<script type="text/javascript">
-								const inlineEditOptionPersonalUnder400px<%=index%> = document.getElementById("inline-edit-personal<%=index%>");
-								if("<%=(each.listCategory)%>"=="personal"){
-									inlineEditOptionPersonalUnder400px<%=index%>.defaultSelected = true;
-								}
-							</script>
-							<option id="inline-edit-professional<%=index%>" value="professional">Professional</option>
-							<script type="text/javascript">
-								const inlineEditOptionProfessionalUnder400px<%=index%> = document.getElementById("inline-edit-professional<%=index%>");
-								if("<%=(each.listCategory)%>"=="professional"){
-									inlineEditOptionProfessionalUnder400px<%=index%>.defaultSelected = true;
-								}
-							</script>
+							<option value="personal" <%=categorySelectedAttr(each.listCategory, 'personal')%>>Personal</option>
+							<option value="professional" <%=categorySelectedAttr(each.listCategory, 'professional')%>>Professional</option>
 						</select>
 					</form>
 				</div>
@@ -252,22 +232,10 @@
 						</div>
 						<hr class="list-edit-modal-hr" id="list-edit-modal-hr-name">
 						<div class="to-do-lists-list-edit-form-list-category-container">
-							<select class="to-do-lists-list-edit-form-list-category-input" name="toDoListsEditListCategory" value="<%=each.listCategory%>" id="to-do-list-list-category" tabindex="2">
+							<select class="to-do-lists-list-edit-form-list-category-input" name="toDoListsEditListCategory" id="to-do-list-list-category-modal-<%=index%>" tabindex="2">
 								<option value="" disabled>Category:</option>
-								<option id="modal-edit-personal<%=index%>" value="personal">Personal</option>
-								<script type="text/javascript">
-									const modalEditOptionPersonal<%=index%> = document.getElementById("modal-edit-personal<%=index%>");
-									if("<%=(each.listCategory)%>"=="personal"){
-										modalEditOptionPersonal<%=index%>.defaultSelected = true;
-									}
-								</script>
-								<option id="modal-edit-professional<%=index%>" value="professional">Professional</option>
-								<script type="text/javascript">
-									const modalEditOptionProfessional<%=index%> = document.getElementById("modal-edit-professional<%=index%>");
-									if("<%=(each.listCategory)%>"=="professional"){
-										modalEditOptionProfessional<%=index%>.defaultSelected = true;
-									}
-								</script>
+								<option value="personal" <%=categorySelectedAttr(each.listCategory, 'personal')%>>Personal</option>
+								<option value="professional" <%=categorySelectedAttr(each.listCategory, 'professional')%>>Professional</option>
 							</select>
 						</div>
 						<hr class="list-edit-modal-hr" id="list-edit-modal-hr-category">
@@ -290,7 +258,7 @@
 <%-include('../partials/footer-logged-in')%>
 <%-include('../partials/credits-logged-in')%>
 <% if (isGuest) { %>
-<script type="application/json" id="guest-mode-bootstrap-data"><%- JSON.stringify(guestData) %></script>
+<template id="guest-mode-bootstrap-data"><%- JSON.stringify(guestData) %></template>
 <% } %>
 <script type="module" src="/javascript/toDoLists.js" charset="utf-8"></script>
 <script type="module" src="/javascript/desktopItems.js" charset="utf-8"></script>

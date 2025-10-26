@@ -3,6 +3,9 @@
 <% block('head').append(`<link rel="stylesheet" href="/css/user-settings.css">`) %>
 <% block('head').append(`<link rel="stylesheet" href="/css/nav.css">`) %>
 <% block('head').append(`<title>Your To-Do List Items</title>`) %>
+<%
+	const priorityCheckedAttr = (value, expected)=> (String(value ?? '') === String(expected)) ? 'checked' : '';
+%>
 <div class="to-do-list-container">
 	<%-include('../partials/desktop-pen')%>
 	<%-include('../partials/desktop-coffee-cup')%>
@@ -46,46 +49,16 @@
 					</form>
 					<form class="to-do-list-item-priority-inline-edit-form" action="/list/edit/<%=each._id%>" method="post">
 						<div class="to-do-list-item-priority-inline-edit-container" tabindex="0" data-index="<%=index%>">
-							<input class="to-do-list-item-priority-inline-edit-input" id="star5InlineEdit<%=index%>" name="toDoListItemPriorityLevel" type="radio" value="5" tabindex="0">
+							<input class="to-do-list-item-priority-inline-edit-input" id="star5InlineEdit<%=index%>" name="toDoListItemPriorityLevel" type="radio" value="5" tabindex="0" <%=priorityCheckedAttr(each.itemPriority, '5')%>>
 							<label class="to-do-list-item-priority-inline-edit-label" for="star5InlineEdit<%=index%>">☆</label>
-							<script type="text/javascript">
-								const priority5InlineEditIndex<%=index%> = document.getElementById("star5InlineEdit<%=index%>");
-								if("<%=(each.itemPriority)%>"=="5"){
-									priority5InlineEditIndex<%=index%>.defaultChecked = true;
-								}
-							</script>
-							<input class="to-do-list-item-priority-inline-edit-input" id="star4InlineEdit<%=index%>" name="toDoListItemPriorityLevel" type="radio" value="4" tabindex="0">
+							<input class="to-do-list-item-priority-inline-edit-input" id="star4InlineEdit<%=index%>" name="toDoListItemPriorityLevel" type="radio" value="4" tabindex="0" <%=priorityCheckedAttr(each.itemPriority, '4')%>>
 							<label class="to-do-list-item-priority-inline-edit-label" for="star4InlineEdit<%=index%>">☆</label>
-							<script type="text/javascript">
-								const priority4InlineEditIndex<%=index%> = document.getElementById("star4InlineEdit<%=index%>");
-								if("<%=(each.itemPriority)%>"=="4"){
-									priority4InlineEditIndex<%=index%>.defaultChecked = true;
-								}
-							</script>
-							<input class="to-do-list-item-priority-inline-edit-input" id="star3InlineEdit<%=index%>" name="toDoListItemPriorityLevel" type="radio" value="3" tabindex="0">
+							<input class="to-do-list-item-priority-inline-edit-input" id="star3InlineEdit<%=index%>" name="toDoListItemPriorityLevel" type="radio" value="3" tabindex="0" <%=priorityCheckedAttr(each.itemPriority, '3')%>>
 							<label class="to-do-list-item-priority-inline-edit-label" for="star3InlineEdit<%=index%>">☆</label>
-							<script type="text/javascript">
-								const priority3InlineEditIndex<%=index%> = document.getElementById("star3InlineEdit<%=index%>");
-								if("<%=(each.itemPriority)%>"=="3"){
-									priority3InlineEditIndex<%=index%>.defaultChecked = true;
-								}
-							</script>
-							<input class="to-do-list-item-priority-inline-edit-input" id="star2InlineEdit<%=index%>" name="toDoListItemPriorityLevel" type="radio" value="2" tabindex="0">
+							<input class="to-do-list-item-priority-inline-edit-input" id="star2InlineEdit<%=index%>" name="toDoListItemPriorityLevel" type="radio" value="2" tabindex="0" <%=priorityCheckedAttr(each.itemPriority, '2')%>>
 							<label class="to-do-list-item-priority-inline-edit-label" for="star2InlineEdit<%=index%>">☆</label>
-							<script type="text/javascript">
-								const priority2InlineEditIndex<%=index%> = document.getElementById("star2InlineEdit<%=index%>");
-								if("<%=(each.itemPriority)%>"=="2"){
-									priority2InlineEditIndex<%=index%>.defaultChecked = true;
-								}
-							</script>
-							<input class="to-do-list-item-priority-inline-edit-input" id="star1InlineEdit<%=index%>" name="toDoListItemPriorityLevel" type="radio" value="1" tabindex="0">
+							<input class="to-do-list-item-priority-inline-edit-input" id="star1InlineEdit<%=index%>" name="toDoListItemPriorityLevel" type="radio" value="1" tabindex="0" <%=priorityCheckedAttr(each.itemPriority, '1')%>>
 							<label class="to-do-list-item-priority-inline-edit-label" for="star1InlineEdit<%=index%>">☆</label>
-							<script type="text/javascript">
-								const priority1InlineEditIndex<%=index%> = document.getElementById("star1InlineEdit<%=index%>");
-								if("<%=(each.itemPriority)%>"=="1"){
-									priority1InlineEditIndex<%=index%>.defaultChecked = true;
-								}
-							</script>
 						</div>
 						<button class="to-do-list-item-priority-inline-edit-show-button" type="button" name="inlinePriorityPicker" tabindex="0" value="<%=index%>">
 							<div class="to-do-list-item-priority-inline-edit-show-button-priority-display-container">
@@ -232,46 +205,16 @@
 						</div>
 						<hr class="list-item-edit-modal-hr" id="list-item-edit-modal-hr-due-date">
 						<div class="to-do-list-edit-form-item-priority-container">
-							<input class="to-do-list-edit-form-item-priority-input" id="star5Edit<%=index%>" name="toDoListItemPriorityLevel" type="radio" value="5" tabindex="7">
+							<input class="to-do-list-edit-form-item-priority-input" id="star5Edit<%=index%>" name="toDoListItemPriorityLevel" type="radio" value="5" tabindex="7" <%=priorityCheckedAttr(each.itemPriority, '5')%>>
 							<label class="to-do-list-edit-form-item-priority-label" for="star5Edit<%=index%>">☆</label>
-							<script type="text/javascript">
-								const priority5Index<%=index%> = document.getElementById("star5Edit<%=index%>");
-								if("<%=(each.itemPriority)%>"=="5"){
-									priority5Index<%=index%>.defaultChecked = true;
-								}
-							</script>
-							<input class="to-do-list-edit-form-item-priority-input" id="star4Edit<%=index%>" name="toDoListItemPriorityLevel" type="radio" value="4" tabindex="6">
+							<input class="to-do-list-edit-form-item-priority-input" id="star4Edit<%=index%>" name="toDoListItemPriorityLevel" type="radio" value="4" tabindex="6" <%=priorityCheckedAttr(each.itemPriority, '4')%>>
 							<label class="to-do-list-edit-form-item-priority-label" for="star4Edit<%=index%>">☆</label>
-							<script type="text/javascript">
-								const priority4Index<%=index%> = document.getElementById("star4Edit<%=index%>");
-								if("<%=(each.itemPriority)%>"=="4"){
-									priority4Index<%=index%>.defaultChecked = true;
-								}
-							</script>
-							<input class="to-do-list-edit-form-item-priority-input" id="star3Edit<%=index%>" name="toDoListItemPriorityLevel" type="radio" value="3" tabindex="5">
+							<input class="to-do-list-edit-form-item-priority-input" id="star3Edit<%=index%>" name="toDoListItemPriorityLevel" type="radio" value="3" tabindex="5" <%=priorityCheckedAttr(each.itemPriority, '3')%>>
 							<label class="to-do-list-edit-form-item-priority-label" for="star3Edit<%=index%>">☆</label>
-							<script type="text/javascript">
-								const priority3Index<%=index%> = document.getElementById("star3Edit<%=index%>");
-								if("<%=(each.itemPriority)%>"=="3"){
-									priority3Index<%=index%>.defaultChecked = true;
-								}
-							</script>
-							<input class="to-do-list-edit-form-item-priority-input" id="star2Edit<%=index%>" name="toDoListItemPriorityLevel" type="radio" value="2" tabindex="4">
+							<input class="to-do-list-edit-form-item-priority-input" id="star2Edit<%=index%>" name="toDoListItemPriorityLevel" type="radio" value="2" tabindex="4" <%=priorityCheckedAttr(each.itemPriority, '2')%>>
 							<label class="to-do-list-edit-form-item-priority-label" for="star2Edit<%=index%>">☆</label>
-							<script type="text/javascript">
-								const priority2Index<%=index%> = document.getElementById("star2Edit<%=index%>");
-								if("<%=(each.itemPriority)%>"=="2"){
-									priority2Index<%=index%>.defaultChecked = true;
-								}
-							</script>
-							<input class="to-do-list-edit-form-item-priority-input" id="star1Edit<%=index%>" name="toDoListItemPriorityLevel" type="radio" value="1" tabindex="3">
+							<input class="to-do-list-edit-form-item-priority-input" id="star1Edit<%=index%>" name="toDoListItemPriorityLevel" type="radio" value="1" tabindex="3" <%=priorityCheckedAttr(each.itemPriority, '1')%>>
 							<label class="to-do-list-edit-form-item-priority-label" for="star1Edit<%=index%>">☆</label>
-							<script type="text/javascript">
-								const priority1Index<%=index%> = document.getElementById("star1Edit<%=index%>");
-								if("<%=(each.itemPriority)%>"=="1"){
-									priority1Index<%=index%>.defaultChecked = true;
-								}
-							</script>
 						</div>
 						<hr class="list-item-edit-modal-hr" id="list-item-edit-modal-hr-priority">
 						<div class="to-do-lists-list-edit-form-item-owner-container">
@@ -296,7 +239,7 @@
 <%-include('../partials/footer-logged-in')%>
 <%-include('../partials/credits-logged-in')%>
 <% if (isGuest) { %>
-<script type="application/json" id="guest-mode-bootstrap-data"><%- JSON.stringify(guestData) %></script>
+<template id="guest-mode-bootstrap-data"><%- JSON.stringify(guestData) %></template>
 <% } %>
 <script type="module" src="/javascript/toDoList.js" charset="utf-8"></script>
 <script type="module" src="/javascript/desktopItems.js" charset="utf-8"></script>

@@ -15,10 +15,7 @@
 			<meta name="theme-color" content="#ffffff">
 			<link rel="stylesheet" href="/css/global.css">
 		</head>
-		<body>
-			<% if (typeof clearGuestStorage !== 'undefined' && clearGuestStorage) { %>
-			<script>try{localStorage.removeItem('guestModeData');sessionStorage.removeItem('guestModeAlertDismissed');}catch(e){}</script>
-			<% } %>
+		<body<%= (typeof clearGuestStorage !== 'undefined' && clearGuestStorage) ? ' data-clear-guest-storage=\"true\"' : '' %>>
 			<%-include('../partials/flash')%>
 			<%-body%>
 		</body>

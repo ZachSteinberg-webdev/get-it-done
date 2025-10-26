@@ -3,6 +3,26 @@ import {globalizeVariables} from './globalizeVariables.js';
 import './commonFunctions.js';
 import './globalEventHandlers.js';
 
+const clearGuestModeStorageIfRequested = ()=>{
+	const body = document.body;
+	if(!body){
+		return;
+	}
+	const shouldClear = body.dataset.clearGuestStorage === 'true';
+	if(!shouldClear){
+		return;
+	}
+	try{
+		localStorage.removeItem('guestModeData');
+		sessionStorage.removeItem('guestModeAlertDismissed');
+	}catch(error){
+		// Ignore storage errors (likely Safari private mode).
+	}
+	delete body.dataset.clearGuestStorage;
+};
+
+clearGuestModeStorageIfRequested();
+
 // Element selections ----------------------------------------------------------------
 	// Flash
 const alertBackdrop = document.querySelector('.flash-alert-backdrop');

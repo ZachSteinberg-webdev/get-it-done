@@ -9,8 +9,14 @@ const readBootstrapData = ()=>{
 		return null;
 	}
 	try{
-		const content = element.textContent || element.innerText;
-		return content ? JSON.parse(content) : null;
+		const content = element.tagName === 'TEMPLATE'
+			? element.content.textContent
+			: (element.textContent || element.innerText);
+		const normalized = content ? content.trim() : '';
+		if(!normalized){
+			return null;
+		}
+		return JSON.parse(normalized);
 	}catch(error){
 		return null;
 	}

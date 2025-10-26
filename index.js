@@ -56,7 +56,8 @@ app.use(mongoSanitize());
 app.use(helmet({
 	contentSecurityPolicy: {
 		directives: {
-			"script-src": ["'self'", "'unsafe-inline'"]
+			"default-src": ["'self'"],
+			"script-src": ["'self'"]
 		}
 	},
 	referrerPolicy: {

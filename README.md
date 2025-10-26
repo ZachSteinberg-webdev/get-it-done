@@ -189,7 +189,7 @@ Flow:
 2. You can log in with email/password, OR click “Enter Guest Mode.”
 3. If you choose guest mode:
    - The server creates a guest session and attaches a full “user-like” object to `req.session.guest`.
-   - I send down a bootstrap blob of that data in a `<script type="application/json" id="guest-mode-bootstrap-data">…</script>` tag.
+   - I send down a bootstrap blob of that data inside a `<template id="guest-mode-bootstrap-data">…</template>` element (so there’s no executable inline script).
    - On the client, `guestModeRuntime.js` writes a copy to `localStorage` so refreshes feel persistent even before you make an account.
    - The UI clearly marks that you’re in guest mode. The nav bar swaps “Logout” for “Register”, and the Settings button is disabled with a tooltip that says you can’t edit profile settings until you register.
 
@@ -205,7 +205,7 @@ If you later decide to register:
 
 1. You submit the registration form.
 2. On successful registration, I take everything from your guest session in local storage (lists, items, desktop object coordinates) and write it to Mongo under the new User record.
-3. I then mark the session so the frontend knows to wipe `localStorage` copies of guest data.
+3. I then mark the session so the layout emits a `data-clear-guest-storage` flag and the shared module wipes `localStorage` copies of guest data on the next load.
 4. The next load you’re now a “real” user with the same lists you created as a guest.
 
 That migration step matters. It’s very common for “demo mode” data to get thrown away; I’m keeping it and carrying it forward automatically.
@@ -330,7 +330,7 @@ Guest mode is intentionally powerful — you can create, edit, and delete lists 
 When a guest signs up and becomes a permanent user:
 
 - I insert their sanitized lists / items / desktop positions into MongoDB under the new User.
-- I then mark the session with `clearGuestStorage = true`. The layout template (`boilerplate.ejs`) sees that and injects a script that wipes `localStorage` and `sessionStorage` keys related to guest mode.
+- I then mark the session with `clearGuestStorage = true`. The layout template (`boilerplate.ejs`) now emits a `data-clear-guest-storage` attribute instead of an inline script, and `global.js` sees that flag and wipes `localStorage` / `sessionStorage` keys related to guest mode.
 - After migration, guest data is no longer referenced by the server.
 
 This is deliberate privacy hygiene. I don't quietly keep orphaned “guest” task data forever.
@@ -364,8 +364,7 @@ Even for anonymous users I treat state updates like critical sections so I don't
 
 I use Helmet with:
 
-- A Content Security Policy that by default only allows scripts from `'self'`.  
-  For now, inline scripts are allowed in controlled places (`'unsafe-inline'`) because of server-rendered EJS snippets that set default values in forms and modals. When I harden further, I can move those to data attributes + JS modules and drop `'unsafe-inline'`.
+- A Content Security Policy that only allows scripts from `'self'`.
 - `referrerPolicy: "same-origin"` so I’m not leaking cross-site navigation data.
 
 I also run:
