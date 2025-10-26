@@ -1,4 +1,4 @@
-Get It Done! (Full-Stack To-Do App)
+# Get It Done! (Full-Stack To-Do App)
 
 This is my production task manager, “Get It Done!”.  
 It looks like a physical desk — lined paper, a coffee ring, a pen, a calculator you can actually drag and rotate — but it behaves like a multi-user web app with accounts, sessions, persistence, and guardrails. You can use it in “guest mode” instantly with no signup, and if you later register, I migrate everything (lists, items, even where you left the calculator) into your new account.
