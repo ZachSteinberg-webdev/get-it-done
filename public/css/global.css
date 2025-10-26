@@ -8,7 +8,6 @@
 	src: url('/fonts/digital-7 (mono italic).ttf');
 }
 /* Root */
-
 :root {
 	--border: 1px solid black;
 	--border-radius: 0.5rem;
@@ -44,7 +43,6 @@ html {
 /* #       #      ######      # #    # */
 /* #       #      #    # #    # #    # */
 /* #       ###### #    #  ####  #    # */
-
 .flash-message {
 	height: min-content;
 	width: 94%;
@@ -260,7 +258,6 @@ html {
 /* #       #    # #    #   #   #      ##### */
 /* #       #    # #    #   #   #      #   # */
 /* #        ####   ####    #   ###### #    # */
-
 .footer {
 	margin-bottom: 0.15rem;
 	font-family: var(--font-main);
@@ -274,6 +271,8 @@ html {
 
 .footer-logged-out {
 	color: black;
+	font-size: 0.85rem;
+	font-weight: bold;
 }
 
 .footer-link {
@@ -305,6 +304,7 @@ html {
 .credits-logged-in-link {
 	color: #c9c9c9;
 	text-decoration: none;
+	cursor: pointer;
 }
 
 .credits-logged-in-link:visited {
@@ -318,6 +318,7 @@ html {
 .credits-logged-out-link {
 	color: black;
 	text-decoration: none;
+	cursor: pointer;
 }
 
 .credits-logged-out-link:visited {
@@ -334,7 +335,6 @@ html {
 /* #       #####  #      #    # #   #        # */
 /* #     # #   #  #      #    # #   #   #    # */
 /* #####  #    # ###### #####  #   #    #### */
-
 .credits-logged-in-backdrop {
 	display: none;
 	height: 100vh;
@@ -442,7 +442,6 @@ html {
 	letter-spacing: -1px;
 }
 /* Credits logged out */
-
 .credits-logged-out-backdrop {
 	display: none;
 	height: 100vh;
@@ -523,12 +522,10 @@ html {
 /* #     # #      #    # #   #    #   #    # #          #    #   #      #    # #    # */
 /* ######  ######  ####  #    #   #    ####  #         ###   #   ###### #    #  #### */
 /* All items */
-
 .desktop-item {
 	opacity: 1;
 }
 /* Desktop pen */
-
 .desktop-pen-img {
 	width: 2.3rem;
 	height: 24rem;
@@ -545,7 +542,6 @@ html {
 	transition: opacity 1000ms, visibility 1000ms;
 }
 /* Desktop coffee cup */
-
 .desktop-coffee-cup-img {
 	width: 18rem;
 	height: 22rem;
@@ -561,7 +557,6 @@ html {
 	transition: opacity 1000ms, visibility 1000ms;
 }
 /* Desktop stain ring */
-
 .desktop-stain-ring-img {
 	width: 13rem;
 	height: 13rem;
@@ -577,7 +572,6 @@ html {
 	transition: opacity 1000ms, visibility 1000ms;
 }
 /* Desktop calculator */
-
 .desktop-calculator-img {
 	width: 22rem;
 	height: 26rem;
@@ -951,7 +945,6 @@ html {
 /* #     # #    # #    # #    # #    #   #   #         #    # #    # #    # ###### # */
 /* #     # #    # #    # #    # #    #   #   #         #    # #    # #    # #    # # */
 /*  #####   ####   ####  #####  #####    #   ######    #    #  ####  #####  #    # ###### */
-
 .goodbye-backdrop {
 	display: none;
 	height: 100vh;
